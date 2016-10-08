@@ -1,6 +1,8 @@
+Customer Meeting:
+Client did not have time in schedule this week (GSI/Professor have been notified)
 
 
-ScreenCast 
+ScreenCasts 
 
 Brian Nguyen : https://youtu.be/SZaXUb5JFc0
 Xiangjiu Wang : https://youtu.be/ok6ddlk5fkc
