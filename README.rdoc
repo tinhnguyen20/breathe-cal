@@ -3,28 +3,23 @@
 {<img src="https://codeclimate.com/github/rails/rails/badges/gpa.svg" />}[https://codeclimate.com/github/rails/rails]
 {<img src="https://travis-ci.org/willtsay/breathe-cal.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/willtsay/breathe-cal]
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pivotal Link
 
-Things you may want to cover:
+https://www.pivotaltracker.com/projects/1883145
 
-* Ruby version
+Heroku Link
 
-* System dependencies
+https://afternoon-temple-78844.herokuapp.com/
 
-* Configuration
+Client Site
 
-* Database creation
+http://www.breathebayarea.org/
 
-* Database initialization
+Our overall goal is to improve provide adequate information to individuals so that they may be better prepared in the case of a adverse lung health event.
+Requested Features
+A key feature for this project will be the allergen detection. This is the main feature of the proposed project in that it serves as the purpose for the application.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+(Note: The client did not have time for a meeting so this explanation of the client's business needs was taken from the project listing description.)
 
 
 Please feel free to use a different markup language if you do not plan to run
