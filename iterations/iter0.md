@@ -1,6 +1,5 @@
 Customer Meeting:
-Client did not have time in schedule this week (GSI/Professor have been notified)
-
+https://www.youtube.com/watch?v=hivkpOmqyRM
 
 ScreenCasts 
 
