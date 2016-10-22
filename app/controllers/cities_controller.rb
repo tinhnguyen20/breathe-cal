@@ -2,10 +2,13 @@ class CitiesController < ApplicationController
     
     def index
     end
+    
+    def new
+    end
   
   
     def create
-      City.get_location_key(params[:location_info])
+      City.get_location_key(params[:city]["zip"],params[:city]["name"],params[:city]["state"],params[:city]["country"])
       city = City.find_by(params[:location_info])
       city.update_city_data
       redirect_to city_path id: city.id

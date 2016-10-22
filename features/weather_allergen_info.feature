@@ -4,23 +4,19 @@ Feature: Weather and Allergen Forecast
     I need to retrieve data from accuweather using the city data that was searched
     
     Background: 
-        Given I am on the site
-        And I got the city name "Berkeley"
+        Given I am on the new city page
+        And I fill in "city_name" with "Berkeley"
+        And I fill in "city_zip" with "94704"
+        And I fill in "city_state" with "CA"
+        And I fill in "city_country" with "US"
+        And I press "Submit"
 
     Scenario: 
-        Then div "Allergen Info" should not be empty
-        And div "Air Quality" should not be empty    
+        Then I should see "AirQuality"
+        And I should see "Grass"   
+        And I should see "Mold"
+        And I should see "Ragweed"
+        And I should see "Tree"
+        And I should see "Berkeley"
+        And I should not see "Fremont"
         
-        
-        ## self todo:
-        # figaro for API key / application.yml etc. 
-        # make some API requests.. shouldnt be too bad....
-        # get the responses -> bing bang boom... ? 
-        # should the api request be done via javascript?
-        
-        #
-        
-        
-        
-        #what do i want done
-        # what these tests say
