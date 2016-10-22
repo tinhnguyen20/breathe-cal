@@ -6,7 +6,10 @@ Feature: display a list of added cities
     Background: 
         Given I am signed in
         And that the cities that have been added:
-    	“X”, “Y”, “Z”
+    		|city|
+    		| "X"|
+    		| "Y"|
+    		| "Z"|
 	
     Scenario: See all cities
 	    Given that I am on the city list page
@@ -15,6 +18,6 @@ Feature: display a list of added cities
 	    And I should see "Z"
 
     Scenario: Remove city
-	    Given that I press X on city “X” #garbage can button? idk.
+	    Given that I press X on city list entry “X”
 	    Then I should be on the city list page
-	    And I should not see city “X” 
+	    And I should not see “X” 
