@@ -1,0 +1,12 @@
+ 
+-@forecasts.each do |forecast|
+  -forecast.each do |entry|
+    %li
+      = entry["Name"]
+      = entry["Value"]
+      = entry["Category"]
+      = entry["CategoryValue"]
+      = entry["Type"]
+
+  
+  
