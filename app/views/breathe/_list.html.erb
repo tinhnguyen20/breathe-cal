@@ -1,19 +1,17 @@
-<div class="container">
-  <div style="padding: 10px; 
-      border-bottom-style: solid; 
-      border-bottom-width: 0.5px; 
-      border-bottom-color: #eee;">
-    <h5>City List</h5>  
-  </div>
-  <div>
-    <% @cities.each do |c| %>
-      <div style="padding: 10px; 
-      border-bottom-style: solid; 
-      border-bottom-width: 0.5px; 
-      border-bottom-color: #eee;">
-        <%= c.capitalize %>      
-      </div>
-      
-    <% end %>
-  </div>
+<div style="padding: 10px; 
+    border-bottom-style: solid; 
+    border-bottom-width: 0.5px; 
+    border-bottom-color: #eee;">
+  <h5>City List</h5>  
+</div>
+<div>
+  <% @cities.each do |c| %>
+    <div style="padding: 10px; 
+    border-bottom-style: solid; 
+    border-bottom-width: 0.5px; 
+    border-bottom-color: #eee;">
+      <%= c.capitalize %>      
+    </div>
+    
+  <% end %>
 </div>
