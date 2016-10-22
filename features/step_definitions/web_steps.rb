@@ -31,9 +31,31 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+
+Given(/^I am on the landing page$/) do  
+  visit root_path
+end  
+
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
+end
+
+And(/^(?:I expect a Google map to load|the map has been loaded)$/) do 
+  page.evaluate_script('map') 
+end  
+
+Then(/^the center of the map should be approximately "([^"]*)"$/) do |place|  
+  find('#city-name').has_text?(place)
+end  
+
+
+Then(/^the center of the map should not be approximately "([^"]*)"$/) do |place|  
+  not find('#city-name').has_text?(place)
+end  
+And(/^my location is set to "([^"]*)"$/) do |place| 
+  find('#pac-input').set(place)
+  find('#pac-input').native.send_keys(:return)
 end
 
 # Multi-line step scoper
@@ -41,9 +63,9 @@ When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
   with_scope(parent) { When "#{step}:", table_or_string }
 end
 
-Given /^(?:|I )am on (.+)$/ do |page_name|
-  visit path_to(page_name)
-end
+# Given /^(?:|I )am on (.+)$/ do |page_name|
+#   visit path_to(page_name)
+# end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
