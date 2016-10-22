@@ -15,6 +15,10 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
+    when /^the Berkeley page$/ then '/cities/2'
+    when /^the new city page$/ then '/cities/new'
+    when /^the landing page$/ then '/'
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
