@@ -3,7 +3,12 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
+require 'capybara/poltergeist'
 
+Capybara.register_driver :poltergeist do |app|  
+  Capybara::Poltergeist::Driver.new(app, js_error: false)
+end  
+Capybara.javascript_driver = :poltergeist
 require 'cucumber/rails'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
