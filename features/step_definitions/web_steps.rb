@@ -48,6 +48,8 @@ end
 Then(/^the center of the map should be approximately "([^"]*)"$/) do |place|  
   find('#city-name').has_text?(place)
 end  
+
+
 Then(/^the center of the map should not be approximately "([^"]*)"$/) do |place|  
   not find('#city-name').has_text?(place)
 end  
