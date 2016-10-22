@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20161021205626) do
 
   create_table "breathes", force: :cascade do |t|
@@ -28,18 +27,6 @@ ActiveRecord::Schema.define(version: 20161021205626) do
     t.text     "daily_data"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-=======
-ActiveRecord::Schema.define(version: 20161022002722) do
-
-  create_table "users", force: :cascade do |t|
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "address"
-    t.text     "description"
-    t.string   "title"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
->>>>>>> 30feab66d4dd43de4bccf78ac289bd479d88d0d3
   end
 
 end
