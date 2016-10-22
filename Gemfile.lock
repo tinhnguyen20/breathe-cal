@@ -381,10 +381,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   factory_girl_rails
-<<<<<<< HEAD
   figaro
-=======
->>>>>>> 5d2c2caa9aa88fbb79aea93ee42165a741919eaf
   guard-rspec
   haml
   httparty
@@ -409,4 +406,4 @@ RUBY VERSION
    ruby 2.3.0p0
 
 BUNDLED WITH
-   1.13.1
+   1.12.5
