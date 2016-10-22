@@ -1,0 +1,18 @@
+%h1 Create New City
+
+
+= form_tag cities_path do
+
+  = label :city, :name, 'Name'
+  = text_field :city, 'name'
+
+  = label :city, :state, 'State'
+  = text_field :city, 'state'
+
+  = label :city, :zip, 'Zip'
+  = text_field :city, 'zip'
+
+  = label :city, :country, 'Country'
+  = text_field :city, 'country'
+
+  = submit_tag 'Submit'
