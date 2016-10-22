@@ -13,6 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20161022002722) do
 
+  create_table "breathes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "state"
+    t.string   "country"
+    t.string   "location_key"
+    t.string   "zip"
+    t.text     "daily_data"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.float    "latitude"
     t.float    "longitude"
