@@ -17,7 +17,7 @@ class City < ActiveRecord::Base
   
   
   def self.get_location_key(zip, name, state, country)
-    city = City.find_by(name: name,state: state,country: country)
+    city = City.find_by(name: name, state: state,country: country)
     if city
       return city.location_key
     end
@@ -25,6 +25,7 @@ class City < ActiveRecord::Base
       if state and country
         url = "http://dataservice.accuweather.com/locations/v1/#{country}/#{state}/search"
         response = HTTParty.get(url, query: {apikey: Figaro.env.accuweather_api_key ,q: "#{zip}",language:"en-us" } )
+        puts response
         location_key = response[0]["Key"]
         City.create(name: name, zip: zip, state: state, country: country, location_key: location_key )
         return location_key
