@@ -23,6 +23,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'haml'
 gem 'figaro'
+gem 'httparty'
 
 gem 'geocoder'
 gem 'gmaps4rails'
