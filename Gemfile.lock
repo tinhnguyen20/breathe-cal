@@ -128,9 +128,11 @@ GEM
       ruby_parser (~> 3.1, > 3.1.0)
       sexp_processor (~> 4.4)
     formatador (0.2.5)
+    geocoder (1.4.0)
     gherkin (4.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    gmaps4rails (2.1.2)
     guard (2.14.0)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -383,7 +385,12 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   factory_girl_rails
+<<<<<<< HEAD
   figaro
+=======
+  geocoder
+  gmaps4rails
+>>>>>>> 30feab66d4dd43de4bccf78ac289bd479d88d0d3
   guard-rspec
   haml
   httparty
