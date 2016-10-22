@@ -11,7 +11,6 @@ class CitiesController < ApplicationController
       City.get_location_key(params[:city]["zip"],params[:city]["name"],params[:city]["state"],params[:city]["country"])
       city = City.find_by(params[:location_info])
       city.update_city_data
-      #nothing
       redirect_to city_path id: city.id
     end
   
