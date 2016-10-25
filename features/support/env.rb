@@ -7,6 +7,8 @@ SimpleCov.start do
   add_filter "/features/step_definitions/"
   add_filter "/features/support/"
 end
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
 # files.
 require 'capybara/poltergeist'
 
