@@ -9,7 +9,8 @@ end
 
 Given /I as "(.*)" have searched for "(.*)"$/ do |client, city|
     #we will implement this model method later
-    Client.addToClient(client, city)
+    # Client.addToClient(client, city)
+    visit(get controller: 'clients', action: 'index', client: client, city: city)
 end
 
 And /I should see "(.*)" below "(.*)"$/ do |city1, city2|
@@ -22,3 +23,8 @@ end
 Then /I should see an empty search history/ do
     #pending
 end 
+
+Given /I am on the user's page of "(.*)"/ do |user|
+  visit('/clients/1')
+end 
+

@@ -11,13 +11,13 @@ Background:
     # And I am logged in as "client1"
    
 Scenario: I should see a blank search history before having searched for anything
-    Given I am on the landing page
+    Given I am on the user's page of "client1"
     Then I should see "Recent Searches"
     Then I should see an empty search history
   
 Scenario: Having searched for a city I should see it displayed on the page
     Given I as "client1" have searched for "Berkeley"
-    And I am on the landing page
+    And I am on the user's page of "client1"
     Then I should see "Berkeley"
     And I should not see "Vancouver"
     And I should not see "Boston"
@@ -25,7 +25,7 @@ Scenario: Having searched for a city I should see it displayed on the page
 Scenario: Having searched for two cities I should see the most recent one on top
     Given I as "client1" have searched for "Berkeley"
     And I as "client1" have searched for "Albany"
-    And I am on the landing page
+    And I am on the user's page of "client1"
     Then I should see "Berkeley"
     And I should see "Albany"
     And I should see "Berkeley" below "Albany"    
@@ -37,7 +37,7 @@ Scenario: Having searched for more than 5 cities I should only see the last 5 on
     And I as "client1" have searched for "Richmond"
     And I as "client1" have searched for "San Francisco"
     And I as "client1" have searched for "San Jose"
-    And I am on the landing page
+    And I am on the user's page of "client1"
     Then I should see "San Jose"
     And I should see "San Francisco"
     And I should see "Richmond"

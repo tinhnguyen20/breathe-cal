@@ -1,0 +1,17 @@
+<div style="padding: 10px; 
+    border-bottom-style: solid; 
+    border-bottom-width: 0.5px; 
+    border-bottom-color: #eee;">
+  <h3>Recent Searches</h3>  
+</div>
+<div>
+  <% (@searched_cities) || [].each do |c| %>
+    <div style="padding: 10px; 
+    border-bottom-style: solid; 
+    border-bottom-width: 0.5px; 
+    border-bottom-color: #eee;">
+      <%= c.capitalize %>      
+    </div>
+    
+  <% end %>
+</div>
