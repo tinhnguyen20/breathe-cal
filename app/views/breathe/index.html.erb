@@ -1,10 +1,7 @@
 <nav class="navbar navbar-default" style="margin-bottom: 10;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-        <!--Breathe California-->
-        <%= image_tag "bcal.jpg", class:"breathe_icon" %>
-      </a>
+      <%= link_to image_tag("bcal.jpg", class:"breathe_icon"), root_path, class:"navbar-brand", :"data-no-turbolink" => true %>
     </div>
   </div>
 </nav>
@@ -20,6 +17,8 @@
     <br>
     <%= render 'detail' %>
   </div>  
+  
+
   
 </div>
 
