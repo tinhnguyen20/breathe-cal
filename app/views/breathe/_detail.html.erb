@@ -10,6 +10,21 @@
 </div>
 <div style="padding: 10px;">
   <h5>Allergens</h5>  
+  
+  <% c.allergens.each do |allergen| %>
+    <div class="row">
+      <div class="col-lg-2">
+        <div><%= toIcon(allergen.name) %></div>
+      </div>
+      <div class="col-lg-4">
+        <div><%= allergen.name %></div>
+      </div>
+      <div class="col-lg-4">
+        <div><%= allergen.value %></div>
+      </div>
+    </div>
+  <% end %>
+  
 </div>
 <div style="padding: 10px;">
   <h5>Other Info</h5>  
