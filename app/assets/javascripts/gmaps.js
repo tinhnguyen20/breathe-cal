@@ -77,3 +77,7 @@ function initAutocomplete() {
     map.fitBounds(bounds);
   });
 }
+
+// $(document).ready(initAutocomplete);
+// $(document).on('page:load', initAutocomplete);
+// $(document).on('page:change', initAutocomplete);
