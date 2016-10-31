@@ -1,17 +1,51 @@
 class CitiesController < ApplicationController
     
+    skip_before_action :verify_authenticity_token
+
+    
     def index
     end
     
     def new
     end
   
-  
-    def create
-      City.get_location_key(params[:city]["zip"],params[:city]["name"],params[:city]["state"],params[:city]["country"])
-      city = City.find_by(params[:location_info])
+    # so i need to mimic the create route with a number of param types. 
+    # or do i
+    
+    # ajax POST -> city create route, with certain parameters. 
+    # tell create to respond to some formats... 
+    
+    def city_data
+      if params[:geo]
+        latlng = params[:geo]
+        loc_key = City.get_loc_key(latlng["lat"], latlng["lng"])
+        city = City.find_by(location_key: loc_key)
+      end
       city.update_city_data
-      redirect_to city_path id: city.id
+      puts "FLAGGSODFJSDOPIFJSDF"
+      puts city.daily_data
+      puts "***************************"
+      render :json => city.daily_data.to_json
+    end
+    
+    
+    
+    
+    
+    def create
+      if params[:city]
+        City.get_location_key(params[:city]["zip"],params[:city]["name"],params[:city]["state"],params[:city]["country"])
+        city = City.find_by(params[:location_info])
+      elsif params[:geo]
+        latlng = params[:geo]
+        loc_key = City.get_loc_key(latlng["lat"], latlng["lng"])
+        city = City.find_by(location_key: loc_key)
+      end
+      city.update_city_data
+      respond_to do |format|
+        format.html {redirect_to city_path id: city.id}
+        format.json {render :json => city.daily_data.to_json}
+      end
     end
   
   
