@@ -1,5 +1,6 @@
 class City < ActiveRecord::Base
   serialize :daily_data, JSON
+
   
   def update_city_data
     location_key = self.location_key
@@ -15,6 +16,21 @@ class City < ActiveRecord::Base
     # the first hash in AirAndPollen also has a type. 
   end
   
+  
+  #save by lat long? place id? something else?
+  
+  # probably need a better pattern for this anyway.. 
+  def self.get_loc_key(lat,lng)
+    city = City.find_by(lat: lat, lng: lng)
+    if city
+      return city.location_key
+    end
+    url = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search"
+    response = HTTParty.get(url, query: {apikey: "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3" ,q: "#{lat},#{lng}",language:"en-us" } )
+    location_key = response["Key"]
+    City.create(lat: lat, lng: lng, location_key: location_key)
+    return location_key
+  end
   
   def self.get_location_key(zip, name, state, country)
     city = City.find_by(name: name, state: state,country: country)

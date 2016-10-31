@@ -15,7 +15,8 @@ function initAutocomplete() {
     zoom: 13,
     mapTypeId: 'roadmap'
   });
-
+  var geocoder = new google.maps.Geocoder();
+  
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);
@@ -58,7 +59,24 @@ function initAutocomplete() {
       };
 
       // Create a marker for each place.
-      $("#city-name").text(place.name)
+      $("#city-name").text(JSON.stringify(place.geometry.location))
+      $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "city_data",
+        data: JSON.stringify({geo: place.geometry.location }),
+        success: function(data){
+          $("#city-info").text(JSON.stringify(data));
+          console.log("hello");
+          console.log(JSON.stringify(data));
+        }
+        
+      });
+      
+      
+      // $.getJSON("MYURL.json", function(){
+      //   $("do some stuff here")
+      // });
       markers.push(new google.maps.Marker({
         map: map,
         icon: icon,
@@ -78,6 +96,6 @@ function initAutocomplete() {
   });
 }
 
-// $(document).ready(initAutocomplete);
-// $(document).on('page:load', initAutocomplete);
-// $(document).on('page:change', initAutocomplete);
+$(document).ready(initAutocomplete);
+$(document).on('page:load', initAutocomplete);
+$(document).on('page:change', initAutocomplete);

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default" style="margin-bottom: 10;">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <%= link_to image_tag("bcal.jpg", class:"breathe_icon"), root_path, class:"navbar-brand", :"data-no-turbolink" => true %>
+    <div class="navbar-header navbar-brand" >
+      <%= image_tag("bcal.jpg", class:"breathe_icon") %>
     </div>
   </div>
 </nav>
@@ -9,14 +9,17 @@
 
 <div class="row">
   <div class="col-md-8 col-ms-12" style="padding-right: 0;">
-    <div id="map" style="height: 680px; width: 100%;"></div>
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+    <div id="map" style="height: 680px; width: 100%;"></div>
   </div>
   <div class="col-md-4 col-ms-12" style="padding-left: 0;">
     <%= render 'list' %>
     <br>
     <%= render 'detail' %>
   </div>  
+  
+  <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
+
   
 
   

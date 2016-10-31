@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161026004202) do
+ActiveRecord::Schema.define(version: 20161031070613) do
 
   create_table "breathes", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20161026004202) do
     t.text     "daily_data"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "lat"
+    t.string   "lng"
   end
 
   create_table "clients", force: :cascade do |t|
