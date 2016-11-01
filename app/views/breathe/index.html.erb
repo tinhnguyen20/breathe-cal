@@ -6,12 +6,12 @@
   </div>
 </nav>
 
-<div>
-  <div class="col-md-8 col-ms-12" style="padding-left: 0; padding-right: 0; z-index: 10;">
+<div style="height: 100%;">
+  <div class="col-md-8 col-ms-12" style="padding-left: 0; padding-right: 0; z-index: 10; height: 100%;" id="left-col">
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-    <div id="map" style="height: 680px; width: 100%;"></div>
+    <div id="map" style="height: 100%; width: 100%;"></div>
   </div>
-  <div class="col-md-4 col-ms-12" style="padding-left: 0; padding-right: 0;">
+  <div class="col-md-4 col-ms-12" style="padding-left: 0; padding-right: 0; max-width: 500px;" id="right-col">
     <div class="datetime-box" style="padding: 20px; font-size: 20px; font-family: 'Open Sans', sans-serif; height: 65px;">Today is <%= @dt %></div>
     
     
@@ -21,8 +21,9 @@
     <div id="list-box" style="position: absolute; width: 100%;">
       <%= render 'list' %>  
     </div>
-    <div id="detail-box" style="margin-left: 500px; background-color: white; position: absolute; width: 100%;">
+    <div id="detail-box" style="margin-left: 500px; background-color: white; position: absolute; width: 100%; overflow-x: hidden; overflow-y: scroll;">
     </div>
+    <div id="detail-box-mask" style="margin-left: 500px; background-color: white; position: absolute; width: 100%; overflow-x: hidden; overflow-y: scroll; z-index: 10;"></div>
     <br>
     
   </div>  
