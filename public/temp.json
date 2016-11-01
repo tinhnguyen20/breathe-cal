@@ -1,28 +1,28 @@
 {
   "Headline": {
-    "EffectiveDate": "2016-10-31T20:00:00-07:00",
-    "EffectiveEpochDate": 1477969200,
+    "EffectiveDate": "2016-10-31T23:00:00-07:00",
+    "EffectiveEpochDate": 1477980000,
     "Severity": 5,
-    "Text": "Expect showers Monday night",
+    "Text": "Expect showery weather late Monday evening through late Monday night",
     "Category": "rain",
     "EndDate": "2016-11-01T08:00:00-07:00",
     "EndEpochDate": 1478012400,
-    "MobileLink": "http://m.accuweather.com/en/us/albany-ca/94706/extended-weather-forecast/332020?lang=en-us",
-    "Link": "http://www.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?lang=en-us"
+    "MobileLink": "http://m.accuweather.com/en/us/stanford-ca/94305/extended-weather-forecast/337263?lang=en-us",
+    "Link": "http://www.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?lang=en-us"
   },
   "DailyForecasts": [
     {
       "Date": "2016-10-31T07:00:00-07:00",
       "EpochDate": 1477922400,
       "Sun": {
-        "Rise": "2016-10-31T07:35:00-07:00",
-        "EpochRise": 1477924500,
-        "Set": "2016-10-31T18:10:00-07:00",
-        "EpochSet": 1477962600
+        "Rise": "2016-10-31T07:33:00-07:00",
+        "EpochRise": 1477924380,
+        "Set": "2016-10-31T18:11:00-07:00",
+        "EpochSet": 1477962660
       },
       "Moon": {
-        "Rise": "2016-10-31T08:18:00-07:00",
-        "EpochRise": 1477927080,
+        "Rise": "2016-10-31T08:17:00-07:00",
+        "EpochRise": 1477927020,
         "Set": "2016-10-31T19:11:00-07:00",
         "EpochSet": 1477966260,
         "Phase": "WaxingCrescent",
@@ -30,19 +30,19 @@
       },
       "Temperature": {
         "Minimum": {
-          "Value": 56.0,
+          "Value": 54.0,
           "Unit": "F",
           "UnitType": 18
         },
         "Maximum": {
-          "Value": 65.0,
+          "Value": 66.0,
           "Unit": "F",
           "UnitType": 18
         }
       },
       "RealFeelTemperature": {
         "Minimum": {
-          "Value": 54.0,
+          "Value": 52.0,
           "Unit": "F",
           "UnitType": 18
         },
@@ -54,7 +54,7 @@
       },
       "RealFeelTemperatureShade": {
         "Minimum": {
-          "Value": 54.0,
+          "Value": 52.0,
           "Unit": "F",
           "UnitType": 18
         },
@@ -64,10 +64,10 @@
           "UnitType": 18
         }
       },
-      "HoursOfSun": 3.2,
+      "HoursOfSun": 4.0,
       "DegreeDaySummary": {
         "Heating": {
-          "Value": 4.0,
+          "Value": 5.0,
           "Unit": "F",
           "UnitType": 18
         },
@@ -80,7 +80,7 @@
       "AirAndPollen": [
         {
           "Name": "AirQuality",
-          "Value": 22,
+          "Value": 30,
           "Category": "Good",
           "CategoryValue": 1,
           "Type": "Particle Pollution"
@@ -99,7 +99,7 @@
         },
         {
           "Name": "Ragweed",
-          "Value": 5,
+          "Value": 0,
           "Category": "Low",
           "CategoryValue": 1
         },
@@ -119,11 +119,11 @@
       "Day": {
         "Icon": 13,
         "IconPhrase": "Mostly cloudy w/ showers",
-        "ShortPhrase": "A passing p.m. shower or two",
-        "LongPhrase": "Some sun, then turning cloudy and cool; a couple of brief showers later in the afternoon",
-        "PrecipitationProbability": 60,
+        "ShortPhrase": "Some sun, then clouds",
+        "LongPhrase": "Cool with some sunshine giving way to clouds; a shower in spots later in the afternoon",
+        "PrecipitationProbability": 50,
         "ThunderstormProbability": 20,
-        "RainProbability": 60,
+        "RainProbability": 50,
         "SnowProbability": 0,
         "IceProbability": 0,
         "Wind": {
@@ -140,23 +140,23 @@
         },
         "WindGust": {
           "Speed": {
-            "Value": 13.8,
+            "Value": 11.5,
             "Unit": "mi/h",
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 185,
+            "Degrees": 174,
             "Localized": "S",
             "English": "S"
           }
         },
         "TotalLiquid": {
-          "Value": 0.11,
+          "Value": 0.02,
           "Unit": "in",
           "UnitType": 1
         },
         "Rain": {
-          "Value": 0.11,
+          "Value": 0.02,
           "Unit": "in",
           "UnitType": 1
         },
@@ -170,51 +170,51 @@
           "Unit": "in",
           "UnitType": 1
         },
-        "HoursOfPrecipitation": 1.5,
-        "HoursOfRain": 1.5,
-        "CloudCover": 76
+        "HoursOfPrecipitation": 0.5,
+        "HoursOfRain": 0.5,
+        "CloudCover": 69
       },
       "Night": {
         "Icon": 12,
         "IconPhrase": "Showers",
-        "ShortPhrase": "A touch of evening rain",
-        "LongPhrase": "Mostly cloudy; a little rain in the evening followed by a brief shower or two late",
-        "PrecipitationProbability": 62,
+        "ShortPhrase": "A little rain early",
+        "LongPhrase": "Mostly cloudy; a little rain later in the evening followed by a shower in spots late",
+        "PrecipitationProbability": 55,
         "ThunderstormProbability": 20,
-        "RainProbability": 62,
+        "RainProbability": 55,
         "SnowProbability": 0,
         "IceProbability": 0,
         "Wind": {
           "Speed": {
-            "Value": 6.9,
+            "Value": 5.8,
             "Unit": "mi/h",
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 209,
-            "Localized": "SSW",
-            "English": "SSW"
+            "Degrees": 191,
+            "Localized": "S",
+            "English": "S"
           }
         },
         "WindGust": {
           "Speed": {
-            "Value": 16.1,
+            "Value": 12.7,
             "Unit": "mi/h",
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 206,
-            "Localized": "SSW",
-            "English": "SSW"
+            "Degrees": 157,
+            "Localized": "SSE",
+            "English": "SSE"
           }
         },
         "TotalLiquid": {
-          "Value": 0.09,
+          "Value": 0.05,
           "Unit": "in",
           "UnitType": 1
         },
         "Rain": {
-          "Value": 0.09,
+          "Value": 0.05,
           "Unit": "in",
           "UnitType": 1
         },
@@ -228,28 +228,28 @@
           "Unit": "in",
           "UnitType": 1
         },
-        "HoursOfPrecipitation": 2.0,
-        "HoursOfRain": 2.0,
-        "CloudCover": 88
+        "HoursOfPrecipitation": 1.0,
+        "HoursOfRain": 1.0,
+        "CloudCover": 84
       },
       "Sources": [
         "AccuWeather"
       ],
-      "MobileLink": "http://m.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?lang=en-us",
-      "Link": "http://www.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?lang=en-us"
+      "MobileLink": "http://m.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?lang=en-us",
+      "Link": "http://www.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?lang=en-us"
     },
     {
       "Date": "2016-11-01T07:00:00-07:00",
       "EpochDate": 1478008800,
       "Sun": {
-        "Rise": "2016-11-01T07:36:00-07:00",
-        "EpochRise": 1478010960,
-        "Set": "2016-11-01T18:09:00-07:00",
-        "EpochSet": 1478048940
+        "Rise": "2016-11-01T07:34:00-07:00",
+        "EpochRise": 1478010840,
+        "Set": "2016-11-01T18:10:00-07:00",
+        "EpochSet": 1478049000
       },
       "Moon": {
-        "Rise": "2016-11-01T09:13:00-07:00",
-        "EpochRise": 1478016780,
+        "Rise": "2016-11-01T09:11:00-07:00",
+        "EpochRise": 1478016660,
         "Set": "2016-11-01T19:49:00-07:00",
         "EpochSet": 1478054940,
         "Phase": "WaxingCrescent",
@@ -257,19 +257,19 @@
       },
       "Temperature": {
         "Minimum": {
-          "Value": 50.0,
+          "Value": 47.0,
           "Unit": "F",
           "UnitType": 18
         },
         "Maximum": {
-          "Value": 66.0,
+          "Value": 67.0,
           "Unit": "F",
           "UnitType": 18
         }
       },
       "RealFeelTemperature": {
         "Minimum": {
-          "Value": 49.0,
+          "Value": 48.0,
           "Unit": "F",
           "UnitType": 18
         },
@@ -281,20 +281,20 @@
       },
       "RealFeelTemperatureShade": {
         "Minimum": {
-          "Value": 49.0,
+          "Value": 48.0,
           "Unit": "F",
           "UnitType": 18
         },
         "Maximum": {
-          "Value": 64.0,
+          "Value": 65.0,
           "Unit": "F",
           "UnitType": 18
         }
       },
-      "HoursOfSun": 4.8,
+      "HoursOfSun": 5.8,
       "DegreeDaySummary": {
         "Heating": {
-          "Value": 7.0,
+          "Value": 8.0,
           "Unit": "F",
           "UnitType": 18
         },
@@ -307,7 +307,7 @@
       "AirAndPollen": [
         {
           "Name": "AirQuality",
-          "Value": 42,
+          "Value": 33,
           "Category": "Good",
           "CategoryValue": 1,
           "Type": "Particle Pollution"
@@ -326,7 +326,7 @@
         },
         {
           "Name": "Ragweed",
-          "Value": 5,
+          "Value": 0,
           "Category": "Low",
           "CategoryValue": 1
         },
@@ -346,11 +346,11 @@
       "Day": {
         "Icon": 4,
         "IconPhrase": "Intermittent clouds",
-        "ShortPhrase": "Clouds and sun",
-        "LongPhrase": "Clouds and sun",
-        "PrecipitationProbability": 20,
+        "ShortPhrase": "Periods of clouds and sun",
+        "LongPhrase": "Periods of clouds and sun",
+        "PrecipitationProbability": 2,
         "ThunderstormProbability": 0,
-        "RainProbability": 20,
+        "RainProbability": 0,
         "SnowProbability": 0,
         "IceProbability": 0,
         "Wind": {
@@ -360,21 +360,21 @@
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 270,
-            "Localized": "W",
-            "English": "W"
+            "Degrees": 309,
+            "Localized": "NW",
+            "English": "NW"
           }
         },
         "WindGust": {
           "Speed": {
-            "Value": 8.1,
+            "Value": 10.4,
             "Unit": "mi/h",
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 264,
-            "Localized": "W",
-            "English": "W"
+            "Degrees": 320,
+            "Localized": "NW",
+            "English": "NW"
           }
         },
         "TotalLiquid": {
@@ -399,28 +399,28 @@
         },
         "HoursOfPrecipitation": 0.0,
         "HoursOfRain": 0.0,
-        "CloudCover": 49
+        "CloudCover": 47
       },
       "Night": {
-        "Icon": 34,
-        "IconPhrase": "Mostly clear",
-        "ShortPhrase": "Clear to partly cloudy",
-        "LongPhrase": "Clear to partly cloudy",
-        "PrecipitationProbability": 3,
+        "Icon": 33,
+        "IconPhrase": "Clear",
+        "ShortPhrase": "Clear",
+        "LongPhrase": "Clear",
+        "PrecipitationProbability": 0,
         "ThunderstormProbability": 0,
-        "RainProbability": 3,
+        "RainProbability": 0,
         "SnowProbability": 0,
         "IceProbability": 0,
         "Wind": {
           "Speed": {
-            "Value": 4.6,
+            "Value": 3.5,
             "Unit": "mi/h",
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 44,
-            "Localized": "NE",
-            "English": "NE"
+            "Degrees": 167,
+            "Localized": "SSE",
+            "English": "SSE"
           }
         },
         "WindGust": {
@@ -430,9 +430,9 @@
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 272,
-            "Localized": "W",
-            "English": "W"
+            "Degrees": 315,
+            "Localized": "NW",
+            "English": "NW"
           }
         },
         "TotalLiquid": {
@@ -457,28 +457,28 @@
         },
         "HoursOfPrecipitation": 0.0,
         "HoursOfRain": 0.0,
-        "CloudCover": 15
+        "CloudCover": 2
       },
       "Sources": [
         "AccuWeather"
       ],
-      "MobileLink": "http://m.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?day=1&lang=en-us",
-      "Link": "http://www.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?day=1&lang=en-us"
+      "MobileLink": "http://m.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?day=1&lang=en-us",
+      "Link": "http://www.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?day=1&lang=en-us"
     },
     {
       "Date": "2016-11-02T07:00:00-07:00",
       "EpochDate": 1478095200,
       "Sun": {
-        "Rise": "2016-11-02T07:37:00-07:00",
-        "EpochRise": 1478097420,
-        "Set": "2016-11-02T18:08:00-07:00",
-        "EpochSet": 1478135280
+        "Rise": "2016-11-02T07:35:00-07:00",
+        "EpochRise": 1478097300,
+        "Set": "2016-11-02T18:09:00-07:00",
+        "EpochSet": 1478135340
       },
       "Moon": {
-        "Rise": "2016-11-02T10:06:00-07:00",
-        "EpochRise": 1478106360,
-        "Set": "2016-11-02T20:29:00-07:00",
-        "EpochSet": 1478143740,
+        "Rise": "2016-11-02T10:04:00-07:00",
+        "EpochRise": 1478106240,
+        "Set": "2016-11-02T20:30:00-07:00",
+        "EpochSet": 1478143800,
         "Phase": "WaxingCrescent",
         "Age": 3
       },
@@ -489,14 +489,26 @@
           "UnitType": 18
         },
         "Maximum": {
-          "Value": 67.0,
+          "Value": 71.0,
           "Unit": "F",
           "UnitType": 18
         }
       },
       "RealFeelTemperature": {
         "Minimum": {
-          "Value": 52.0,
+          "Value": 51.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 72.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": 51.0,
           "Unit": "F",
           "UnitType": 18
         },
@@ -506,22 +518,10 @@
           "UnitType": 18
         }
       },
-      "RealFeelTemperatureShade": {
-        "Minimum": {
-          "Value": 52.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 65.0,
-          "Unit": "F",
-          "UnitType": 18
-        }
-      },
-      "HoursOfSun": 8.7,
+      "HoursOfSun": 9.4,
       "DegreeDaySummary": {
         "Heating": {
-          "Value": 6.0,
+          "Value": 4.0,
           "Unit": "F",
           "UnitType": 18
         },
@@ -553,7 +553,7 @@
         },
         {
           "Name": "Ragweed",
-          "Value": 5,
+          "Value": 0,
           "Category": "Low",
           "CategoryValue": 1
         },
@@ -575,9 +575,9 @@
         "IconPhrase": "Mostly sunny",
         "ShortPhrase": "Mostly sunny",
         "LongPhrase": "Mostly sunny",
-        "PrecipitationProbability": 6,
+        "PrecipitationProbability": 0,
         "ThunderstormProbability": 0,
-        "RainProbability": 6,
+        "RainProbability": 0,
         "SnowProbability": 0,
         "IceProbability": 0,
         "Wind": {
@@ -587,475 +587,21 @@
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 357,
-            "Localized": "N",
-            "English": "N"
-          }
-        },
-        "WindGust": {
-          "Speed": {
-            "Value": 8.1,
-            "Unit": "mi/h",
-            "UnitType": 9
-          },
-          "Direction": {
-            "Degrees": 290,
-            "Localized": "WNW",
-            "English": "WNW"
-          }
-        },
-        "TotalLiquid": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Rain": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Snow": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Ice": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "HoursOfPrecipitation": 0.0,
-        "HoursOfRain": 0.0,
-        "CloudCover": 15
-      },
-      "Night": {
-        "Icon": 35,
-        "IconPhrase": "Partly cloudy",
-        "ShortPhrase": "Partly cloudy",
-        "LongPhrase": "Partly cloudy",
-        "PrecipitationProbability": 2,
-        "ThunderstormProbability": 0,
-        "RainProbability": 2,
-        "SnowProbability": 0,
-        "IceProbability": 0,
-        "Wind": {
-          "Speed": {
-            "Value": 4.6,
-            "Unit": "mi/h",
-            "UnitType": 9
-          },
-          "Direction": {
-            "Degrees": 13,
+            "Degrees": 14,
             "Localized": "NNE",
             "English": "NNE"
           }
         },
         "WindGust": {
           "Speed": {
-            "Value": 6.9,
+            "Value": 11.5,
             "Unit": "mi/h",
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 259,
-            "Localized": "W",
-            "English": "W"
-          }
-        },
-        "TotalLiquid": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Rain": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Snow": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Ice": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "HoursOfPrecipitation": 0.0,
-        "HoursOfRain": 0.0,
-        "CloudCover": 26
-      },
-      "Sources": [
-        "AccuWeather"
-      ],
-      "MobileLink": "http://m.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?day=2&lang=en-us",
-      "Link": "http://www.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?day=2&lang=en-us"
-    },
-    {
-      "Date": "2016-11-03T07:00:00-07:00",
-      "EpochDate": 1478181600,
-      "Sun": {
-        "Rise": "2016-11-03T07:38:00-07:00",
-        "EpochRise": 1478183880,
-        "Set": "2016-11-03T18:07:00-07:00",
-        "EpochSet": 1478221620
-      },
-      "Moon": {
-        "Rise": "2016-11-03T10:57:00-07:00",
-        "EpochRise": 1478195820,
-        "Set": "2016-11-03T21:15:00-07:00",
-        "EpochSet": 1478232900,
-        "Phase": "WaxingCrescent",
-        "Age": 4
-      },
-      "Temperature": {
-        "Minimum": {
-          "Value": 52.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 70.0,
-          "Unit": "F",
-          "UnitType": 18
-        }
-      },
-      "RealFeelTemperature": {
-        "Minimum": {
-          "Value": 51.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 70.0,
-          "Unit": "F",
-          "UnitType": 18
-        }
-      },
-      "RealFeelTemperatureShade": {
-        "Minimum": {
-          "Value": 51.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 67.0,
-          "Unit": "F",
-          "UnitType": 18
-        }
-      },
-      "HoursOfSun": 8.9,
-      "DegreeDaySummary": {
-        "Heating": {
-          "Value": 4.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Cooling": {
-          "Value": 0.0,
-          "Unit": "F",
-          "UnitType": 18
-        }
-      },
-      "AirAndPollen": [
-        {
-          "Name": "AirQuality",
-          "Value": 25,
-          "Category": "Good",
-          "CategoryValue": 1,
-          "Type": "Particle Pollution"
-        },
-        {
-          "Name": "Grass",
-          "Value": 0,
-          "Category": "Low",
-          "CategoryValue": 1
-        },
-        {
-          "Name": "Mold",
-          "Value": 400,
-          "Category": "Low",
-          "CategoryValue": 1
-        },
-        {
-          "Name": "Ragweed",
-          "Value": 5,
-          "Category": "Low",
-          "CategoryValue": 1
-        },
-        {
-          "Name": "Tree",
-          "Value": 7,
-          "Category": "Low",
-          "CategoryValue": 1
-        },
-        {
-          "Name": "UVIndex",
-          "Value": 3,
-          "Category": "Moderate",
-          "CategoryValue": 2
-        }
-      ],
-      "Day": {
-        "Icon": 2,
-        "IconPhrase": "Mostly sunny",
-        "ShortPhrase": "Mostly sunny and nice",
-        "LongPhrase": "Mostly sunny and nice",
-        "PrecipitationProbability": 4,
-        "ThunderstormProbability": 0,
-        "RainProbability": 4,
-        "SnowProbability": 0,
-        "IceProbability": 0,
-        "Wind": {
-          "Speed": {
-            "Value": 4.6,
-            "Unit": "mi/h",
-            "UnitType": 9
-          },
-          "Direction": {
-            "Degrees": 356,
-            "Localized": "N",
-            "English": "N"
-          }
-        },
-        "WindGust": {
-          "Speed": {
-            "Value": 8.1,
-            "Unit": "mi/h",
-            "UnitType": 9
-          },
-          "Direction": {
-            "Degrees": 16,
-            "Localized": "NNE",
-            "English": "NNE"
-          }
-        },
-        "TotalLiquid": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Rain": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Snow": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Ice": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "HoursOfPrecipitation": 0.0,
-        "HoursOfRain": 0.0,
-        "CloudCover": 20
-      },
-      "Night": {
-        "Icon": 35,
-        "IconPhrase": "Partly cloudy",
-        "ShortPhrase": "Partly cloudy",
-        "LongPhrase": "Partly cloudy",
-        "PrecipitationProbability": 3,
-        "ThunderstormProbability": 0,
-        "RainProbability": 3,
-        "SnowProbability": 0,
-        "IceProbability": 0,
-        "Wind": {
-          "Speed": {
-            "Value": 4.6,
-            "Unit": "mi/h",
-            "UnitType": 9
-          },
-          "Direction": {
-            "Degrees": 35,
-            "Localized": "NE",
-            "English": "NE"
-          }
-        },
-        "WindGust": {
-          "Speed": {
-            "Value": 6.9,
-            "Unit": "mi/h",
-            "UnitType": 9
-          },
-          "Direction": {
-            "Degrees": 62,
-            "Localized": "ENE",
-            "English": "ENE"
-          }
-        },
-        "TotalLiquid": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Rain": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Snow": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "Ice": {
-          "Value": 0.0,
-          "Unit": "in",
-          "UnitType": 1
-        },
-        "HoursOfPrecipitation": 0.0,
-        "HoursOfRain": 0.0,
-        "CloudCover": 43
-      },
-      "Sources": [
-        "AccuWeather"
-      ],
-      "MobileLink": "http://m.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?day=3&lang=en-us",
-      "Link": "http://www.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?day=3&lang=en-us"
-    },
-    {
-      "Date": "2016-11-04T07:00:00-07:00",
-      "EpochDate": 1478268000,
-      "Sun": {
-        "Rise": "2016-11-04T07:39:00-07:00",
-        "EpochRise": 1478270340,
-        "Set": "2016-11-04T18:06:00-07:00",
-        "EpochSet": 1478307960
-      },
-      "Moon": {
-        "Rise": "2016-11-04T11:47:00-07:00",
-        "EpochRise": 1478285220,
-        "Set": "2016-11-04T22:04:00-07:00",
-        "EpochSet": 1478322240,
-        "Phase": "WaxingCrescent",
-        "Age": 5
-      },
-      "Temperature": {
-        "Minimum": {
-          "Value": 53.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 71.0,
-          "Unit": "F",
-          "UnitType": 18
-        }
-      },
-      "RealFeelTemperature": {
-        "Minimum": {
-          "Value": 53.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 73.0,
-          "Unit": "F",
-          "UnitType": 18
-        }
-      },
-      "RealFeelTemperatureShade": {
-        "Minimum": {
-          "Value": 53.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Maximum": {
-          "Value": 69.0,
-          "Unit": "F",
-          "UnitType": 18
-        }
-      },
-      "HoursOfSun": 9.4,
-      "DegreeDaySummary": {
-        "Heating": {
-          "Value": 3.0,
-          "Unit": "F",
-          "UnitType": 18
-        },
-        "Cooling": {
-          "Value": 0.0,
-          "Unit": "F",
-          "UnitType": 18
-        }
-      },
-      "AirAndPollen": [
-        {
-          "Name": "AirQuality",
-          "Value": 75,
-          "Category": "Moderate",
-          "CategoryValue": 2,
-          "Type": "Particle Pollution"
-        },
-        {
-          "Name": "Grass",
-          "Value": 0,
-          "Category": "Low",
-          "CategoryValue": 1
-        },
-        {
-          "Name": "Mold",
-          "Value": 400,
-          "Category": "Low",
-          "CategoryValue": 1
-        },
-        {
-          "Name": "Ragweed",
-          "Value": 5,
-          "Category": "Low",
-          "CategoryValue": 1
-        },
-        {
-          "Name": "Tree",
-          "Value": 7,
-          "Category": "Low",
-          "CategoryValue": 1
-        },
-        {
-          "Name": "UVIndex",
-          "Value": 3,
-          "Category": "Moderate",
-          "CategoryValue": 2
-        }
-      ],
-      "Day": {
-        "Icon": 2,
-        "IconPhrase": "Mostly sunny",
-        "ShortPhrase": "Mostly sunny and pleasant",
-        "LongPhrase": "Mostly sunny and pleasant",
-        "PrecipitationProbability": 8,
-        "ThunderstormProbability": 0,
-        "RainProbability": 8,
-        "SnowProbability": 0,
-        "IceProbability": 0,
-        "Wind": {
-          "Speed": {
-            "Value": 4.6,
-            "Unit": "mi/h",
-            "UnitType": 9
-          },
-          "Direction": {
-            "Degrees": 359,
-            "Localized": "N",
-            "English": "N"
-          }
-        },
-        "WindGust": {
-          "Speed": {
-            "Value": 6.9,
-            "Unit": "mi/h",
-            "UnitType": 9
-          },
-          "Direction": {
-            "Degrees": 336,
-            "Localized": "NNW",
-            "English": "NNW"
+            "Degrees": 320,
+            "Localized": "NW",
+            "English": "NW"
           }
         },
         "TotalLiquid": {
@@ -1083,25 +629,25 @@
         "CloudCover": 11
       },
       "Night": {
-        "Icon": 34,
-        "IconPhrase": "Mostly clear",
-        "ShortPhrase": "Mostly clear",
-        "LongPhrase": "Mostly clear",
-        "PrecipitationProbability": 6,
+        "Icon": 36,
+        "IconPhrase": "Intermittent clouds",
+        "ShortPhrase": "Partly cloudy",
+        "LongPhrase": "Partly cloudy",
+        "PrecipitationProbability": 0,
         "ThunderstormProbability": 0,
-        "RainProbability": 6,
+        "RainProbability": 0,
         "SnowProbability": 0,
         "IceProbability": 0,
         "Wind": {
           "Speed": {
-            "Value": 4.6,
+            "Value": 3.5,
             "Unit": "mi/h",
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 133,
-            "Localized": "SE",
-            "English": "SE"
+            "Degrees": 35,
+            "Localized": "NE",
+            "English": "NE"
           }
         },
         "WindGust": {
@@ -1111,9 +657,178 @@
             "UnitType": 9
           },
           "Direction": {
-            "Degrees": 190,
-            "Localized": "S",
-            "English": "S"
+            "Degrees": 350,
+            "Localized": "N",
+            "English": "N"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Rain": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Snow": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Ice": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "HoursOfPrecipitation": 0.0,
+        "HoursOfRain": 0.0,
+        "CloudCover": 46
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://m.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?day=2&lang=en-us",
+      "Link": "http://www.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?day=2&lang=en-us"
+    },
+    {
+      "Date": "2016-11-03T07:00:00-07:00",
+      "EpochDate": 1478181600,
+      "Sun": {
+        "Rise": "2016-11-03T07:36:00-07:00",
+        "EpochRise": 1478183760,
+        "Set": "2016-11-03T18:08:00-07:00",
+        "EpochSet": 1478221680
+      },
+      "Moon": {
+        "Rise": "2016-11-03T10:56:00-07:00",
+        "EpochRise": 1478195760,
+        "Set": "2016-11-03T21:15:00-07:00",
+        "EpochSet": 1478232900,
+        "Phase": "WaxingCrescent",
+        "Age": 4
+      },
+      "Temperature": {
+        "Minimum": {
+          "Value": 51.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 74.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "RealFeelTemperature": {
+        "Minimum": {
+          "Value": 52.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 76.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": 52.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 71.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "HoursOfSun": 8.7,
+      "DegreeDaySummary": {
+        "Heating": {
+          "Value": 3.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Cooling": {
+          "Value": 0.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "AirAndPollen": [
+        {
+          "Name": "AirQuality",
+          "Value": 25,
+          "Category": "Good",
+          "CategoryValue": 1,
+          "Type": "Particle Pollution"
+        },
+        {
+          "Name": "Grass",
+          "Value": 0,
+          "Category": "Low",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Mold",
+          "Value": 400,
+          "Category": "Low",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Ragweed",
+          "Value": 0,
+          "Category": "Low",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Tree",
+          "Value": 7,
+          "Category": "Low",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "UVIndex",
+          "Value": 3,
+          "Category": "Moderate",
+          "CategoryValue": 2
+        }
+      ],
+      "Day": {
+        "Icon": 2,
+        "IconPhrase": "Mostly sunny",
+        "ShortPhrase": "Mostly sunny and nice",
+        "LongPhrase": "Mostly sunny and nice",
+        "PrecipitationProbability": 0,
+        "ThunderstormProbability": 0,
+        "RainProbability": 0,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 5.8,
+            "Unit": "mi/h",
+            "UnitType": 9
+          },
+          "Direction": {
+            "Degrees": 7,
+            "Localized": "N",
+            "English": "N"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 9.2,
+            "Unit": "mi/h",
+            "UnitType": 9
+          },
+          "Direction": {
+            "Degrees": 358,
+            "Localized": "N",
+            "English": "N"
           }
         },
         "TotalLiquid": {
@@ -1140,11 +855,296 @@
         "HoursOfRain": 0.0,
         "CloudCover": 19
       },
+      "Night": {
+        "Icon": 35,
+        "IconPhrase": "Partly cloudy",
+        "ShortPhrase": "Partly cloudy",
+        "LongPhrase": "Partly cloudy",
+        "PrecipitationProbability": 0,
+        "ThunderstormProbability": 0,
+        "RainProbability": 0,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 3.5,
+            "Unit": "mi/h",
+            "UnitType": 9
+          },
+          "Direction": {
+            "Degrees": 25,
+            "Localized": "NNE",
+            "English": "NNE"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 6.9,
+            "Unit": "mi/h",
+            "UnitType": 9
+          },
+          "Direction": {
+            "Degrees": 345,
+            "Localized": "NNW",
+            "English": "NNW"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Rain": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Snow": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Ice": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "HoursOfPrecipitation": 0.0,
+        "HoursOfRain": 0.0,
+        "CloudCover": 45
+      },
       "Sources": [
         "AccuWeather"
       ],
-      "MobileLink": "http://m.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?day=4&lang=en-us",
-      "Link": "http://www.accuweather.com/en/us/albany-ca/94706/daily-weather-forecast/332020?day=4&lang=en-us"
+      "MobileLink": "http://m.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?day=3&lang=en-us",
+      "Link": "http://www.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?day=3&lang=en-us"
+    },
+    {
+      "Date": "2016-11-04T07:00:00-07:00",
+      "EpochDate": 1478268000,
+      "Sun": {
+        "Rise": "2016-11-04T07:38:00-07:00",
+        "EpochRise": 1478270280,
+        "Set": "2016-11-04T18:07:00-07:00",
+        "EpochSet": 1478308020
+      },
+      "Moon": {
+        "Rise": "2016-11-04T11:45:00-07:00",
+        "EpochRise": 1478285100,
+        "Set": "2016-11-04T22:04:00-07:00",
+        "EpochSet": 1478322240,
+        "Phase": "WaxingCrescent",
+        "Age": 5
+      },
+      "Temperature": {
+        "Minimum": {
+          "Value": 49.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 75.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "RealFeelTemperature": {
+        "Minimum": {
+          "Value": 50.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 77.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": 50.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Maximum": {
+          "Value": 73.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "HoursOfSun": 9.9,
+      "DegreeDaySummary": {
+        "Heating": {
+          "Value": 3.0,
+          "Unit": "F",
+          "UnitType": 18
+        },
+        "Cooling": {
+          "Value": 0.0,
+          "Unit": "F",
+          "UnitType": 18
+        }
+      },
+      "AirAndPollen": [
+        {
+          "Name": "AirQuality",
+          "Value": 25,
+          "Category": "Good",
+          "CategoryValue": 1,
+          "Type": "Particle Pollution"
+        },
+        {
+          "Name": "Grass",
+          "Value": 0,
+          "Category": "Low",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Mold",
+          "Value": 400,
+          "Category": "Low",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Ragweed",
+          "Value": 0,
+          "Category": "Low",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Tree",
+          "Value": 7,
+          "Category": "Low",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "UVIndex",
+          "Value": 3,
+          "Category": "Moderate",
+          "CategoryValue": 2
+        }
+      ],
+      "Day": {
+        "Icon": 1,
+        "IconPhrase": "Sunny",
+        "ShortPhrase": "Sunny and pleasant",
+        "LongPhrase": "Pleasant with a full day of sunshine",
+        "PrecipitationProbability": 0,
+        "ThunderstormProbability": 0,
+        "RainProbability": 0,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 4.6,
+            "Unit": "mi/h",
+            "UnitType": 9
+          },
+          "Direction": {
+            "Degrees": 350,
+            "Localized": "N",
+            "English": "N"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 8.1,
+            "Unit": "mi/h",
+            "UnitType": 9
+          },
+          "Direction": {
+            "Degrees": 330,
+            "Localized": "NNW",
+            "English": "NNW"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Rain": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Snow": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Ice": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "HoursOfPrecipitation": 0.0,
+        "HoursOfRain": 0.0,
+        "CloudCover": 6
+      },
+      "Night": {
+        "Icon": 34,
+        "IconPhrase": "Mostly clear",
+        "ShortPhrase": "Clear to partly cloudy",
+        "LongPhrase": "Clear to partly cloudy",
+        "PrecipitationProbability": 0,
+        "ThunderstormProbability": 0,
+        "RainProbability": 0,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 2.3,
+            "Unit": "mi/h",
+            "UnitType": 9
+          },
+          "Direction": {
+            "Degrees": 339,
+            "Localized": "NNW",
+            "English": "NNW"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 6.9,
+            "Unit": "mi/h",
+            "UnitType": 9
+          },
+          "Direction": {
+            "Degrees": 324,
+            "Localized": "NW",
+            "English": "NW"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Rain": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Snow": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "Ice": {
+          "Value": 0.0,
+          "Unit": "in",
+          "UnitType": 1
+        },
+        "HoursOfPrecipitation": 0.0,
+        "HoursOfRain": 0.0,
+        "CloudCover": 24
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://m.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?day=4&lang=en-us",
+      "Link": "http://www.accuweather.com/en/us/stanford-ca/94305/daily-weather-forecast/337263?day=4&lang=en-us"
     }
   ]
 }

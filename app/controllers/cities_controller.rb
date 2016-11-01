@@ -17,7 +17,9 @@ class CitiesController < ApplicationController
     def cached_city_data
       city = City.find_by(name: params[:name])
       city.update_city_data
+      @geo = [city.lat, city.lng]
       @data = [city.name, city.daily_data]
+      @cached = true
       respond_to do |format|
         format.js {
           render :template => "cities/city_data.js.erb"
