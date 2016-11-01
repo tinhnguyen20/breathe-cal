@@ -17,6 +17,16 @@ function initAutocomplete() {
   });
   var geocoder = new google.maps.Geocoder();
   
+  google.maps.event.addDomListener(window, "resize", function() {
+   var center = map.getCenter();
+   google.maps.event.trigger(map, "resize");
+   map.setCenter(center); 
+  });
+  
+  $('#left-col').css('height', (window.innerHeight - 15 - 35).toString());
+  $('#right-col').css('height', (window.innerHeight - 15 - 35).toString());
+  $('#detail-box').css('height', (window.innerHeight - 15 - 185 - 35).toString());
+  $('#detail-box-mask').css('height', (window.innerHeight - 15 - 185 - 35).toString());
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
   var searchBox = new google.maps.places.SearchBox(input);

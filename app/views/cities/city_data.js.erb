@@ -10,7 +10,6 @@ var marker = new google.maps.Marker({
           map: map,
           position: geo,
         });
-  
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -92,9 +91,12 @@ var offset = '-' + parseInt($('#detail-box').parent().css('width')) + 'px'
 $("#detail-box").html("<%= j render 'breathe/detail.html' %>");
 $("#fox-box").html("<%= j render 'breathe/fox_box.html' %>");
 $("#weather-box").html("<%= j render 'breathe/weather_box.html' %>");
+
 $("#list-box").animate
         ({
             'margin-left' : offset
+        }, 500, function() {
+            $("#list-box").hide();        
         });
 
 $("#detail-box").animate

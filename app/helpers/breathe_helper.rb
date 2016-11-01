@@ -74,4 +74,46 @@ module BreatheHelper
       "baded8"
     end
   end
+
+  def get_allergen_image(a)
+    a.downcase + ".png"
+  end
+  def get_wind(data)
+    if data.nil?
+      "Error"
+    else
+      s = data[1]["DailyForecasts"][0]["Day"]["Wind"]["Speed"]
+      s["Value"].to_s + " " + s["Unit"]
+    end
+  end
+  def get_precip(data)
+    if data.nil?
+      "Error"
+    else
+      s = data[1]["DailyForecasts"][0]["Day"]["PrecipitationProbability"]
+      s.to_s + "%"
+    end
+  end  
+  def get_humid(data)
+    if data.nil?
+      "Error"
+    else
+      s = data[1]["DailyForecasts"][0]["Day"]["PrecipitationProbability"]
+      s.to_s + "%"
+    end
+  end
+  def get_other_forecasts(data)
+    rtn = []
+    if data.nil?
+      return []
+    else
+      s = data[1]["DailyForecasts"]
+      (1...s.size).each do |i|
+        t = s[i]
+        Time::DATE_FORMATS[:custom2] = lambda { |time| time.strftime("%b #{time.day.ordinalize}, %Y") }
+        rtn << [DateTime.iso8601(t["Date"]).to_formatted_s(:custom2), t["AirAndPollen"][0]["Category"]]
+      end
+      return rtn
+    end    
+  end
 end
