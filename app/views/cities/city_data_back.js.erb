@@ -4,9 +4,11 @@ $("#list-box").animate
         ({
             'margin-left' : '0px'
         });
+$("#list-box").show();
 $("#detail-box").animate
         ({
             'margin-left' : offset
             
+        }, 500, function() {
+            $("#detail-box").hide();
         });
-$("#detail-box").hide();
