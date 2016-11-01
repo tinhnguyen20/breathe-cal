@@ -14,21 +14,60 @@ class CitiesController < ApplicationController
     
     # ajax POST -> city create route, with certain parameters. 
     # tell create to respond to some formats... 
-    
+    def cached_city_data
+      city = City.find_by(name: params[:name])
+      city.update_city_data
+      @data = [city.name, city.daily_data]
+      respond_to do |format|
+        format.js {
+          render :template => "cities/city_data.js.erb"
+        }
+      end
+    end
+    def a_in_b_as_c?(a, b, c) # a in b as c
+      b.each do |i|
+        if i[c] == a
+          return true
+        end
+      end
+      return false
+    end
     def city_data
       if params[:geo]
         latlng = params[:geo]
-        loc_key = City.get_loc_key(latlng["lat"], latlng["lng"])
+        loc_key = City.get_loc_key(latlng["lat"], latlng["lng"], params[:name])
         city = City.find_by(location_key: loc_key)
       end
       city.update_city_data
-      puts "FLAGGSODFJSDOPIFJSDF"
-      puts city.daily_data
+      File.open("public/temp.json","w") do |f|
+        f.write(JSON.pretty_generate(city.daily_data))
+      end
       puts "***************************"
-      render :json => city.daily_data.to_json
+      @data = [city.name, city.daily_data]
+      unless a_in_b_as_c?(city.name, session[:cities], "name")
+        session[:cities] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
+      end
+      respond_to do |format|
+        format.js {
+          render :template => "cities/city_data.js.erb"
+        }
+      end
+      # render :json => city.daily_data.to_json
     end
     
-    
+    def city_data_back
+      if session[:cities]
+        @cities = session[:cities]
+      else
+        @cities = []
+        session[:cities] = []
+      end
+      respond_to do |format|
+        format.js {
+          render :template => "cities/city_data_back.js.erb"
+        }
+      end      
+    end
     
     
     

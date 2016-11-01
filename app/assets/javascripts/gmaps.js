@@ -59,16 +59,17 @@ function initAutocomplete() {
       };
 
       // Create a marker for each place.
-      $("#city-name").text(JSON.stringify(place.geometry.location))
+      // $("#city-name").text(JSON.stringify(place.geometry.location))
+      // console.log(place);
       $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
         url: "city_data",
-        data: JSON.stringify({geo: place.geometry.location }),
+        data: JSON.stringify({geo: place.geometry.location, name: place.name}),
         success: function(data){
-          $("#city-info").text(JSON.stringify(data));
+          // $("#city-info").text(JSON.stringify(data));
           console.log("hello");
-          console.log(JSON.stringify(data));
+          // console.log(JSON.stringify(data));
         }
         
       });

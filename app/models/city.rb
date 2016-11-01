@@ -20,7 +20,7 @@ class City < ActiveRecord::Base
   #save by lat long? place id? something else?
   
   # probably need a better pattern for this anyway.. 
-  def self.get_loc_key(lat,lng)
+  def self.get_loc_key(lat,lng, name)
     city = City.find_by(lat: lat, lng: lng)
     if city
       return city.location_key
@@ -28,7 +28,7 @@ class City < ActiveRecord::Base
     url = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search"
     response = HTTParty.get(url, query: {apikey: "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3" ,q: "#{lat},#{lng}",language:"en-us" } )
     location_key = response["Key"]
-    City.create(lat: lat, lng: lng, location_key: location_key)
+    City.create(lat: lat, lng: lng, location_key: location_key, name: name)
     return location_key
   end
   

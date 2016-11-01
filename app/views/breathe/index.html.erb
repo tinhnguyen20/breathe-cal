@@ -1,27 +1,33 @@
-<nav class="navbar navbar-default" style="margin-bottom: 10;">
-  <div class="container-fluid">
+<nav class="navbar navbar-default" style="margin-bottom: 0;">
+  <div class="container-fluid" style="background-color: white;">
     <div class="navbar-header navbar-brand" >
       <%= image_tag("bcal.jpg", class:"breathe_icon") %>
     </div>
   </div>
 </nav>
-</div>
 
-<div class="row">
-  <div class="col-md-8 col-ms-12" style="padding-right: 0;">
+<div>
+  <div class="col-md-8 col-ms-12" style="padding-left: 0; padding-right: 0; z-index: 10;">
     <input id="pac-input" class="controls" type="text" placeholder="Search Box">
     <div id="map" style="height: 680px; width: 100%;"></div>
   </div>
-  <div class="col-md-4 col-ms-12" style="padding-left: 0;">
-    <%= render 'list' %>
+  <div class="col-md-4 col-ms-12" style="padding-left: 0; padding-right: 0;">
+    <div class="datetime-box" style="padding: 20px; font-size: 20px; font-family: 'Open Sans', sans-serif; height: 65px;">Today is <%= @dt %></div>
+    
+    
+    <div id="fox-box" style="height: 120px;">
+      <%= render 'fox_box' %>
+    </div>
+    <div id="list-box" style="position: absolute; width: 100%;">
+      <%= render 'list' %>  
+    </div>
+    <div id="detail-box" style="margin-left: 500px; background-color: white; position: absolute; width: 100%;">
+    </div>
     <br>
-    <%= render 'detail' %>
+    
   </div>  
   
   <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
-
-  
-
   
 </div>
 
