@@ -41,10 +41,10 @@ class CitiesController < ApplicationController
         city = City.find_by(location_key: loc_key)
       end
       city.update_city_data
-      File.open("public/temp.json","w") do |f|
-        f.write(JSON.pretty_generate(city.daily_data))
-      end
-      puts "***************************"
+      # File.open("public/temp.json","w") do |f|
+      #   f.write(JSON.pretty_generate(city.daily_data))
+      # end
+      # puts "***************************"
       @data = [city.name, city.daily_data]
       unless a_in_b_as_c?(city.name, session[:cities], "name")
         session[:cities] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
