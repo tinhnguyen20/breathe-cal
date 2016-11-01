@@ -1,0 +1,12 @@
+$("#list-box").html("<%= j render 'breathe/list.html' %>");
+var offset = parseInt($('#detail-box').parent().css('width')) + 'px'
+$("#list-box").animate
+        ({
+            'margin-left' : '0px'
+        });
+$("#detail-box").animate
+        ({
+            'margin-left' : offset
+            
+        });
+$("#detail-box").hide();

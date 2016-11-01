@@ -1,0 +1,14 @@
+var offset = '-' + parseInt($('#detail-box').parent().css('width')) + 'px'
+$("#detail-box").html("<%= j render 'breathe/detail.html' %>");
+$("#fox-box").html("<%= j render 'breathe/fox_box.html' %>");
+$("#weather-box").html("<%= j render 'breathe/weather_box.html' %>");
+$("#list-box").animate
+        ({
+            'margin-left' : offset
+        });
+
+$("#detail-box").animate
+        ({
+            'margin-left' : '0px'
+        });
+$("#detail-box").show();
