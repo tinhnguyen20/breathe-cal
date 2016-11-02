@@ -9,7 +9,9 @@ Background:
 @javascript
 Scenario: I should be able to open the page on a desktop understand the purpose of the page 
     Given I am on the landing page
-	Then I should see a map 
+	Then I should see a map
+	And I should see the date 
+	And I should see the greeting section
 	And I should see the text on the side "Hello guest! find important allergy information here!"
 	And I should see the text on the side "Today is"
 	And I should see an icon "low"
@@ -20,6 +22,7 @@ Scenario: I should be able to open the page on a desktop understand the purpose 
 Scenario: I should be able to see the allergn details of the page 
 	When I go to the landing page
 	And my location is set to "Berkeley"
+	And I should see the alert section
 	And I should see the text on the side "Berkeley Air Quality Levels are"
     And I should see an icon "tree"
     And I should see an icon "grass"
@@ -43,4 +46,12 @@ Scenario: I should be able to see the other forcasts details of the page
 	Given I am on the landing page
 	And my location is set to "Berkeley"
     And I should see the text on the side "Other Forecasts"
+    
+ @javascript   
+Scenario: I should be able to see the weather forcasts details of the page 
+	Given I am on the landing page
+	And my location is set to "Berkeley"
+	And I should see the weather section 
+    And I should see a weather icon inside
+    
     

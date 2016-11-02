@@ -342,6 +342,26 @@ And(/^I should see an icon "(.+)"$/) do |image|
   page.should have_xpath("//img[contains(@src, \"#{image.split('-')[0]}\")]")
 end
 
+And(/^I should see a weather icon inside/) do 
+  page.should have_xpath("//img[contains(@src, \"#{"-s".split('-')[0]}\")]")
+end
+
+And(/^I should see the weather section/) do 
+  page.should have_css('div#weather-box')
+end
+
+
+And(/^I should see the greeting section/) do 
+  page.should have_css('div#fox-box')
+end
+
+And(/^I should see the alert section/) do 
+  page.should have_css('div#fox-box')
+end
+
+And(/^I should see the date/) do 
+  page.should have_css('div.datetime-box')
+end
 
 When(/^I should see a "date"$/) do
   
