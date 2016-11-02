@@ -64,11 +64,6 @@ Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
       find("#" + category, :visible => true).has_text?(rating) 
   end
 
-
-And(/^(?:I expect a Google map to load|the map has been loaded)$/) do 
-  page.evaluate_script('map') 
-end  
-
 Then(/^the center of the map should be approximately "([^"]*)"$/) do |place|  
   find('#fox-box').has_text?(place)
 end  
