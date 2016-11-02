@@ -5,34 +5,67 @@ Feature: Locations
      to clearly understand the information on the page.   
     
 Background: 
-    Given the site is set up 
-Scenario: 
-    Given I open the page 
-    And I open the page on a “Desktop” 
-    Then I should see the “allergy” to the right of the map 
+	
+Scenario: I should be able to open the page on a desktop understand the purpose of the page 
+    When I go to the landing page
+	Then I should see a "map" 
+	And I should see an "search box" in the map 
+	    And I should see "enter a location to learn allergns"
+	And I should see the right toolbar with the text "find important allergy information here!"
+	
 
-Scenario: 
-    Given I open the page 
-    And I open the page on a “Mobile” 
-    Then I should see the “allergy” to the bottom of the map 
+Scenario: I should be able to see the current date 
+    When I go to the landing page
+	Then I should see a "right  - toolbar" 
+	And I should see the "date and time" 
+	And I should see the right toolbar with an "image"
 
-Scenario: 
-	Given I open the page 
-	Then I should see a “toolbar” 
-	And I should see an “image” 
-	And I should see a “right  - toolbar” 
+Scenario: I should be able to see the allergn details of the page 
+	When I go to the landing page
+	When I fill out "Berkeley" 
+	And I press "enter: 
+	And I should see a new "image"
+    And I should see a "tree-icon"
+    And I should see a "grass-icon
+    And I should see a "ragweed-icon"
+    And I should see a "mold-icon"
+    And I should see a "uvindex-icon"
 
-Scenario: 
-	Given I open the page 
-	Then I should see a “right  - toolbar” 
-	And I should see the “date and time” 
-	And I should see the right toolbar with an “image”
-
-Scenario: 
-	Given I open the page 
-	When I fill out “Berkeley” 
-	And I press “enter: 
-	And I should see a new “image”
-        And I should see a “weather-icon”
-        And I should see a “pollen-icon”
-        And I should see a “level-text”
+        
+Scenario: I should be able to see the allergn level of the page 
+	When I go to the landing page
+	When I fill out "Berkeley" 
+	And I press "enter: 
+	And I should see a new "image"
+    And I should see a "tree-icon"
+    And I should see a "level-icon" 
+    And I should see a "level-text"
+        
+Scenario: I should be able to see the breathing details of the page 
+	When I go to the landing page
+	When I fill out "Berkeley" 
+	And I press "enter: 
+	And I should see a new "image"
+    And I should see a "precip-icon"
+    And I should see a "wind-icon"
+    And I should see a "precip-text"
+    And I should see a "wind-text"
+    
+Scenario: I should be able to see the other forcasts details of the page 
+	Given I am on the landing page
+	When I fill out "Berkeley" 
+	And I press "enter: 
+	And I should see a new "image"
+    And I should see a "level-icon"
+    And I should see a "date"
+    And I should see a "level-text"
+    
+Scenario: Having searched a city and pressing back I should see recent searches 
+    When I go to the landing page
+	When I fill out "Berkeley" 
+	And I press "enter:
+	And I press "back"
+	Then I should see "Berkeley"
+	And I should see a new "image"
+    And I should see a "level-icon"
+    And I should see a "level-text"
