@@ -36,6 +36,12 @@ When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
 end
 
+
+Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
+      find("#" + category, :visible => true).has_text?(rating) 
+  end
+
+
 And(/^(?:I expect a Google map to load|the map has been loaded)$/) do 
   page.evaluate_script('map') 
 end  
