@@ -41,7 +41,7 @@ When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
 end
 
-<<<<<<< HEAD
+
 And(/^(?:I expect a Google map to load|the map has been loaded)$/) do  
   page.evaluate_script('map') 
 end  
@@ -58,7 +58,14 @@ And(/^my location is set to "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng|
   page.evaluate_script('map') 
   
   end
-=======
+
+
+Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
+      find("#" + category, :visible => true).has_text?(rating) 
+  end
+
+
+>>>>>>> anishkhazne
 And(/^(?:I expect a Google map to load|the map has been loaded)$/) do 
   page.evaluate_script('map') 
 end  
@@ -76,6 +83,10 @@ And(/^my location is set to "([^"]*)"$/) do |place|
   find('#pac-input').native.send_keys(:return)
 end
 >>>>>>> 5c368c38bfae8a52ed626fa15449263a0e3b3454
+
+Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
+      find("#" + category, :visible => true).has_text?(rating) 
+  end
 
 # Multi-line step scoper
 When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
