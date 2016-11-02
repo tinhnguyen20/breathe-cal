@@ -79,7 +79,7 @@ Then(/^the center of the map should not be approximately "([^"]*)"$/) do |place|
 end  
 And(/^my location is set to "([^"]*)"$/) do |place| 
   find('#pac-input').set(place)
-  find('#pac-input').native.send_keys(:return)
+  find('#pac-input').native.send_keys(:Enter)
 end
 
 Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
@@ -335,3 +335,42 @@ Given(/^I have searched for "([^"]*)"$/) do |arg1|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
+When(/^I should see a "(.+)"$/) do |image|
+  page.should have_xpath("//img[contains(@src, \"#{image.split('-')[0]}\")]")
+end
+
+And(/^I should see an icon "(.+)"$/) do |image|
+  page.should have_xpath("//img[contains(@src, \"#{image.split('-')[0]}\")]")
+end
+
+And(/^I should see a weather icon inside/) do 
+  page.should have_xpath("//img[contains(@src, \"#{"-s".split('-')[0]}\")]")
+end
+
+And(/^I should see the weather section/) do 
+  page.should have_css('div#weather-box')
+end
+
+And(/^I should see the greeting section/) do 
+  page.should have_css('div#fox-box')
+end
+
+And(/^I should see the alert section/) do 
+  page.should have_css('div#fox-box')
+end
+
+And(/^I should see the date/) do 
+  page.should have_css('div.datetime-box')
+end
+
+Then(/^I should see a map$/) do
+  page.evaluate_script('map') 
+end
+
+Then /^(?:|I )should see the text on the side "([^"]*)"$/ do |text|
+  if page.respond_to? :should
+    page.should have_content(text)
+  else
+    assert page.has_content?(text)
+  end
+end
