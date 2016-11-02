@@ -1,8 +1,61 @@
-<button type="submit" class="btn btn-default">Back</button>
+<div style="padding: 10px 15px;; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: #eee;">
+  <h5><%= link_to "Back", city_data_back_path, remote: true %></h5>
+</div>
+<div id="weather-box">
+  <%= render 'breathe/weather_box'%>
+</div>
 
-<h5><%= @cityname %></h5>
-Weather
-
-Allergens
-
-Other Info
+<div style="padding: 10px;">
+  <h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;">Allergens</h5>
+    <% get_pollen(@data).each do |p| %>
+      <% if p["Name"] != "AirQuality" %>
+        <div class="row" style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;">
+          <%= image_tag(get_allergen_image(p["Name"]), :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
+          <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+            <div style="padding-left: 15px;"><%= p["Name"]%></div>
+          </div>
+          <div class="col-lg-4">
+            <div style="float: right; width: 16px; height: 16px; border-radius: 8px; background-color: #<%= get_fox_color(@data) %>; margin-top: 2px;"></div>
+            <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= p["Category"]%></div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    
+    <h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;">Breathing</h5>
+  <!--wind-->
+        <div class="row" style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;">
+          <%= image_tag('wind.png', :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
+          <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+            <div style="padding-left: 15px;">Wind</div>
+          </div>
+          <div class="col-lg-4">
+            <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= get_wind(@data) %></div>
+          </div>
+        </div>    
+  <!--wind end--> 
+  <!--precip-->
+        <div class="row" style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;">
+          <%= image_tag('precip.png', :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
+          <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+            <div style="padding-left: 15px;">Precip</div>
+          </div>
+          <div class="col-lg-4">
+            <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= get_precip(@data) %></div>
+          </div>
+        </div>
+  <!--precip end-->
+  <h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;">Other Forecasts</h5>
+  <% get_other_forecasts(@data).each do |f| %>
+        <div class="row" style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;">
+          <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+            <div style=""><%= f[0] %></div>
+          </div>
+          <div class="col-lg-4">
+            <div style="float: right; width: 16px; height: 16px; border-radius: 8px; background-color: #<%= get_quality_color(f[1]) %>; margin-top: 2px;"></div>
+            <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= f[1] %></div>
+          </div>
+        </div>    
+  <% end %>
+  
+</div>

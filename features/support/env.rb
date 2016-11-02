@@ -2,8 +2,22 @@
 # It is recommended to regenerate this file in the future when you upgrade to a
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
-# files.
 
+require 'simplecov'
+SimpleCov.start do
+  add_filter "/features/step_definitions/"
+  add_filter "/features/support/"
+end
+# require "codeclimate-test-reporter"
+# CodeClimate::TestReporter.start
+
+# files.
+require 'capybara/poltergeist'
+
+Capybara.register_driver :poltergeist do |app|  
+  Capybara::Poltergeist::Driver.new(app, js_error: false)
+end  
+Capybara.javascript_driver = :poltergeist
 require 'cucumber/rails'
 
 require 'capybara/poltergeist'
