@@ -41,7 +41,7 @@ And(/^(?:I expect a Google map to load|the map has been loaded)$/) do
 end  
 
 Then(/^the center of the map should be approximately "([^"]*)"$/) do |place|  
-  find('#city-name').has_text?(place)
+  find('#fox-box').has_text?(place)
 end  
 
 
@@ -272,70 +272,33 @@ Then /^show me the page$/ do
   save_and_open_page
 end
 
-Given(/^the site is set up$/) do
+
+Given(/^I open a new page$/) do
+  
+end
+
+Then(/^I should see a "map"$/) do
+  assert page.find("#map")
+end
+
+Then(/^I should see an "search box" in the map$/) do
+  assert page.find("#pac-input")
+end
+
+Then(/^I should see the right toolbar with the text "([^"]*)"$/) do |arg1|
+  assert_equal(page.find("#pac-input").text, arg1)
+end
+
+When(/^I should see a "(.+)"$/) do |image|
+  page.should have_xpath("//img[contains(@src, \"#{image.split('-')[0]}\")]")
+end
+
+
+When(/^I should see a "date"$/) do
+  
+end
+
+Given(/^I have searched for "([^"]*)"$/) do |arg1|
   pending # Write code here that turns the phrase above into concrete actions
 end
 
-Given(/^I open the page$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Given(/^I open the page on a “Desktop”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I should see the “allergy” to the right of the map$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Given(/^I open the page on a “Mobile”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I should see the “allergy” to the bottom of the map$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I should see a “toolbar”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I should see an “image”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I should see a “right  \- toolbar”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I should see the “date and time”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-Then(/^I should see the right toolbar with an “image”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-When(/^I fill out “Berkeley”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-When(/^I press “enter:$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-When(/^I should see a new “image”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-When(/^I should see a “weather\-icon”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-When(/^I should see a “pollen\-icon”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-When(/^I should see a “level\-text”$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
