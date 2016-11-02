@@ -45,10 +45,11 @@ Scenario: Having searched for more than 5 cities I should only see the last 5 on
     And I should see "Albany"
     And I should not see "Berkeley"
 
-#This one is not a necessity for now#
-# Scenario: Clicking on a city in the Recent Searches list should take me to the details page of that city
-#     Given I have searched for "Berkeley"
-#     And I am on the landing page
-#     And I press "Berkeley"
-#     And I should see details page for "Berkeley"
-  
+ 
+@javascript
+Scenario: Verifying that information is displayed on Map Page 
+    Given I am on the landing page
+    And my location is set to "Berkeley"
+    Then I should see "Low" next to "Grass"
+    Then I should see "Low" next to "Mold"
+    Then I should see "Moderate" next to "UVIndex"

@@ -31,11 +31,41 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+
+Given(/^I am on the landing page$/) do  
+  visit root_path
+end  
+
 # Single-line step scoper
 When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
 end
 
+
+And(/^(?:I expect a Google map to load|the map has been loaded)$/) do  
+  page.evaluate_script('map') 
+end  
+
+Then(/^the center of the map should be approximately "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng|  
+  ACCEPTED_OFFSET = 0.2
+  center_lat = page.evaluate_script('map.getCenter().lat();')
+  center_lng = page.evaluate_script('map.getCenter().lng();')
+  expect(center_lat).to be_within(ACCEPTED_OFFSET).of(lat.to_f)
+  expect(center_lng).to be_within(ACCEPTED_OFFSET).of(lng.to_f)
+end  
+
+And(/^my location is set to "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng| 
+  page.evaluate_script('map') 
+  
+  end
+
+
+Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
+      find("#" + category, :visible => true).has_text?(rating) 
+  end
+
+
+>>>>>>> anishkhazne
 And(/^(?:I expect a Google map to load|the map has been loaded)$/) do 
   page.evaluate_script('map') 
 end  
@@ -52,15 +82,20 @@ And(/^my location is set to "([^"]*)"$/) do |place|
   find('#pac-input').set(place)
   find('#pac-input').native.send_keys(:return)
 end
+>>>>>>> 5c368c38bfae8a52ed626fa15449263a0e3b3454
+
+Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
+      find("#" + category, :visible => true).has_text?(rating) 
+  end
 
 # Multi-line step scoper
 When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
   with_scope(parent) { When "#{step}:", table_or_string }
 end
 
-Given /^(?:|I )am on (.+)$/ do |page_name|
-  visit path_to(page_name)
-end
+# Given /^(?:|I )am on (.+)$/ do |page_name|
+#   visit path_to(page_name)
+# end
 
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
