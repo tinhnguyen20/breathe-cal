@@ -65,7 +65,7 @@ Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
   end
 
 
->>>>>>> anishkhazne
+
 And(/^(?:I expect a Google map to load|the map has been loaded)$/) do 
   page.evaluate_script('map') 
 end  
@@ -80,9 +80,9 @@ Then(/^the center of the map should not be approximately "([^"]*)"$/) do |place|
 end  
 And(/^my location is set to "([^"]*)"$/) do |place| 
   find('#pac-input').set(place)
-  find('#pac-input').native.send_keys(:return)
+  find('#pac-input').native.send_keys(:Enter)
 end
->>>>>>> 5c368c38bfae8a52ed626fa15449263a0e3b3454
+
 
 Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
       find("#" + category, :visible => true).has_text?(rating) 
@@ -155,6 +155,14 @@ When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
+  if page.respond_to? :should
+    page.should have_content(text)
+  else
+    assert page.has_content?(text)
+  end
+end
+
+Then /^(?:|I )should see the text on the side "([^"]*)"$/ do |text|
   if page.respond_to? :should
     page.should have_content(text)
   else
@@ -312,19 +320,25 @@ Given(/^I open a new page$/) do
   
 end
 
-Then(/^I should see a "map"$/) do
-  assert page.find("#map")
+Then(/^I should see a map$/) do
+  page.evaluate_script('map') 
 end
 
-Then(/^I should see an "search box" in the map$/) do
-  assert page.find("#pac-input")
+
+And (/^I should see the searchbox with the text "([^"]*)"$/) do |arg1|
+  assert_equal(page.locate('input#pac-input').value, arg1)
 end
+
 
 Then(/^I should see the right toolbar with the text "([^"]*)"$/) do |arg1|
   assert_equal(page.find("#pac-input").text, arg1)
 end
 
 When(/^I should see a "(.+)"$/) do |image|
+  page.should have_xpath("//img[contains(@src, \"#{image.split('-')[0]}\")]")
+end
+
+And(/^I should see an icon "(.+)"$/) do |image|
   page.should have_xpath("//img[contains(@src, \"#{image.split('-')[0]}\")]")
 end
 
