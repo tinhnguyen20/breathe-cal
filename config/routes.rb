@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'breathe#index'
+  
+  post '/city_data' => 'cities#city_data'
+  get '/cached_city_data' => 'cities#cached_city_data'
+  get '/city_data_back' => 'cities#city_data_back'
+  resources :cities, :clients
+  
+  
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

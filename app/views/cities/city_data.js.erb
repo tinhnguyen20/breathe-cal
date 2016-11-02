@@ -1,0 +1,106 @@
+<% unless @cached.nil? %>
+var input = document.getElementById('pac-input');
+var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: <%= @geo[0] %>, lng: <%= @geo[1] %>},
+          mapTypeId: 'roadmap',
+          zoom: 13
+        });
+var geo = {lat: <%= @geo[0] %>, lng: <%= @geo[1] %>}
+var marker = new google.maps.Marker({
+          map: map,
+          position: geo,
+        });
+  var searchBox = new google.maps.places.SearchBox(input);
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  var markers = [];
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      if (!place.geometry) {
+        console.log("Returned place contains no geometry");
+        return;
+      }
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      // $("#city-name").text(JSON.stringify(place.geometry.location))
+      // console.log(place);
+      $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "city_data",
+        data: JSON.stringify({geo: place.geometry.location, name: place.name}),
+        success: function(data){
+          // $("#city-info").text(JSON.stringify(data));
+          console.log("hello");
+          // console.log(JSON.stringify(data));
+        }
+        
+      });
+      
+      
+      // $.getJSON("MYURL.json", function(){
+      //   $("do some stuff here")
+      // });
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      }
+      else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+<% end %>
+var offset = '-' + parseInt($('#detail-box').parent().css('width')) + 'px'
+$("#detail-box").html("<%= j render 'breathe/detail.html' %>");
+$("#fox-box").html("<%= j render 'breathe/fox_box.html' %>");
+$("#weather-box").html("<%= j render 'breathe/weather_box.html' %>");
+
+$("#list-box").animate
+        ({
+            'margin-left' : offset
+        }, 500, function() {
+            $("#list-box").hide();        
+        });
+
+$("#detail-box").animate
+        ({
+            'margin-left' : '0px'
+        });
+$("#detail-box").show();

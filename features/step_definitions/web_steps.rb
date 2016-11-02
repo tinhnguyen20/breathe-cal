@@ -41,6 +41,7 @@ When /^(.*) within (.*[^:])$/ do |step, parent|
   with_scope(parent) { When step }
 end
 
+<<<<<<< HEAD
 And(/^(?:I expect a Google map to load|the map has been loaded)$/) do  
   page.evaluate_script('map') 
 end  
@@ -57,6 +58,24 @@ And(/^my location is set to "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng|
   page.evaluate_script('map') 
   
   end
+=======
+And(/^(?:I expect a Google map to load|the map has been loaded)$/) do 
+  page.evaluate_script('map') 
+end  
+
+Then(/^the center of the map should be approximately "([^"]*)"$/) do |place|  
+  find('#city-name').has_text?(place)
+end  
+
+
+Then(/^the center of the map should not be approximately "([^"]*)"$/) do |place|  
+  not find('#city-name').has_text?(place)
+end  
+And(/^my location is set to "([^"]*)"$/) do |place| 
+  find('#pac-input').set(place)
+  find('#pac-input').native.send_keys(:return)
+end
+>>>>>>> 5c368c38bfae8a52ed626fa15449263a0e3b3454
 
 # Multi-line step scoper
 When /^(.*) within (.*[^:]):$/ do |step, parent, table_or_string|
@@ -238,6 +257,8 @@ Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, pa
   end
 end
 
+
+
 Then /^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/ do |label, parent|
   with_scope(parent) do
     field_checked = find_field(label)['checked']
@@ -273,4 +294,72 @@ end
 
 Then /^show me the page$/ do
   save_and_open_page
+end
+
+Given(/^the site is set up$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I open the page$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I open the page on a “Desktop”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the “allergy” to the right of the map$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I open the page on a “Mobile”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the “allergy” to the bottom of the map$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see a “toolbar”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see an “image”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see a “right  \- toolbar”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the “date and time”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the right toolbar with an “image”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I fill out “Berkeley”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I press “enter:$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I should see a new “image”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I should see a “weather\-icon”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I should see a “pollen\-icon”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I should see a “level\-text”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
 end
