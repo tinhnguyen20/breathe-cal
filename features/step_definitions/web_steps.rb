@@ -65,7 +65,6 @@ Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
   end
 
 
->>>>>>> anishkhazne
 And(/^(?:I expect a Google map to load|the map has been loaded)$/) do 
   page.evaluate_script('map') 
 end  
@@ -82,7 +81,6 @@ And(/^my location is set to "([^"]*)"$/) do |place|
   find('#pac-input').set(place)
   find('#pac-input').native.send_keys(:return)
 end
->>>>>>> 5c368c38bfae8a52ed626fa15449263a0e3b3454
 
 Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
       find("#" + category, :visible => true).has_text?(rating) 
