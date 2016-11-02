@@ -3,10 +3,12 @@ Feature: client searches
    in order to know what cities I have recently searched for, 
    I should see the last 5 cities I searched for at the bottom of the sidebar on the landing page.
    
+   
+# add the city manually into the searches    
 Background: 
     Given the following clients exist:
-      | name        |email               | searches |
-      | client1     |dork@gmail.com      |          |
+      | name        |email               |searches  |
+      | client1     |dork@gmail.com      |Berkeley  |
      
     # And I am logged in as "client1"
    
@@ -20,7 +22,7 @@ Scenario: Having searched for a city I should see it displayed on the page
     And I am on the user's page of "client1"
     Then I should see "Berkeley"
     And I should not see "Vancouver"
-    And I should not see "Boston"
+    And I should not see "Boston" 
 
 Scenario: Having searched for two cities I should see the most recent one on top
     Given I as "client1" have searched for "Berkeley"
