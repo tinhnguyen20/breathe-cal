@@ -9,7 +9,7 @@
   <h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;">Allergens</h5>
     <% get_pollen(@data).each do |p| %>
       <% if p["Name"] != "AirQuality" %>
-        <div id= <%= p["Name"] %> style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;">
+        <div class="row" id= <%= p["Name"] %> style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;">
           <%= image_tag(get_allergen_image(p["Name"]), :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
           <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
             <div style="padding-left: 15px;"><%= p["Name"]%></div>
