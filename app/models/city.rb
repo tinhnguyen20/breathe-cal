@@ -1,12 +1,26 @@
 class City < ActiveRecord::Base
   serialize :daily_data, JSON
-
   
+  def self.get_api_key(i)
+    ["5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", "DiMjVsdWXIuWJheFk0nuucgo5KaUtAjg"][i]
+  end
+  def self.rescue_api(res, i, url, query, iMAX=1)
+    if i == iMAX or res["fault"].nil?
+      return res
+    end
+    if res["fault"] and res["fault"]["detail"] and res["fault"]["detail"]["errorcode"] == "policies.ratelimit.QuotaViolation"
+      query[:apikey] = City.get_api_key(i + 1)
+      return City.rescue_api(HTTParty.get(url, query: query), i + 1, url, query)
+    else
+      return res
+    end
+  end
   def update_city_data
     location_key = self.location_key
     if self.updated_at <= Date.today.to_time.beginning_of_day or !self.daily_data
       url = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/#{location_key}"
-      response = HTTParty.get(url, query: {apikey: "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", language:"en-us", details: "true"})
+      query = {apikey: City.get_api_key(0), language:"en-us", details: "true"}
+      response = City.rescue_api(HTTParty.get(url, query: query), 0, url, query)
       self.update_attribute("daily_data" , response) 
     end
     # daily  
@@ -26,27 +40,28 @@ class City < ActiveRecord::Base
       return city.location_key
     end
     url = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search"
-    response = HTTParty.get(url, query: {apikey: "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3" ,q: "#{lat},#{lng}",language:"en-us" } )
+    query = {apikey: City.get_api_key(0) ,q: "#{lat},#{lng}",language:"en-us" }
+    response = City.rescue_api(HTTParty.get(url, query: query), 0, url, query)
     location_key = response["Key"]
     City.create(lat: lat, lng: lng, location_key: location_key, name: name)
     return location_key
   end
   
-  def self.get_location_key(zip, name, state, country)
-    city = City.find_by(name: name, state: state,country: country)
-    if city
-      return city.location_key
-    end
-    if zip 
-      if state and country
-        url = "http://dataservice.accuweather.com/locations/v1/#{country}/#{state}/search"
-        response = HTTParty.get(url, query: {apikey: "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3" ,q: "#{zip}",language:"en-us" } )
-        location_key = response[0]["Key"]
-        City.create(name: name, zip: zip, state: state, country: country, location_key: location_key )
-        return location_key
-      end
-    end
-  end
+  # def self.get_location_key(zip, name, state, country)
+  #   city = City.find_by(name: name, state: state,country: country)
+  #   if city
+  #     return city.location_key
+  #   end
+  #   if zip 
+  #     if state and country
+  #       url = "http://dataservice.accuweather.com/locations/v1/#{country}/#{state}/search"
+  #       response = HTTParty.get(url, query: {apikey: "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3" ,q: "#{zip}",language:"en-us" } )
+  #       location_key = response[0]["Key"]
+  #       City.create(name: name, zip: zip, state: state, country: country, location_key: location_key )
+  #       return location_key
+  #     end
+  #   end
+  # end
   
   
   
