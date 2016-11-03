@@ -8,8 +8,6 @@ Feature: Locations
 Scenario: Searching for a location  
     Given I am on the landing page
     And the map has been loaded
-    And my location is set to "37.8716" lat and "-122.2727" lng
-    Then the center of the map should be approximately "37.8716" lat and "-122.2727" lng
  
     And my location is set to "Berkeley"
     Then the center of the map should be approximately "Berkeley"

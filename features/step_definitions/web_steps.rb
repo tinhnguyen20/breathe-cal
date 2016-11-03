@@ -46,20 +46,6 @@ And(/^(?:I expect a Google map to load|the map has been loaded)$/) do
   page.evaluate_script('map') 
 end  
 
-Then(/^the center of the map should be approximately "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng|  
-  ACCEPTED_OFFSET = 0.2
-  center_lat = page.evaluate_script('map.getCenter().lat();')
-  center_lng = page.evaluate_script('map.getCenter().lng();')
-  expect(center_lat).to be_within(ACCEPTED_OFFSET).of(lat.to_f)
-  expect(center_lng).to be_within(ACCEPTED_OFFSET).of(lng.to_f)
-end  
-
-And(/^my location is set to "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng| 
-  page.evaluate_script('map') 
-  
-  end
-
-
 Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
       find("#" + category, :visible => true).has_text?(rating) 
   end
@@ -70,7 +56,7 @@ end
 
 
 Then(/^the center of the map should not be approximately "([^"]*)"$/) do |place|  
-  not find('#city-name').has_text?(place)
+  not find('#fox-box').has_text?(place)
 end  
 And(/^my location is set to "([^"]*)"$/) do |place| 
   find('#pac-input').set(place)
