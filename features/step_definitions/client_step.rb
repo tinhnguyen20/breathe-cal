@@ -12,13 +12,13 @@ Given /I as "(.*)" have searched for "(.*)"$/ do |client, city|
     Client.addToClient(client, city)
 end
 
-And /I should see "(.*)" below "(.*)"$/ do |city1, city2|
+And /I should see "(.*)" above "(.*)"$/ do |city1, city2|
   #  ensure that that city1 occurs before city2.
   #  page.body is the entire content of the page as a string.
   #fail "Unimplemented"
-  expect page.body.match ("^.*#{city2}.*#{city1}")
+  expect page.body.match ("^.*#{city1}.*#{city2}")
 end
 
-Then /I should see an empty search history/ do
-    #pending
-end 
+# Then /I should see an empty search history/ do
+#     #pending
+# end 
