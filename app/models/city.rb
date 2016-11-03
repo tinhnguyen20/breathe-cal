@@ -43,7 +43,7 @@ class City < ActiveRecord::Base
     query = {apikey: City.get_api_key(0) ,q: "#{lat},#{lng}",language:"en-us" }
     response = City.rescue_api(HTTParty.get(url, query: query), 0, url, query)
     location_key = response["Key"]
-    City.create(lat: lat, lng: lng, location_key: location_key, name: name)
+    City.create(lat: "#{lat}", lng: "#{lng}", location_key: location_key, name: name)
     return location_key
   end
   
