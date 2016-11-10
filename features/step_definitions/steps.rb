@@ -10,6 +10,10 @@ Given /^the site is set up $/ do
   # pending
 end
 
+And /^I should see a dropdown menu of "(.*)"$/ do |name|
+  # pending
+end
+
 Given /^ I see a list of cities in the dropdown  $/ do
   # pending
 end
@@ -117,11 +121,6 @@ end
 And /^ user is on the “.*?” details page $/ do 
   # pending
 end
-
-
-
-
-
 
 
 

@@ -36,12 +36,6 @@ Given(/^I am on the landing page$/) do
   visit root_path
 end  
 
-# Single-line step scoper
-When /^(.*) within (.*[^:])$/ do |step, parent|
-  with_scope(parent) { When step }
-end
-
-
 And(/^(?:I expect a Google map to load|the map has been loaded)$/) do  
   page.evaluate_script('map') 
 end  
@@ -54,10 +48,6 @@ Then(/^the center of the map should be approximately "([^"]*)" lat and "([^"]*)"
   expect(center_lng).to be_within(ACCEPTED_OFFSET).of(lng.to_f)
 end  
 
-And(/^my location is set to "([^"]*)" lat and "([^"]*)" lng$/) do |lat, lng| 
-  page.evaluate_script('map') 
-  
-  end
 
 
 Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
@@ -65,24 +55,16 @@ Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
   end
 
 
->>>>>>> anishkhazne
-And(/^(?:I expect a Google map to load|the map has been loaded)$/) do 
-  page.evaluate_script('map') 
-end  
 
 Then(/^the center of the map should be approximately "([^"]*)"$/) do |place|  
-  find('#city-name').has_text?(place)
+  find('#fox-box').has_text?(place)
 end  
 
 
-Then(/^the center of the map should not be approximately "([^"]*)"$/) do |place|  
-  not find('#city-name').has_text?(place)
-end  
 And(/^my location is set to "([^"]*)"$/) do |place| 
   find('#pac-input').set(place)
   find('#pac-input').native.send_keys(:return)
 end
->>>>>>> 5c368c38bfae8a52ed626fa15449263a0e3b3454
 
 Then (/^I should see "(.*)" next to "(.*)"$/) do |rating, category|
       find("#" + category, :visible => true).has_text?(rating) 
@@ -371,6 +353,102 @@ When(/^I should see a “pollen\-icon”$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
 
+Then(/^I should see the “allergy” to the right of the map$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I open the page on a “Mobile”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the “allergy” to the bottom of the map$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see a “toolbar”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see an “image”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see a “right  \- toolbar”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the “date and time”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+Then(/^I should see the right toolbar with an “image”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I fill out “Berkeley”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I press “enter:$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I should see a new “image”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I should see a “weather\-icon”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I should see a “pollen\-icon”$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
 When(/^I should see a “level\-text”$/) do
   pending # Write code here that turns the phrase above into concrete actions
+end
+
+Given(/^I have searched for "([^"]*)"$/) do |arg1|
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When(/^I should see a "(.+)"$/) do |image|
+  page.should have_xpath("//img[contains(@src, \"#{image.split('-')[0]}\")]")
+end
+
+And(/^I should see an icon "(.+)"$/) do |image|
+  page.should have_xpath("//img[contains(@src, \"#{image.split('-')[0]}\")]")
+end
+
+And(/^I should see a weather icon inside/) do 
+  page.should have_xpath("//img[contains(@src, \"#{"-s".split('-')[0]}\")]")
+end
+
+And(/^I should see the weather section/) do 
+  page.should have_css('div#weather-box')
+end
+
+And(/^I should see the greeting section/) do 
+  page.should have_css('div#fox-box')
+end
+
+And(/^I should see the alert section/) do 
+  page.should have_css('div#fox-box')
+end
+
+And(/^I should see the date/) do 
+  page.should have_css('div.datetime-box')
+end
+
+Then(/^I should see a map$/) do
+  page.evaluate_script('map') 
+end
+
+Then /^(?:|I )should see the text on the side "([^"]*)"$/ do |text|
+  if page.respond_to? :should
+    page.should have_content(text)
+  else
+    assert page.has_content?(text)
+  end
 end
