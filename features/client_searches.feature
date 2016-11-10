@@ -35,21 +35,21 @@ Scenario: Having searched for two cities I should see the most recent one on top
     Then I should see the text on the side "Albany"
     And I should see "Berkeley" above "Albany"    
 
-# @javascript   
-# Scenario: Having searched for more than 5 cities I should only see the last 5 ones displayed
-#     Given I as "client1" have searched for "Berkeley"
-#     And I as "client1" have searched for "Albany"
-#     And I as "client1" have searched for "Oakland"
-#     And I as "client1" have searched for "Richmond"
-#     And I as "client1" have searched for "San Francisco"
-#     And I as "client1" have searched for "San Jose"
-#     And I am on the landing page
-#     Then I should see "San Jose"
-#     And I should see "San Francisco"
-#     And I should see "Richmond"
-#     And I should see "Oakland"
-#     And I should see "Albany"
-#     And I should not see "Berkeley"
+@javascript   
+Scenario: Having searched for more than 5 cities I should only see the last 5 ones displayed
+    Given I as "client1" have searched for "Berkeley"
+    And I as "client1" have searched for "Albany"
+    And I as "client1" have searched for "Oakland"
+    And I as "client1" have searched for "Richmond"
+    And I as "client1" have searched for "San Francisco"
+    And I as "client1" have searched for "San Jose"
+    And I am on the landing page
+    Then I should see "San Jose"
+    And I should see "San Francisco"
+    And I should see "Richmond"
+    And I should see "Oakland"
+    And I should see "Albany"
+    And I should not see "Berkeley"
 
  
 # @javascript
