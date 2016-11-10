@@ -59,7 +59,10 @@ class CitiesController < ApplicationController
     
     def city_data_back
       if session[:cities]
-        @cities = session[:cities]
+        if session[:cities].length > 5
+          session[:cities] = session[:cities][session[:cities].length - 5, session[:cities].length - 1]
+        end 
+        @cities = session[:cities].reverse
       else
         @cities = []
         session[:cities] = []
