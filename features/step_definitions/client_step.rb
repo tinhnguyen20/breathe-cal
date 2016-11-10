@@ -22,3 +22,19 @@ end
 # Then /I should see an empty search history/ do
 #     #pending
 # end 
+
+Then /I should be on the user homepage/ do
+  #pending
+end
+
+Given /I am on the sign_in page/ do
+  #pending
+end 
+
+Given /I am on the sign_up page/ do
+  #pending
+end 
+
+Then /^(?:|I )should see the button "([^"]*)"$/ do |text|
+  #pending
+end
