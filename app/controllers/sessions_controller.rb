@@ -1,15 +1,12 @@
 class SessionsController < ApplicationController
     def create 
-        auth = request.env["omniauth.auth"]
-        session[:omniauth] = auth.except("extra")
-        person = Person.sign_in_from_omniauth(auth)
-        session[:person_id] = person.id
-        redirect_to root_url, :notice => "SIGNED IN"
+        client = Client.from_omniauth(env["omniauth.auth"])
+        session[:client_id] = client.id
+        redirect_to root_path
     end
     
     def destroy
-        session[:person_id] = nil
-        session[:omniauth] = nil
-        redirect_to root_url, :notice => "SIGNED OUT"
+        session[:client_id] = nil
+        redirect_to root_path
     end
 end
