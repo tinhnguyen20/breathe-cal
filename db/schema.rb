@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161114041547) do
+ActiveRecord::Schema.define(version: 20161114225458) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -30,8 +30,12 @@ ActiveRecord::Schema.define(version: 20161114041547) do
     t.string   "name"
     t.string   "email"
     t.text     "searches"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   create_table "people", force: :cascade do |t|

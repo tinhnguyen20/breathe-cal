@@ -11,39 +11,19 @@
   </head>
   <body style="height: 100%; overflow: hidden;">
     
+    <div>
+      <% if current_client %>
+        Signed in as <strong><%= current_client.name %></strong>!
+        <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <% else %>
+        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+      <% end %>
+    </div>
     
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <!--<div class="navbar-header">-->
-        <!--  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">-->
-        <!--    <span class="sr-only">Toggle navigation</span>-->
-        <!--    <span class="icon-bar"></span>-->
-        <!--    <span class="icon-bar"></span>-->
-        <!--    <span class="icon-bar"></span>-->
-        <!--  </button>-->
-        <!--  <h1><%= link_to root_path do %>Omni<% end %></h1>-->
-        <!--</div>-->
-    
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          
-          <ul class="nav navbar-nav navbar-right">
-    	      <% if @current_person %>
-    	          <li>Signed in as: <%= @current_person.name %> - <%= image_tag(@auth['info']['image'], width: '50', heigth: '50', class: 'img-circle') %></li>
-    	          <li><%= link_to "Sign Out", 'sign_out', method: :delete %></li>
-    	      <% else %>
-    	          <li><%= link_to "auth/facebook" do %><%= image_tag('facebook_logo.png', width: '40', heigth: '40', class: 'img-circle') %><% end %></li>
-    	      <% end %>
-          </ul>
-    
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
-    
-    
+    <div>
     <%= yield %>
-
+    </div>
+    
   </body>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBmaDelXZ3CEmbx0mFQ3Tnk_lYfAiMNXM&libraries=places&callback=initAutocomplete"></script>
     <!--<%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>-->
