@@ -8,7 +8,12 @@ Rails.application.routes.draw do
   post '/city_data' => 'cities#city_data'
   get '/cached_city_data' => 'cities#cached_city_data'
   get '/city_data_back' => 'cities#city_data_back'
-  resources :cities, :clients
+  
+  get 'auth/:provider/callback', to: "sessions#create"
+  
+  delete 'sign_out', to: 'sessions#destroy', as: 'sign_out'
+  
+  resources :cities, :clients, :people
   
   
   # You can have the root of your site routed with "root"
