@@ -13,3 +13,30 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+function moveScroller() {
+    var $anchor = $("#scroller-anchor");
+    var $scroller = $('#scroller');
+
+    var move = function() {
+        var st = $("#right-col").scrollTop();
+        var ot = 160;
+        if(st > ot) {
+            $scroller.css({
+                position: "fixed",
+                top: ($("#map").height() + $("nav").height()).toString() + "px"
+            });
+            $anchor.css({height: $("nav").height().toString() + "px"});
+        } else {
+            if(st <= ot) {
+                $scroller.css({
+                    position: "relative",
+                    top: "0px"
+                });
+                $anchor.css({height: "0px"});
+            }
+        }
+    };
+    $("#right-col").scroll(move);
+    move();
+}
