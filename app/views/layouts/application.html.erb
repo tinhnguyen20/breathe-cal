@@ -12,15 +12,6 @@
   <body style="height: 100%; overflow: hidden;">
     
     <div>
-      <% if current_client %>
-        Signed in as <strong><%= current_client.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out" %>
-      <% else %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
-      <% end %>
-    </div>
-    
-    <div>
     <%= yield %>
     </div>
     
