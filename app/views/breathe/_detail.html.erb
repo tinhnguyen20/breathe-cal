@@ -1,6 +1,8 @@
 <div style="padding: 10px 15px;; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: #eee;">
   <h5><%= link_to "Back", city_data_back_path, remote: true %></h5>
 </div>
+  <h5><%= link_to "Favorite Cities", city_favorite_path, remote: true %></h5>
+</div>
 <div id="weather-box">
   <%= render 'breathe/weather_box'%>
 </div>
