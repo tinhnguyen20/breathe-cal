@@ -66,13 +66,31 @@ class CitiesController < ApplicationController
       else
         @cities = []
         session[:cities] = []
-      end
+      
       respond_to do |format|
         format.js {
           render :template => "cities/city_data_back.js.erb"
         }
       end      
     end
+    
+    def favorite_city
+      if session[:cities]
+          if session[:cities].length > 5
+            session[:cities] = session[:cities][session[:cities].length - 5, session[:cities].length - 1]
+          end 
+          @cities = session[:cities].reverse
+      else
+          @cities = []
+          session[:cities] = []
+      end
+        respond_to do |format|
+          format.js {
+            render :template => "cities/city_data_back.js.erb"
+          }
+        end      
+    end
+      
     
     
     
@@ -116,5 +134,4 @@ class CitiesController < ApplicationController
       d5 = forecasts[4]["AirAndPollen"]
       @forecasts = [d1,d2,d3,d4,d5]
     end
-  
-end
+  end
