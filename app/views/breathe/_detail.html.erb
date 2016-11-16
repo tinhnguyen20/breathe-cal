@@ -4,7 +4,10 @@
 <div id="weather-box">
   <%= render 'breathe/weather_box'%>
 </div>
-
+<div style="text-align: right; padding: 0 20px;">
+  <p style="margin-bottom: 0; font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 14px; color: #989898;">Good to Unhealthy</p>
+  <%= image_tag('scale.png') %>  
+</div>
 <div style="padding: 10px;" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;">Allergens</h5>
     <% get_pollen(@data).each do |p| %>
@@ -13,7 +16,7 @@
          data-toggle="collapse" data-parent="#accordion" href="#collapse<%= p["Name"]%>" aria-expanded="false" aria-controls="collapse<%= p["Name"]%>">
           <%= image_tag(get_allergen_image(p["Name"]), :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
           <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
-            <div style="padding-left: 15px;"><%= p["Name"]%></div>
+            <div style="padding-left: 15px;"><%= p["Name"]%><span class='glyphicon glyphicon-chevron-down' style="margin-left: 10px; font-size: 10px;"></span></div>
           </div>
           <div class="col-lg-4">
             <div style="float: right; width: 16px; height: 16px; border-radius: 8px; background-color: #<%= get_quality_color(p["Category"]) %>; margin-top: 2px;"></div>
@@ -22,7 +25,7 @@
         </div>
         <div id="collapse<%= p["Name"]%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= p["Name"]%>">
           <div class="panel-body" style="padding-top: 0;">
-            <h5 style="margin-top: 0; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= get_pollen_range(p["Name"], p["Category"]) %></h5>
+            <h5 style="float: right; margin-top: 0; font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 12px; color: #989898;"><%= get_pollen_range(p["Name"], p["Category"]) %></h5>
             <% get_pollen_detail(p["Name"]).each do |d| %>
               <h5 style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
                 <%= d[0] %>
@@ -42,7 +45,7 @@
         data-toggle="collapse" data-parent="#accordion" href="#collapseWind" aria-expanded="false" aria-controls="collapseWind">
           <%= image_tag('wind.png', :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
           <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
-            <div style="padding-left: 15px;">Wind</div>
+            <div style="padding-left: 15px;">Wind<span class='glyphicon glyphicon-chevron-down' style="margin-left: 10px; font-size: 10px;"></span></div>
           </div>
           <div class="col-lg-4">
             <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= get_wind(@data) %></div>
@@ -66,7 +69,7 @@
         data-toggle="collapse" data-parent="#accordion" href="#collapsePrecip" aria-expanded="false" aria-controls="collapsePrecip">
           <%= image_tag('precip.png', :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
           <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
-            <div style="padding-left: 15px;">Precip</div>
+            <div style="padding-left: 15px;">Precip<span class='glyphicon glyphicon-chevron-down' style="margin-left: 10px; font-size: 10px;"></span></div>
           </div>
           <div class="col-lg-4">
             <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= get_precip(@data) %></div>
@@ -97,5 +100,7 @@
           </div>
         </div>    
   <% end %>
-  
+  <div class="row" style="text-align: right; padding: 15px 20px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 12px; color: #989898;">
+    Data from AccuWeather
+  </div> 
 </div>

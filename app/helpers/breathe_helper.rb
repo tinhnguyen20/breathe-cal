@@ -52,40 +52,44 @@ module BreatheHelper
   end
   def get_pollen_range(name, category)
     dict = { 'tree' => 
-              {'good' => "Good - 0",
-                'low' => "Low - 1 - 14",
-                'moderate' => "Moderate - 15 - 89",
-                'high' => "High - 90 - 499",
-                'unhealthy' => "Unhealthy - 500 - 1499",
-                'hazardous' => "Hazardous - >1500"
+              {'good' => "Good: 0",
+                'low' => "Low: 1 - 14",
+                'moderate' => "Moderate: 15 - 89",
+                'high' => "High: 90 - 499",
+                'unhealthy' => "Unhealthy: 500 - 1499",
+                'hazardous' => "Hazardous: >1500"
               },
               'ragweed' => 
-              {'good' => "Good - 0",
-                'low' => "Low - 1 - 9",
-                'moderate' => "Moderate - 10 - 49",
-                'high' => "High - 50 - 249",
-                'unhealthy' => "Unhealthy - 250 - 499",
-                'hazardous' => "Hazardous - >500"
+              {'good' => "Good: 0",
+                'low' => "Low: 1 - 9",
+                'moderate' => "Moderate: 10 - 49",
+                'high' => "High: 50 - 249",
+                'unhealthy' => "Unhealthy: 250 - 499",
+                'hazardous' => "Hazardous: >500"
               },
               'grass' =>
-              {'good' => "Good - 0",
-                'low' => "Low - 1 - 4",
-                'moderate' => "Moderate - 5 - 19",
-                'high' => "High - 20 - 100",
-                'unhealthy' => "Unhealthy - 100 - 199",
-                'hazardous' => "Hazardous - >200 "
+              {'good' => "Good: 0",
+                'low' => "Low: 1 - 4",
+                'moderate' => "Moderate: 5 - 19",
+                'high' => "High: 20 - 100",
+                'unhealthy' => "Unhealthy: 100 - 199",
+                'hazardous' => "Hazardous: >200 "
               },
               'mold' =>
-              {'good' => "Good - 0",
-                'low' => "Low - 1 - 5499",
-                'moderate' => "Moderate - 6500 - 12999",
-                'high' => "High - 13000 - 24999",
-                'unhealthy' => "Unhealthy - 25000 - 50000",
-                'hazardous' => "Hazardous - >50000"
+              {'good' => "Good: 0",
+                'low' => "Low: 1 - 5499",
+                'moderate' => "Moderate: 6500 - 12999",
+                'high' => "High: 13000 - 24999",
+                'unhealthy' => "Unhealthy: 25000 - 50000",
+                'hazardous' => "Hazardous: >50000"
               },
     }
     if dict[name.downcase]
-      return dict[name.downcase][category.downcase] || ""
+      if dict[name.downcase][category.downcase]
+        return dict[name.downcase][category.downcase] + " pollen or spores per cubic meter"
+      else
+        return ""
+      end
     else
       return ""
     end
