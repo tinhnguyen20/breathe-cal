@@ -95,7 +95,15 @@ class CitiesController < ApplicationController
     
     def favorite_city
       city_name = params[:city_id][0]
+      city = City.find_by(name: params[:name])
+      current_user = session[:client_id]
+      
+      #how do I find the right user? 
+      
+      
 
+      
+      
     end
   
   
