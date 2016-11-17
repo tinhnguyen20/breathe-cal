@@ -2,10 +2,10 @@ class SessionsController < ApplicationController
     
     
     def create 
-        test_check = params[:test_check]
+        test_check = params[:name]
         if test_check
             client = Client.new()
-            client.name = 'Jon Jones'
+            client.name = params[:name]
             client.save!
         else
             client = Client.from_omniauth(env["omniauth.auth"])
