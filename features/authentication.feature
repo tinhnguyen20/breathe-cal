@@ -19,10 +19,11 @@ Scenario: If I input legitimate google credentials I should be taken to the home
   Given I successfully authenticated with Google as "James Jones"
   Then I should be on the landing page
   And I should see the text on the side "James Jones"
+  And I should not see "Some Guy"
   And I should see the button "Sign Out"
   
-# @javascript
-# Scenario
+@javascript
+Scenario: 
 
 # @javascript
 # Scenario: On the sign-up page I should see email, password, password confirmation fields and a sign-up button

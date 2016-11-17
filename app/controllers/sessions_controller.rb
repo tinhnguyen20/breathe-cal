@@ -1,8 +1,8 @@
 class SessionsController < ApplicationController
-    
+    after_filter:database_cleanup
     
     def create 
-        test_check = params[:name]
+        test_check = params[:test_check]
         if test_check
             client = Client.new()
             client.name = params[:name]

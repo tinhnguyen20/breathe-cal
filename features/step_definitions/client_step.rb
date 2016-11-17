@@ -49,5 +49,5 @@ When /^(?:|I )press the icon "([^"]*)"$/ do |icon|
 end
 
 Given /I successfully authenticated with Google as "([^"]*)"$/ do |name|
-  visit auth_test_path(:name => name)
+  visit auth_test_path(:name => name, :test_check => true)
 end
