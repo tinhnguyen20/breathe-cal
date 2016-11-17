@@ -27,4 +27,13 @@ As an allergy sufferer, i want to notice the branding
       Finished but unable to do testing because of driver. 
       
       
-      
+
+Feature: Crowd_Sourcing
+  Unfinished - currently any user can create a marker and assign attriutes to them.
+  the markers are saved to a database. running into a minor issue w/ lazy loading and getting
+  markers efficiently. 
+  A user can - add a marker to the map
+  A user can drag the marker around to place the marker more precisely
+  A user can check off a precurated list of allergens that are saved w/ a marker
+  - still to do -> authorization of placing a marker for authenticated users.
+  - this feature was a lot larger and more complex than expected and probably could have been split
