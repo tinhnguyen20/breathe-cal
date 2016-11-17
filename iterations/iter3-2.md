@@ -37,3 +37,7 @@ Feature: Crowd_Sourcing
   A user can check off a precurated list of allergens that are saved w/ a marker
   - still to do -> authorization of placing a marker for authenticated users.
   - this feature was a lot larger and more complex than expected and probably could have been split
+  
+  As an allergy sufferer, in order to personalize my experience with the application, 
+        
+    I should be able to create/sign-in to my personal account (finished but only with google)
