@@ -24,7 +24,7 @@ Scenario: I should be able to see the allergn details of the page
 	And I should see the alert section
 	And I should see the text on the side "Berkeley Air Quality Levels are"
     And I should see an icon "tree"
-    And I should see an icon "grass"
+    # And I should see an icon "grass"
     And I should see an icon "ragweed"
     And I should see an icon "mold"
     And I should see an icon "uvindex"
