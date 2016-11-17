@@ -1,0 +1,42 @@
+<nav class="navbar navbar-default" style="margin-bottom: 0;">
+  <div class="container-fluid" style="background-color: white;">
+    <div class="navbar-header navbar-brand" >
+      <%= image_tag("bcal.jpg", class:"breathe_icon") %>
+    </div>
+  </div>
+    <ul class="navbar navbar-nav navbar-right">
+      <% if current_client %>
+        <strong><%=current_client.name %></strong>!
+        <%= link_to 'Sign Out', signout_path, id: "sign_out", class:"signout_link" %>
+      <% else %>
+        <%= link_to image_tag('google+_icon.png' , class:'gmail_icon'), "/auth/google_oauth2", id: "sign_in" %>
+      <% end %>
+    </ul>
+</nav>
+
+<div style="height: 100%;">
+  <div class="col-md-8 col-ms-12" style="padding-left: 0; padding-right: 0; z-index: 10; max-height: 40% !important;" id="left-col">
+    <input id="pac-input" class="controls" type="text" placeholder="Enter a location" style="width: 50%;">
+    <div id="map" style="height: 100%; width: 100%;"></div>
+  </div>
+  <div class="col-md-4 col-ms-12" style="padding-left: 0; padding-right: 0; overflow-y: auto; overflow-x: hidden; max-height: 50% !important;" id="right-col">
+    <div class="datetime-box" style="padding: 16px; font-size: 14px; font-family: 'Open Sans', sans-serif; height: 52px;">Today is <%= @dt %></div>
+    
+    
+    <div id="fox-box" style="height: 110px;">
+      <%= render 'fox_box' %>
+    </div>
+    <div id="list-box" style="position: absolute; width: 100%;">
+      <%= render 'list' %>  
+    </div>
+    <div id="detail-box" style="margin-left: 500px; background-color: white; position: absolute; width: 100%;">
+    </div>
+    <div id="detail-box-mask" style="margin-left: 500px; background-color: white; position: absolute; width: 100%; z-index: 10;"></div>
+    <br>
+    
+  </div>  
+  
+  <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
+  
+</div>
+
