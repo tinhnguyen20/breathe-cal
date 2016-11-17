@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get '/cached_city_data' => 'cities#cached_city_data'
   get '/city_data_back' => 'cities#city_data_back'
   
-  get 'auth/:provider/callback', to: "sessions#create"\
+  get 'auth/:provider/callback', to: "sessions#create"
+  
+  get 'authentication_test/:test_check' => "sessions#create"
   
   get 'auth/failure', to: redirect('/')
 
