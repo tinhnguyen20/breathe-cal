@@ -1,16 +1,15 @@
-Feature: client searches 
-    As an allergy sufferer with 
-    in order to personalize my experience on the application, 
-    I should be able to sign in with an account
+Feature: authentication
+    As an allergy sufferer
+    in order to personalize my experience with the application, 
+    I should be able to create/sign-in to my personal account
     
 @javascript
-Scenario: I should see a sign-up and a sign-in button on the landing page
+Scenario: I should see a google+ sign-in icon on the landing page
   Given I am on the landing page
-  Then I should see the button "Sign Up"
-  And I should see the button "Sign In"
+  Then I should see the icon "google+_icon.png"
   
 @javascript
-Scenario: If I click Sign-Up then I should be redirected to sign-up page
+Scenario: If I click on the google+ icon I should  
   Given I am on the landing page
   When I press "Sign-Up" button
   Then I should be on the sign_up page
