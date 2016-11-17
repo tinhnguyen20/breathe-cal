@@ -1,6 +1,12 @@
-<div style="padding: 10px 15px;; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: #eee;">
+<div id="scroller-anchor"></div> 
+<div id='scroller' style="z-index:10; background-color: white !important; width: 100%; padding: 10px 15px; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: #eee;">
   <h5><%= link_to "Back", city_data_back_path, remote: true %></h5>
 </div>
+<script type="text/javascript"> 
+  $(function() {
+    moveScroller();
+  });
+</script> 
 <div id="weather-box">
   <%= render 'breathe/weather_box'%>
 </div>
@@ -8,29 +14,30 @@
   <p style="margin-bottom: 0; font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 14px; color: #989898;">Good to Unhealthy</p>
   <%= image_tag('scale.png') %>  
 </div>
+
 <div style="padding: 10px;" class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;">Allergens</h5>
     <% get_pollen(@data).each do |p| %>
       <% if p["Name"] != "AirQuality" %>
-        <div class="row" role="tab" id="heading<%= p["Name"]%>" style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;"
-         data-toggle="collapse" data-parent="#accordion" href="#collapse<%= p["Name"]%>" aria-expanded="false" aria-controls="collapse<%= p["Name"]%>">
-          <%= image_tag(get_allergen_image(p["Name"]), :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
-          <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
-            <div style="padding-left: 15px;"><%= p["Name"]%><span class='glyphicon glyphicon-chevron-down' style="margin-left: 10px; font-size: 10px;"></span></div>
+        <div class="row accordion-toggle" role="tab" id="heading<%= p["Name"]%>" style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;"
+        data-toggle="collapse" data-parent="#accordion" href="#collapse<%= p["Name"]%>" aria-expanded="false" aria-controls="collapse<%= p["Name"]%>">
+          <%= image_tag(get_allergen_image(p["Name"]), :class => "image_tag_mobile") %>
+          <div class="col-xs-7 allergen_name_mobile">
+            <div style="padding-left: 15px; cursor: default;"><%= p["Name"]%><span class='glyphicon glyphicon-chevron-down' style="margin-left: 10px; font-size: 10px;"></span></div>
           </div>
-          <div class="col-lg-4">
-            <div style="float: right; width: 16px; height: 16px; border-radius: 8px; background-color: #<%= get_quality_color(p["Category"]) %>; margin-top: 2px;"></div>
-            <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= p["Category"]%></div>
+          <div class="col-xs-5">
+            <div class="allergen_status_mobile" style="background-color: #<%= get_quality_color(p["Category"]) %>; margin-top: 2px;"></div>
+            <div class="allergen_value_mobile"><%= p["Category"]%></div>
           </div>
         </div>
         <div id="collapse<%= p["Name"]%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<%= p["Name"]%>">
           <div class="panel-body" style="padding-top: 0;">
-            <h5 style="float: right; margin-top: 0; font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 12px; color: #989898;"><%= get_pollen_range(p["Name"], p["Category"]) %></h5>
+            <h5 style="float: right; margin-top: 0; font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 10px; color: #989898;"><%= get_pollen_range(p["Name"], p["Category"]) %></h5>
             <% get_pollen_detail(p["Name"]).each do |d| %>
-              <h5 style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+              <h5 style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 12px; color: #989898;">
                 <%= d[0] %>
               </h5>
-              <p style="font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 14px; color: #989898;">
+              <p style="font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 12px; color: #989898;">
                 <%= d[1] %>
               </p>
             <% end %>
@@ -43,21 +50,21 @@
   <!--wind-->
         <div class="row" role="tab" id="headingWind" style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;"
         data-toggle="collapse" data-parent="#accordion" href="#collapseWind" aria-expanded="false" aria-controls="collapseWind">
-          <%= image_tag('wind.png', :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
-          <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+          <%= image_tag('wind.png', :class => "image_tag_mobile") %>
+          <div class="col-xs-7 allergen_name_mobile">
             <div style="padding-left: 15px;">Wind<span class='glyphicon glyphicon-chevron-down' style="margin-left: 10px; font-size: 10px;"></span></div>
           </div>
-          <div class="col-lg-4">
-            <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= get_wind(@data) %></div>
+          <div class="col-xs-5">
+            <div class="allergen_value_mobile"><%= get_wind(@data) %></div>
           </div>
-        </div>
+        </div> 
         <div id="collapseWind" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingWind">
           <div class="panel-body" style="padding-top: 0;">
             <% get_pollen_detail("Wind").each do |d| %>
-              <h5 style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+              <h5 style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 12px; color: #989898;">
                 <%= d[0] %>
               </h5>
-              <p style="font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 14px; color: #989898;">
+              <p style="font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 12px; color: #989898;">
                 <%= d[1] %>
               </p>
             <% end %>
@@ -67,21 +74,21 @@
   <!--precip-->
         <div class="row" role="tab" id="headingPrecip" style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;"
         data-toggle="collapse" data-parent="#accordion" href="#collapsePrecip" aria-expanded="false" aria-controls="collapsePrecip">
-          <%= image_tag('precip.png', :style => "position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;") %>
-          <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+          <%= image_tag('precip.png', :class => "image_tag_mobile") %>
+          <div class="col-xs-7 allergen_name_mobile">
             <div style="padding-left: 15px;">Precip<span class='glyphicon glyphicon-chevron-down' style="margin-left: 10px; font-size: 10px;"></span></div>
           </div>
-          <div class="col-lg-4">
-            <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= get_precip(@data) %></div>
+          <div class="col-xs-5">
+            <div class="allergen_value_mobile"><%= get_precip(@data) %></div>
           </div>
         </div>
         <div id="collapsePrecip" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingPrecip">
           <div class="panel-body" style="padding-top: 0;">
             <% get_pollen_detail("Precip").each do |d| %>
-              <h5 style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+              <h5 style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 12px; color: #989898;">
                 <%= d[0] %>
               </h5>
-              <p style="font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 14px; color: #989898;">
+              <p style="font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 12px; color: #989898;">
                 <%= d[1] %>
               </p>
             <% end %>
@@ -91,16 +98,16 @@
   <h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;">Other Forecasts</h5>
   <% get_other_forecasts(@data).each do |f| %>
         <div class="row" style="padding: 15px 10px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;">
-          <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+          <div class="col-xs-7 allergen_name_mobile">
             <div style=""><%= f[0] %></div>
           </div>
-          <div class="col-lg-4">
-            <div style="float: right; width: 16px; height: 16px; border-radius: 8px; background-color: #<%= get_quality_color(f[1]) %>; margin-top: 2px;"></div>
-            <div style="float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= f[1] %></div>
+          <div class="col-xs-5">
+            <div class="allergen_status_mobile" style="background-color: #<%= get_quality_color(f[1]) %>; margin-top: 2px;"></div>
+            <div class="allergen_value_mobile"><%= f[1] %></div>
           </div>
         </div>    
   <% end %>
   <div class="row" style="text-align: right; padding: 15px 20px; border-top-style: solid; border-top-width: 0.5px; border-top-color: #eee;font-family: 'Open Sans', sans-serif; font-weight: 400; font-size: 12px; color: #989898;">
     Data from AccuWeather
-  </div> 
+  </div>   
 </div>

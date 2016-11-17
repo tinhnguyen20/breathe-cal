@@ -88,9 +88,15 @@ var marker = new google.maps.Marker({
   });
 <% end %>
 var offset = '-' + parseInt($('#detail-box').parent().css('width')) + 'px'
+<% if mobile_device? %>
+$("#detail-box").html("<%= j render 'breathe/detail.mobile' %>");
+$("#fox-box").html("<%= j render 'breathe/fox_box.mobile' %>");
+$("#weather-box").html("<%= j render 'breathe/weather_box.mobile' %>");
+<% else %>
 $("#detail-box").html("<%= j render 'breathe/detail.html' %>");
 $("#fox-box").html("<%= j render 'breathe/fox_box.html' %>");
 $("#weather-box").html("<%= j render 'breathe/weather_box.html' %>");
+<% end %>
 
 $("#list-box").animate
         ({
