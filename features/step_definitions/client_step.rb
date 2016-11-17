@@ -48,6 +48,11 @@ When /^(?:|I )press the icon "([^"]*)"$/ do |icon|
   find('img.gmail_icon').click
 end
 
-Given /I successfully authenticated with Google as "([^"]*)"$/ do |name|
+Given /^(?:|I )successfully authenticated with Google as "([^"]*)"$/ do |name|
   visit auth_test_path(:name => name, :test_check => true)
 end
+
+Given /^(?:|I )am logged in as "([^"]*)"$/ do |name|
+  visit auth_test_path(:name => name, :test_check => true)
+end 
+
