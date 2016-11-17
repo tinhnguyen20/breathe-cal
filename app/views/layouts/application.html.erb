@@ -10,8 +10,11 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
   </head>
   <body style="height: 100%; overflow: hidden;">
+    
+    <div>
     <%= yield %>
-
+    </div>
+    
   </body>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBmaDelXZ3CEmbx0mFQ3Tnk_lYfAiMNXM&libraries=places&callback=initAutocomplete"></script>
     <!--<%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>-->
