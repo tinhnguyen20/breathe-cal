@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   get 'auth/:provider/callback', to: "sessions#create"
   
-  get 'authentication_test/:test_check' => "sessions#create"
+  get 'authentication_test/:name' => "sessions#create", as: 'auth_test'
   
   get 'auth/failure', to: redirect('/')
 
