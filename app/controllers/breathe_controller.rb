@@ -1,6 +1,5 @@
 require 'date'
 class BreatheController < ApplicationController
-    
   def index
     # session.clear
     # @users = User.all
@@ -13,7 +12,7 @@ class BreatheController < ApplicationController
       if session[:cities].length > 5
         session[:cities] = session[:cities][session[:cities].length - 5, session[:cities].length - 1]
       end
-      @cities = session[:cities].reverse
+      @cities = session[:cities]
     else
       @cities = []
       session[:cities] = []

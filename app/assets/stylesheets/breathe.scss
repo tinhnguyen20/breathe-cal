@@ -70,9 +70,31 @@ html, body {
 }
 
 .breathe_icon {
-   width:80px;
-   height:30px;
+    position: absolute;
+    left: 12px;
+    width: 110px;
+    top: 8px;
 }
+
+// .image_tag_mobile {
+//   position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;
+// }
+// .allergen_name_mobile {
+//   font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 12px; color: #989898;
+// }
+// .allergen_status_mobile {
+//   float: right; width: 14px; height: 14px; border-radius: 7px;
+// }
+// .allergen_value_mobile {
+//   float: right; margin-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 12px; color: #989898;
+// }
+// #left-col {
+//     background-color: #FFFFFF;
+//     box-shadow: 2px 2px 2px rgba(0,0,0,0.09), 0 2px 0 rgba(0,0,0,0.1);
+  
+//   width:80px;
+//   height:30px;
+// }
 
 .gmail_icon {
   width: 40px;
