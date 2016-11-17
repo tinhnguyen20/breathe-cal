@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post '/city_data' => 'cities#city_data'
   get '/cached_city_data' => 'cities#cached_city_data'
   get '/city_data_back' => 'cities#city_data_back'
+  post '/markers' => 'markers#create'
+  get '/markers' => 'markers#show'
   resources :cities, :clients
   
   
