@@ -5,10 +5,10 @@
     </div>
     <ul class="navbar navbar-nav navbar-right">
       <% if current_client %>
-        Signed in as <strong><%= current_client.name %></strong>!
-        <%= link_to "Sign out", signout_path, id: "sign_out", class:"signout_link" %>
+        <strong><%=current_client.name %></strong>!
+        <%= link_to 'Sign Out', signout_path, id: "sign_out", class:"signout_link" %>
       <% else %>
-        <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
+        <%= link_to image_tag('gmail_logo_2.png' , class:'gmail_icon'), "/auth/google_oauth2", id: "sign_in" %>
       <% end %>
     </ul>
     
