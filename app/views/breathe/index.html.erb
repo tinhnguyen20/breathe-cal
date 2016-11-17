@@ -3,6 +3,15 @@
     <div class="navbar-header navbar-brand" >
       <%= image_tag("bcal.jpg", class:"breathe_icon") %>
     </div>
+    <ul class="navbar navbar-nav navbar-right">
+      <% if current_client %>
+        <strong><%=current_client.name %></strong>!
+        <%= link_to 'Sign Out', signout_path, id: "sign_out", class:"signout_link" %>
+      <% else %>
+        <%= link_to image_tag('google_plus.png' , class:'gmail_icon'), "/auth/google_oauth2", id: "sign_in" %>
+      <% end %>
+    </ul>
+    
   </div>
 </nav>
 

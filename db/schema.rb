@@ -30,8 +30,12 @@ ActiveRecord::Schema.define(version: 20161117042638) do
     t.string   "name"
     t.string   "email"
     t.text     "searches"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
   end
 
   create_table "markers", force: :cascade do |t|
@@ -40,6 +44,14 @@ ActiveRecord::Schema.define(version: 20161117042638) do
     t.boolean  "dog"
     t.boolean  "cat"
     t.boolean  "mold"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

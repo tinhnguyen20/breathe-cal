@@ -8,8 +8,22 @@ Rails.application.routes.draw do
   post '/city_data' => 'cities#city_data'
   get '/cached_city_data' => 'cities#cached_city_data'
   get '/city_data_back' => 'cities#city_data_back'
+
+  
+  get 'auth/:provider/callback', to: "sessions#create"
+  
+  get 'authentication_test/:name' => "sessions#create", as: 'auth_test'
+  
+  get 'auth/failure', to: redirect('/')
+
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
+  resources :sessions, only: [:create, :destroy]
+  
+
   post '/markers' => 'markers#create'
   get '/markers' => 'markers#show'
+  
   resources :cities, :clients
   
   
