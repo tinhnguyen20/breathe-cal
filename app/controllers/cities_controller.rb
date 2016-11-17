@@ -46,6 +46,7 @@ class CitiesController < ApplicationController
       # end
       # puts "***************************"
       @data = [city.name, city.daily_data]
+      print @data 
       unless a_in_b_as_c?(city.name, session[:cities], "name")
         session[:cities] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
       end
@@ -66,31 +67,13 @@ class CitiesController < ApplicationController
       else
         @cities = []
         session[:cities] = []
-      
+      end
       respond_to do |format|
         format.js {
           render :template => "cities/city_data_back.js.erb"
         }
       end      
     end
-    
-    def favorite_city
-      if session[:cities]
-          if session[:cities].length > 5
-            session[:cities] = session[:cities][session[:cities].length - 5, session[:cities].length - 1]
-          end 
-          @cities = session[:cities].reverse
-      else
-          @cities = []
-          session[:cities] = []
-      end
-        respond_to do |format|
-          format.js {
-            render :template => "cities/city_data_back.js.erb"
-          }
-        end      
-    end
-      
     
     
     
@@ -108,6 +91,11 @@ class CitiesController < ApplicationController
         format.html {redirect_to city_path id: city.id}
         format.json {render :json => city.daily_data.to_json}
       end
+    end
+    
+    def favorite_city
+      city_name = params[:city_id][0]
+
     end
   
   
@@ -134,4 +122,5 @@ class CitiesController < ApplicationController
       d5 = forecasts[4]["AirAndPollen"]
       @forecasts = [d1,d2,d3,d4,d5]
     end
-  end
+  
+end
