@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-    after_filter:database_cleanup
+    # after_filter:database_cleanup
     
     def create 
         test_check = params[:test_check]
