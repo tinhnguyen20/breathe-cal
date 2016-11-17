@@ -1,0 +1,1 @@
+ As an allergy sufferer with a user account, in order to further customize my experience, I should be able to favorite cities when I search, and be able to see these results in a view. 
