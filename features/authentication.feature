@@ -22,10 +22,14 @@ Scenario: If I input legitimate google credentials I should be taken to the home
   And I should not see "Some Guy"
   And I should see the button "Sign Out"
   
-# @javascript
-# Scenario: As a logged in user I should be able to logout when I press the sign out link
-#   Given I am logged in as "James Jones"
-#   When I click 
+@javascript
+Scenario: As a logged in user I should be able to logout when I press the sign out link
+  Given I am logged in as "James Jones"
+  And I am on the landing page
+  When I follow "Sign Out"
+  Then I should be on the landing page
+  And I should not see "James Jones"
+  And I should see an icon "google_plus"
 
 # @javascript
 # Scenario: On the sign-up page I should see email, password, password confirmation fields and a sign-up button
