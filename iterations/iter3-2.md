@@ -41,3 +41,5 @@ Feature: Crowd_Sourcing
   As an allergy sufferer, in order to personalize my experience with the application, 
         
     I should be able to create/sign-in to my personal account (finished but only with google)
+    
+ As an allergy sufferer with a user account, in order to further customize my experience, I should be able to favorite cities when I search, and be able to see these results in a view.
