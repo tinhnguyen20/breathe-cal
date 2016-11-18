@@ -1,4 +1,5 @@
 class Client < ActiveRecord::Base
+    has_many :cities
     serialize :searches, JSON
     
     
