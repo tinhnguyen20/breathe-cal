@@ -2,6 +2,7 @@ class Client < ActiveRecord::Base
     has_many :cities
     serialize :searches, JSON
     
+    
     def self.from_omniauth(auth)
         where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |client|
             client.provider = auth.provider

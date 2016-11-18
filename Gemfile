@@ -31,7 +31,7 @@ gem 'httparty'
 
 gem 'geocoder'
 gem 'gmaps4rails'
-gem 'phantomjs'
+gem 'phantomjs', '1.9.8'
 gem 'poltergeist'
 gem 'selenium-webdriver'
 

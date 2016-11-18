@@ -4,14 +4,14 @@ Feature: Locations Details
       
 Background: 
 
-@javascript
-Scenario: I should be able to click on an allergen and key main points about allergen
-    Given I am on the landing page
-    And my location is set to "Berkeley"
-	And I press on the text "Grass"
-	Then I should see "What it is"
-	Then I should see "What to watch out for"
-	Then I should see "What to do"
+# @javascript
+# Scenario: I should be able to click on an allergen and key main points about allergen
+#     Given I am on the landing page
+#     And my location is set to "Berkeley"
+# 	And I press on the text "Grass"
+# 	Then I should see "What it is"
+# 	Then I should see "What to watch out for"
+# 	Then I should see "What to do"
 
 @javascript
 Scenario: I should be able to click on an allergen and see more information about Grass
