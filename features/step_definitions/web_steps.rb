@@ -84,6 +84,11 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
+When /^(?:|I )press on the text "([^"]*)"$/ do |text|
+  find("#heading" + text).click
+end
+
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
@@ -140,6 +145,7 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
     assert page.has_content?(text)
   end
 end
+
 
 Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
   regexp = Regexp.new(regexp)
@@ -324,6 +330,7 @@ And(/^I should see an icon "(.+)"$/) do |image|
   page.should have_xpath("//img[contains(@src, \"#{image.split('-')[0]}\")]")
 end
 
+
 And(/^I should see a weather icon inside/) do 
   page.should have_xpath("//img[contains(@src, \"#{"-s".split('-')[0]}\")]")
 end
@@ -355,3 +362,4 @@ Then /^(?:|I )should see the text on the side "([^"]*)"$/ do |text|
     assert page.has_content?(text)
   end
 end
+

@@ -46,7 +46,6 @@ class CitiesController < ApplicationController
       # end
       # puts "***************************"
       @data = [city.name, city.daily_data]
-      print @data 
       unless a_in_b_as_c?(city.name, session[:cities], "name")
         session[:cities] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
       end
@@ -59,6 +58,7 @@ class CitiesController < ApplicationController
     end
     
     def city_data_back
+      @text = "Recent Searches"
       if session[:cities]
         if session[:cities].length > 5
           session[:cities] = session[:cities][session[:cities].length - 5, session[:cities].length - 1]
@@ -74,6 +74,48 @@ class CitiesController < ApplicationController
         }
       end      
     end
+    
+    def display_favorite_cities
+      @text = "Favorite Cities"
+      @cities = session[:favorites]
+       respond_to do |format|
+        format.js {
+          render :template => "cities/city_data_back.js.erb"
+        }
+        end
+    end
+    
+    def favorite_city
+      city = City.find_by(name: params[:name])
+      if session[:client_id]
+        client = Client.find_by(session[:client_id])
+        if session[:favorites]
+          unless a_in_b_as_c?(city.name, session[:favorites], "name")
+            session[:favorites] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
+            client.cities << city
+            flash.now[:notice] = "Added " + params[:name] + " to Favorite Cities!"
+          else
+            flash.now[:notice] = params[:name] + " is already one of your favorite cities!"
+          end
+        else
+          session[:favorites] = []
+          session[:favorites] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
+          client.cities << cities
+          flash.now[:notice] = "Added " + params[:name] + " to Favorite Cities!"
+        end
+      else
+        #need to figure out how to redirect to google oauth page
+        flash.now[:notice] = "You must be logged in order to favorite a city!"
+      end
+      @data = [city.name, city.daily_data]
+      respond_to do |format|
+        format.js {
+          render :template => "cities/city_data.js.erb"
+        }
+        end
+    end
+      
+
     
     
     
@@ -91,19 +133,6 @@ class CitiesController < ApplicationController
         format.html {redirect_to city_path id: city.id}
         format.json {render :json => city.daily_data.to_json}
       end
-    end
-    
-    def favorite_city
-      city_name = params[:city_id][0]
-      city = City.find_by(name: params[:name])
-      current_user = session[:client_id]
-      
-      #how do I find the right user? 
-      
-      
-
-      
-      
     end
   
   

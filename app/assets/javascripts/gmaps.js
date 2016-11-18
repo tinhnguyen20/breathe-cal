@@ -77,7 +77,7 @@ function initAutocomplete() {
         url: "city_data",
         data: JSON.stringify({geo: place.geometry.location, name: place.name}),
         success: function(data){
-          // $("#city-info").text(JSON.stringify(data));
+          $("#city-info").text(JSON.stringify(data));
           console.log("hello");
           // console.log(JSON.stringify(data));
         }
@@ -105,8 +105,103 @@ function initAutocomplete() {
     });
     map.fitBounds(bounds);
   });
+  
+  var canMark = false;
+  var markerCount = 0;
+  
+  var fetchedMarkers = []
+  
+  $("#breathe").click(function(){
+    var bounds = map.getBounds();
+    var NECorner = bounds.getNorthEast();
+    var SWCorner = bounds.getSouthWest();
+    $.ajax({
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
+      url: "markers",
+      data: JSON.stringify({uplat:NECorner.lat(),downlat:SWCorner.lat(),rightlong:NECorner.lng(),leftlong:SWCorner.lng()}),
+      success: function(data){
+        fetchedMarkers.push(1)
+        console.log(data)
+      },
+      dataType: "json"
+    })
+  
+  })
+  
+  
+  $("#marker-cta").click(function(){
+    canMark = true;
+    $("#somegarbage").show();
+  })
+  
+  $("#marker-cancel").click(function(){
+    canMark = false;
+    markerCount = 0;
+    for(i=0;i<uncommittedMarkers.length;i++){
+      uncommittedMarkers[i].setMap(null);
+    }
+    uncommittedMarkers = [];
+    
+    $("#somegarbage").hide()
+  })
+  var markers = [];
+  var uncommittedMarkers = [];
+  
+  google.maps.event.addListener(map, 'click', function(event) {
+    if (markerCount < 1 && canMark){
+      placeMarker(event.latLng);  
+      markerCount+=1;
+    }
+  })
+  
+  // thats pretty coooool
+  
+  $("#marker-submit").click(function(){
+    canMark = false;
+    markerCount = 0;
+    for(i=0;i<uncommittedMarkers.length;i++){
+      
+      markers.push(uncommittedMarkers[i]);
+      markers[i].draggable = false;
+
+      $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "markers",
+        data: JSON.stringify({marker: {lat: markers[i].position.lat(), 
+        lng:markers[i].position.lng(),
+        cat: true, dog: true, mold: true}}),
+        success: function(data){
+          console.log("successful save?")
+        }
+        // basically grab the data from XYZ. and yea. 
+        // post to the marker?? 
+      })
+
+    }
+    uncommittedMarkers = [];
+    // on submit, check XYZ
+    //
+
+    $("#somegarbage").hide();
+    
+  })
+  
+  
+  function placeMarker(location) {
+    var marker = new google.maps.Marker({
+      position: location,
+      map: map,
+      draggable: true,
+      title: "test",
+    })
+    uncommittedMarkers.push(marker)
+  }
+  
 }
 
 $(document).ready(initAutocomplete);
 $(document).on('page:load', initAutocomplete);
 $(document).on('page:change', initAutocomplete);
+

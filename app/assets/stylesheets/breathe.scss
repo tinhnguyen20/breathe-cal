@@ -38,15 +38,35 @@ html, body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-
+#alert {
+  position:relative;
+  left:-29px;
+  
+}
 #left {
   float:left;
   overflow:hidden;
+  position:relative;
+  top:-5px;
+  left:-10px;
+}
+
+#center {
+  float:right;
+  overflow:hidden;
+  position:relative;
+  left:-110px;
+  top:-5px;
+
 }
 
 #right {
   float:right;
   overflow:hidden;
+  position:relative;
+  top:-5px;
+
+
 }
 #pac-input {
   background-color: #fff;
