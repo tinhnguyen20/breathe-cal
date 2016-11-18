@@ -1,3 +1,21 @@
+<<<<<<< HEAD
+# Feature: client searches 
+#     As an allergy sufferer with 
+#     in order to personalize my experience on the application, 
+#     I should be able to sign in with an account
+    
+# @javascript
+# Scenario: I should see a sign-up and a sign-in button on the landing page
+#   Given I am on the landing page
+#   Then I should see the button "Sign Up"
+#   And I should see the button "Sign In"
+  
+# @javascript
+# Scenario: If I click Sign-Up then I should be redirected to sign-up page
+#   Given I am on the landing page
+#   When I press "Sign-Up" button
+#   Then I should be on the sign_up page
+=======
 Feature: authentication
     As an allergy sufferer
     in order to personalize my experience with the application, 
@@ -13,6 +31,7 @@ Scenario: If I click on the google plus icon I should
   Given I am on the landing page
   When I press the icon "google_plus"
   # Then I should be taken to the google authentication page
+>>>>>>> 99c1bf3abadf4242d5a62206b2f464e41b983bfd
 
 @javascript
 Scenario: If I input legitimate google credentials I should be taken to the homepage as a user

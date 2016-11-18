@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+ As an allergy sufferer with a user account, in order to further customize my experience, I should be able to favorite cities when I search, and be able to see these results in a view. 
+=======
 Feature: Locations Details 
       As an allergy sufferer, i want to know more information about
       the allergen and what each level actually stands for.
@@ -43,3 +46,4 @@ Feature: Crowd_Sourcing
     I should be able to create/sign-in to my personal account (finished but only with google)
     
  As an allergy sufferer with a user account, in order to further customize my experience, I should be able to favorite cities when I search, and be able to see these results in a view.
+>>>>>>> 06f5e86980de3303753d91953e397fec7af6c767

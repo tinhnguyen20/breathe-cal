@@ -1,4 +1,5 @@
 class City < ActiveRecord::Base
+  belongs_to :client
   serialize :daily_data, JSON
   
   def self.get_api_key(i)
