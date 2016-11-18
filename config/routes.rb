@@ -9,8 +9,9 @@ Rails.application.routes.draw do
   get '/cached_city_data' => 'cities#cached_city_data'
   get '/city_data_back' => 'cities#city_data_back'
   get '/favorite_city' => 'cities#favorite_city'
+  get '/display_favorite_cities' => 'cities#display_favorite_cities'
   
-  get 'auth/:provider/callback', to: "sessions#create"\
+  get 'auth/:provider/callback', to: "sessions#create"
   
   get 'auth/failure', to: redirect('/')
 
@@ -18,6 +19,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   
+  post '/markers' => 'markers#create'
+  get '/markers' => 'markers#show'
   resources :cities, :clients
   
   
