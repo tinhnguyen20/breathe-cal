@@ -21,9 +21,11 @@ As an allergy sufferer, i want to notice the branding
       
       I should be able to see the allergn details of the page (finished)
       
-
+As an allergy sufferer with a user account, in order to further customize my experience, I should be able to favorite cities when I search, and be able to see these results in a view. (finished)
+  
+      
 As an allergy sufferer , in order to check allergens on the go, the application should have another view for mobile. 
- 
+
       Finished but unable to do testing because of driver. 
       
 As an allergy sufferer, in order to personalize my experience with the application, 
@@ -42,4 +44,7 @@ Feature: Crowd_Sourcing
   - still to do -> authorization of placing a marker for authenticated users.
   - this feature was a lot larger and more complex than expected and probably could have been split
 
-As an allergy sufferer with a user account, in order to further customize my experience, I should be able to favorite cities when I search, and be able to see these results in a view.
+  As an allergy sufferer, in order to personalize my experience with the application, 
+        
+    I should be able to create/sign-in to my personal account (finished but only with google)
+    
