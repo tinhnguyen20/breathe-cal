@@ -1,26 +1,23 @@
-# Feature: crowd sourcing 
-#   As an allergy sufferer with a user account
-#   in order to provide other sufferers with more granular allergen data, 
-#   I should be able to place a marker on the map that provides information about a place.
+Feature: crowd sourcing 
+  As an allergy sufferer with a user account
+  in order to provide other sufferers with more granular allergen data, 
+  I should be able to place a marker on the map that provides information about a place.
 
-# Background:
-#   Given I am on the landing page
-#   And I am logged in
+Background:
+  Given I am on the landing page
 
-# @javascript  
-# Scenario: If I click the add marker CTA I can choose to add a marker to my current location.
-#   Given I click on "Add an Allergy Warning to the Map"
-#   Then I should see the "Use My Current Location" option
-#   And I should see the "Search for a Place to add an Allergy Warning" option
-#   Given I click "Use My Current Location"
-#   Then I should see a list of allergens to check off.
-#   Given that I check off "Cats"
-#   And I press "Add My Marker"
-#   Then I should see a marker at "My Current Location"
-#   Given that I click on that marker
-#   Then I should see "Cats" listed as an allergen
-#   Given that I search for somewhere far away from my current location
-#   Then I should not see the marker I added
+@javascript  
+Scenario: If I click the add marker CTA I can choose to add a marker to a place on the map.
+  Given I touch the add marker CTA
+  And I click on the map
+  # Then I should see "Cats Here" when it loads
+  # And I should see "Dogs Here" when it loads
+  # And I should see "Mold Here" when it loads
+  # Then I check "Cats Here" 
+  # And I press "Submit"
+  # Then I should see "cat" when it loads
+  # And I should see "dog" when it loads
+  # And I should see "mold" when it loads
 
 
 # @javascript
