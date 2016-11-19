@@ -31,5 +31,3 @@ Scenario: As a logged in user I should be able to logout when I press the sign o
   And I should not see "James Jones"
   And I should see an icon "google_plus"
   
-  
-  
