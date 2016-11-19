@@ -2,19 +2,20 @@ class MarkersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    Marker.create!(marker_params)
-    render :nothing => true
+    marker = Marker.create!(marker_params)
+    puts marker
+    render :json => marker
     #i assume i get some JSON from the post 
   end
   
   def show
-
-    ul = params[:uplat]
-    dl = params[:downlat]
-    rl = params[:rightlong]
-    ll = params[:leftlong]
-    a = Marker.where("lng < ? ", rl).where("lat < ?", ul).where("lng > ?", ll).where("lat > ? ", dl).limit(100).as_json
-    render :json => a
+    puts bound_params
+    up = bound_params[:uplat]
+    down = bound_params[:downlat]
+    left = bound_params[:leftlong]
+    right = bound_params[:rightlong]
+    markers = Marker.find_all_within_bounds(up,down,left,right)
+    render :json => markers
   end
   
   private 

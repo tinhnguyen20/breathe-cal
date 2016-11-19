@@ -33,13 +33,10 @@ I should be able to create/sign-in to my personal account (finished but only wit
       
 
 Feature: Crowd_Sourcing
-  Unfinished - currently any user can create a marker and assign attriutes to them.
-  the markers are saved to a database. running into a minor issue w/ lazy loading and getting
-  markers efficiently. 
-  A user can - add a marker to the map
-  A user can drag the marker around to place the marker more precisely
-  A user can check off a precurated list of allergens that are saved w/ a marker
-  - still to do -> authorization of placing a marker for authenticated users.
-  - this feature was a lot larger and more complex than expected and probably could have been split
+  MVP exists- users on the website can place a marker, check off relevant allergens, and submit them to the database
+    A user can also show all markers in an array by clicking on the lung icon.
+    to make this feature better, automatic marker population when the map moves/loads should be added.
+    Linking markers to users with a has many relation is also on the table.
+    Markers should also only be placeable by an authenticated/authorized user. (to do)
 
 As an allergy sufferer with a user account, in order to further customize my experience, I should be able to favorite cities when I search, and be able to see these results in a view.
