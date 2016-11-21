@@ -5,6 +5,7 @@
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+var fetchedMarkers = [];
 
 function initAutocomplete() {
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -109,85 +110,23 @@ function initAutocomplete() {
   var canMark = false;
   var markerCount = 0;
   
-  var fetchedMarkers = []
-  
-  $("#breathe").click(function(){
-    var bounds = map.getBounds();
-    var NECorner = bounds.getNorthEast();
-    var SWCorner = bounds.getSouthWest();
-    $.ajax({
-      type: "GET",
-      contentType: "application/json; charset=utf-8",
-      url: "markers",
-      data: JSON.stringify({uplat:NECorner.lat(),downlat:SWCorner.lat(),rightlong:NECorner.lng(),leftlong:SWCorner.lng()}),
-      success: function(data){
-        fetchedMarkers.push(1)
-        console.log(data)
-      },
-      dataType: "json"
-    })
-  
-  })
+  var markers = [];
+  var uncommittedMarker;
   
   
+  // allow user to put down a marker
   $("#marker-cta").click(function(){
     canMark = true;
-    $("#somegarbage").show();
   })
-  
-  $("#marker-cancel").click(function(){
-    canMark = false;
-    markerCount = 0;
-    for(i=0;i<uncommittedMarkers.length;i++){
-      uncommittedMarkers[i].setMap(null);
-    }
-    uncommittedMarkers = [];
-    
-    $("#somegarbage").hide()
-  })
-  var markers = [];
-  var uncommittedMarkers = [];
-  
+
   google.maps.event.addListener(map, 'click', function(event) {
-    if (markerCount < 1 && canMark){
+    if (canMark){
       placeMarker(event.latLng);  
-      markerCount+=1;
+      canMark = false;
     }
   })
   
-  // thats pretty coooool
-  
-  $("#marker-submit").click(function(){
-    canMark = false;
-    markerCount = 0;
-    for(i=0;i<uncommittedMarkers.length;i++){
-      
-      markers.push(uncommittedMarkers[i]);
-      markers[i].draggable = false;
-
-      $.ajax({
-        type: "POST",
-        contentType: "application/json; charset=utf-8",
-        url: "markers",
-        data: JSON.stringify({marker: {lat: markers[i].position.lat(), 
-        lng:markers[i].position.lng(),
-        cat: true, dog: true, mold: true}}),
-        success: function(data){
-          console.log("successful save?")
-        }
-        // basically grab the data from XYZ. and yea. 
-        // post to the marker?? 
-      })
-
-    }
-    uncommittedMarkers = [];
-    // on submit, check XYZ
-    //
-
-    $("#somegarbage").hide();
-    
-  })
-  
+  var recentMarker;
   
   function placeMarker(location) {
     var marker = new google.maps.Marker({
@@ -195,9 +134,107 @@ function initAutocomplete() {
       map: map,
       draggable: true,
       title: "test",
+      custom: "cat",
+      custom2: "dog"
+      
     })
-    uncommittedMarkers.push(marker)
+    uncommittedMarker = marker;
+    
+    var contentString = $(
+      "<form id='markerForm' action='markers' method='POST'>"+
+      "<input type = 'checkbox' name='cat' value='true'> Cats Here <br>"+
+      "<input type = 'checkbox' name='dog' value='true'> Dogs Here <br>"+
+      "<input type = 'checkbox' name='mold' value='true'> Mold Here <br>"+
+      "<input type='submit' value='Submit'>"+
+      "</form>"
+    );
+    
+    var infowindow = new google.maps.InfoWindow();
+    infowindow.open(map,marker);
+    infowindow.setContent(contentString[0]);
+    marker.infowindow = infowindow;
+    google.maps.event.addListener(marker, 'click', function(){
+      marker.infowindow.open(map,marker);
+    });
+    
+    recentMarker = marker;
+    
+    $(document).on('submit', '#markerForm', function(e){
+      e.preventDefault();
+      infowindow.close();
+      var postData = $(this).serializeArray();
+      postData.push({name: "lat", value: location.lat()});
+      postData.push({name: "lng", value: location.lng()});
+      var convData = {};
+      $(postData).each(function(idnex,obj){
+        convData[obj.name] = obj.value;
+      })
+      
+      $.ajax({
+        type: "POST",
+        contentType: "application/json; charset=utf-8",
+        url: "markers",
+        data: JSON.stringify({marker: convData}),
+        success: function(d){
+          
+          var newContent = $("<div>"+
+                              "cat " + d.cat + 
+                              "<br> dog " + d.dog +
+                              "<br> mold " + d.mold + "</div>");
+          // marker.infowindow = new google.maps.InfoWindow();
+          // marker.infowindow.setContent(newContent[0]);
+          recentMarker.infowindow.setContent(newContent[0]);
+          recentMarker.infowindow.open(map,recentMarker);
+          recentMarker.draggable = false;
+          // get back the marker info. rebind the infowindow for this marker?
+        }
+      })
+      return false;
+    });
   }
+  
+  $("#breathe").unbind('click').bind('click', function(){
+    var bounds = map.getBounds();
+    var NECorner = bounds.getNorthEast();
+    var SWCorner = bounds.getSouthWest();
+    $.ajax({
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
+      url: "markers",
+      data: {bounds :{uplat:NECorner.lat(),downlat:SWCorner.lat(),rightlong:NECorner.lng(),leftlong:SWCorner.lng()}},
+      success: function(data){
+        for(i=0;i<data.length; i++){
+          var location = {};
+          location.lat = parseFloat(data[i].lat);
+          location.lng = parseFloat(data[i].lng);
+          var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                draggable: false,
+                title: "test",
+                custom: "cat",
+                custom2: "dog"
+                });
+          var newContent = $("<div>"+
+                    "cat " + data[i].cat + 
+                    "<br> dog " + data[i].dog +
+                    "<br> mold " + data[i].mold + "</div>");
+          marker.info = new google.maps.InfoWindow();
+          marker.info.setContent(newContent[0]);
+          google.maps.event.addListener(marker, 'click', function(){
+            this.info.open(map, this);
+          });
+        }
+
+        
+      }
+    })
+  
+  })
+
+  
+  
+
   
 }
 
