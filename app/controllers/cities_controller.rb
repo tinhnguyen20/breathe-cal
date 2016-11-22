@@ -76,6 +76,7 @@ class CitiesController < ApplicationController
     end
     
     def display_favorite_cities
+      # byebug
       @text = "Favorite Cities"
       @cities = session[:favorites]
        respond_to do |format|
@@ -86,6 +87,7 @@ class CitiesController < ApplicationController
     end
     
     def favorite_city
+      # byebug
       city = City.find_by(name: params[:name])
       if session[:client_id]
         client = Client.find_by(session[:client_id])
@@ -100,7 +102,7 @@ class CitiesController < ApplicationController
         else
           session[:favorites] = []
           session[:favorites] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
-          client.cities << cities
+          client.cities << city
           flash.now[:notice] = "Added " + params[:name] + " to Favorite Cities!"
         end
       else
