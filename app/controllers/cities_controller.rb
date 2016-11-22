@@ -90,7 +90,7 @@ class CitiesController < ApplicationController
       # byebug
       city = City.find_by(name: params[:name])
       if session[:client_id]
-        client = Client.find_by(session[:client_id])
+        client = Client.find_by(id: session[:client_id])
         if session[:favorites]
           unless a_in_b_as_c?(city.name, session[:favorites], "name")
             session[:favorites] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
