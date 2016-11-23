@@ -1,7 +1,7 @@
-# # Feature: display a list of added cities
-# # 	As an allergy sufferer
-# # 	So that I can keep all my allergy information in one place
-# # 	I want to be able to sign in/up with an account
+# Feature: display a list of added cities
+# 	As an allergy sufferer
+# 	So that I can keep all my allergy information in one place
+# 	I want to be able to sign in/up with an account
 
 # #     Background: 
 # #         Given I am  not signed in
