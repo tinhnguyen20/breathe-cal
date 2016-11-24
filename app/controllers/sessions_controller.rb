@@ -6,6 +6,9 @@ class SessionsController < ApplicationController
         if test_check
             client = Client.new()
             client.name = params[:name]
+            client.provider = 'some provider'
+            client.oauth_token = 'some token'
+            client.oauth_expires_at = Time.at(Time.new(2017, 10, 30))
             client.save!
         else
             client = Client.from_omniauth(env["omniauth.auth"])
