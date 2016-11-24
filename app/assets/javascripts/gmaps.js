@@ -39,8 +39,7 @@ function initAutocomplete() {
   });
 
   var markers = [];
-  // Listen for the event fired when the user selects a prediction and retrieve
-  // more details for that place.
+
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
 
@@ -48,13 +47,11 @@ function initAutocomplete() {
       return;
     }
 
-    // Clear out the old markers.
     markers.forEach(function(marker) {
       marker.setMap(null);
     });
     markers = [];
 
-    // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
     places.forEach(function(place) {
       if (!place.geometry) {
@@ -69,9 +66,6 @@ function initAutocomplete() {
         scaledSize: new google.maps.Size(25, 25)
       };
 
-      // Create a marker for each place.
-      // $("#city-name").text(JSON.stringify(place.geometry.location))
-      // console.log(place);
       $.ajax({
         type: "POST",
         contentType: "application/json; charset=utf-8",
@@ -80,15 +74,10 @@ function initAutocomplete() {
         success: function(data){
           $("#city-info").text(JSON.stringify(data));
           console.log("hello");
-          // console.log(JSON.stringify(data));
         }
         
       });
       
-      
-      // $.getJSON("MYURL.json", function(){
-      //   $("do some stuff here")
-      // });
       markers.push(new google.maps.Marker({
         map: map,
         icon: icon,
@@ -97,7 +86,6 @@ function initAutocomplete() {
       }));
 
       if (place.geometry.viewport) {
-        // Only geocodes have viewport.
         bounds.union(place.geometry.viewport);
       }
       else {
@@ -133,10 +121,6 @@ function initAutocomplete() {
       position: location,
       map: map,
       draggable: true,
-      title: "test",
-      custom: "cat",
-      custom2: "dog"
-      
     })
     uncommittedMarker = marker;
     
@@ -181,12 +165,9 @@ function initAutocomplete() {
                               "cat " + d.cat + 
                               "<br> dog " + d.dog +
                               "<br> mold " + d.mold + "</div>");
-          // marker.infowindow = new google.maps.InfoWindow();
-          // marker.infowindow.setContent(newContent[0]);
           recentMarker.infowindow.setContent(newContent[0]);
           recentMarker.infowindow.open(map,recentMarker);
           recentMarker.draggable = false;
-          // get back the marker info. rebind the infowindow for this marker?
         }
       })
       return false;
@@ -211,9 +192,6 @@ function initAutocomplete() {
                 position: location,
                 map: map,
                 draggable: false,
-                title: "test",
-                custom: "cat",
-                custom2: "dog"
                 });
           var newContent = $("<div>"+
                     "cat " + data[i].cat + 
@@ -225,17 +203,9 @@ function initAutocomplete() {
             this.info.open(map, this);
           });
         }
-
-        
       }
     })
-  
   })
-
-  
-  
-
-  
 }
 
 $(document).ready(initAutocomplete);
