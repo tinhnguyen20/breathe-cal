@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   
   def current_client
-    @current_client ||= Client.find(session[:client_id]) if session[:client_id]
+    @current_client ||= Client.find_by_id(session[:client_id]) if session[:client_id]
   end
 
   private
