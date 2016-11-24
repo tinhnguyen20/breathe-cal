@@ -9,11 +9,6 @@ class CitiesController < ApplicationController
     def new
     end
   
-    # so i need to mimic the create route with a number of param types. 
-    # or do i
-    
-    # ajax POST -> city create route, with certain parameters. 
-    # tell create to respond to some formats... 
     def cached_city_data
       city = City.find_by(name: params[:name])
       city.update_city_data
@@ -26,6 +21,7 @@ class CitiesController < ApplicationController
         }
       end
     end
+    
     def a_in_b_as_c?(a, b, c) # a in b as c
       b.each do |i|
         if i[c] == a
@@ -34,6 +30,7 @@ class CitiesController < ApplicationController
       end
       return false
     end
+    
     def city_data
       if params[:geo]
         latlng = params[:geo]
@@ -41,10 +38,6 @@ class CitiesController < ApplicationController
         city = City.find_by(location_key: loc_key)
       end
       city.update_city_data
-      # File.open("public/temp.json","w") do |f|
-      #   f.write(JSON.pretty_generate(city.daily_data))
-      # end
-      # puts "***************************"
       @data = [city.name, city.daily_data]
       unless a_in_b_as_c?(city.name, session[:cities], "name")
         session[:cities] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
@@ -144,16 +137,6 @@ class CitiesController < ApplicationController
       @city.reload
       daily_data = @city.daily_data
       forecasts = daily_data["DailyForecasts"] 
-    # daily_data is a hash with key: dailyForecasts value: array of 5 day forecast
-    # we want to get "AirAndPollen" key 
-    # value of AirAndPollen -> array of hashes with Name, Value, Category, CategoryValue, 
-    # the first hash in AirAndPollen also has a type.
-      
-      # @day_1["Name"] = forecasts[0]["AirAndPollen"]["Name"]
-      # @day_1["Value"] = forecasts[0]["AirAndPollen"]["Name"]
-      # @day_1["Category"] = forecasts[0]["AirAndPollen"]["Name"]
-      # @day_1[""] = forecasts[0]["AirAndPollen"]["Name"]
-      # @day_1["Name"] = forecasts[0]["AirAndPollen"]["Name"]
       d1 = forecasts[0]["AirAndPollen"]
       d2 = forecasts[1]["AirAndPollen"]
       d3 = forecasts[2]["AirAndPollen"]
