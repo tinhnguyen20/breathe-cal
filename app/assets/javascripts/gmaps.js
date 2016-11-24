@@ -43,7 +43,7 @@ function initAutocomplete() {
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
 
-    if (places.length == 0) {
+    if (places.length === 0) {
       return;
     }
 
@@ -98,7 +98,6 @@ function initAutocomplete() {
   var canMark = false;
   var markerCount = 0;
   
-  var markers = [];
   var uncommittedMarker;
   
   
