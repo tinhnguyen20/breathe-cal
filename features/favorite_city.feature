@@ -38,7 +38,7 @@ Scenario: If a city is favorited, then I should be able to see a list of them.
        Then I should see "Berkeley"
        
 @javascript #sadpath, no cities available
-Scenario: If a city is favorited, then I should be able to see a list of them.
+Scenario: If no cities are favorited, then I should see an empty list.
        Given I successfully authenticated with Google as "Anish Khazane"
        When I go to the landing page 
        And my location is set to "Berkeley"
