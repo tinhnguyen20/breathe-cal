@@ -69,9 +69,12 @@ class CitiesController < ApplicationController
     end
     
     def display_favorite_cities
-      # byebug
-      @text = "Favorite Cities"
       @cities = session[:favorites]
+      if @cities.length > 0
+        @text = "Favorite Cities"
+      else
+        @text = "You currently have no favorite cities!"
+      end
        respond_to do |format|
         format.js {
           render :template => "cities/city_data_back.js.erb"
@@ -80,7 +83,6 @@ class CitiesController < ApplicationController
     end
     
     def favorite_city
-      # byebug
       city = City.find_by(name: params[:name])
       if session[:client_id]
         client = Client.find_by(id: session[:client_id])
@@ -96,7 +98,7 @@ class CitiesController < ApplicationController
           session[:favorites] = []
           session[:favorites] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
           client.cities << city
-          flash.now[:notice] = "Added " + params[:name] + " to Favorite Cities!"
+          flash.now[:notice] = "Added " + params[:name] + " to your list of favorite cities!"
         end
       else
         #need to figure out how to redirect to google oauth page
