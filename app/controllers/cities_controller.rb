@@ -70,7 +70,7 @@ class CitiesController < ApplicationController
     
     def display_favorite_cities
       @cities = session[:favorites]
-      if @cities.length > 0
+      if !@cities.nil? 
         @text = "Favorite Cities"
       else
         @text = "You currently have no favorite cities!"
