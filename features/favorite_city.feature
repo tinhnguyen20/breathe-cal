@@ -6,7 +6,7 @@ Feature: Favorite Locations
 
 #happy path, favoriting a city 
 @javascript 
-Scenario: Once I sign in, I should be able to favorite a city 
+Scenario: Once I sign in, I should be able to favorite cities 
     Given I successfully authenticated with Google as "Anish Khazane"
     When I go to the landing page
     And my location is set to "Berkeley"
