@@ -3,13 +3,11 @@ class MarkersController < ApplicationController
 
   def create
     marker = Marker.create!(marker_params)
-    puts marker
     render :json => marker
     #i assume i get some JSON from the post 
   end
   
   def show
-    puts bound_params
     up = bound_params[:uplat]
     down = bound_params[:downlat]
     left = bound_params[:leftlong]
