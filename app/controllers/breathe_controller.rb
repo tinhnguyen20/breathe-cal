@@ -1,6 +1,11 @@
 require 'date'
 class BreatheController < ApplicationController
   def index
+      url = "http://www.baaqmd.gov/Feeds/AlertRSS.aspx"
+      feed = Feedjira::Feed.fetch_and_parse url
+      entry = feed.entries[0]
+      @welcome_message = feed.title 
+      @alert = entry.summary
     # session.clear
     # @users = User.all
     # @hash = Gmaps4rails.build_markers(@users) do |user, marker|

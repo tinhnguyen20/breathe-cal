@@ -1,4 +1,7 @@
 <nav class="navbar navbar-default" style="margin-bottom: 0;">
+  <div class = "welcome" > <%= "Today's " + @welcome_message + ":" %> 
+    <div id = "spare_alert" > <%= @alert %> </div>
+  </div>
   <div class="container-fluid" style="background-color: white;">
     <div class="navbar-header navbar-brand" >
       <%= image_tag("bcal.jpg", class:"breathe_icon") %>
@@ -42,6 +45,6 @@
   </div>  
   
   <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
-  
+<!--<script src="//nmp.newsgator.com/NGBuzz/buzz.ashx?buzzId=146282&apiToken=C8A8F8F5025D418F8AACB0A7FB2A799A&trkP=6d55b36b-8f3d-4003-b27d-ab20d60a3e6f%2Ceb799aa0-ab4c-4906-9d8f-19aaa62a99eb&trkM=29FA7D07-CEE9-C94B-3CF2-BA83A24ABFAC" type="text/javascript"></script>-->
 </div>
 
