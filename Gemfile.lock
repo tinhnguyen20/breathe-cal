@@ -434,7 +434,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   capybara
-  codeclimate-test-reporter (= 1.0.0.pre.rc2)
+  codeclimate-test-reporter
   coffee-rails (~> 4.1.0)
   cucumber-rails
   cucumber-rails-training-wheels

@@ -4,10 +4,7 @@
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 
 require 'simplecov'
-SimpleCov.start do
-  add_filter "/features/step_definitions/"
-  add_filter "/features/support/"
-end
+SimpleCov.start
 # require "codeclimate-test-reporter"
 # CodeClimate::TestReporter.start
 
