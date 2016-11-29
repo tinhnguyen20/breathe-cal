@@ -7,8 +7,8 @@ script:
   - bundle exec rake db:test:prepare
   - bundle exec rspec
   - bundle exec cucumber
-# after_script:
-#   - bundle exec rake send_to_codeclimate 
+after_script:
+  - bundle exec rake send_to_codeclimate 
 
 addons:
   code_climate:
