@@ -8,6 +8,7 @@ script:
   - bundle exec rspec
   - bundle exec cucumber
 after_script:
+  - bundle exec codeclimate-test-reporter
   - bundle exec rake send_to_codeclimate 
 
 addons:
