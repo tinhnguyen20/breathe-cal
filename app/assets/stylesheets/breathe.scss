@@ -26,6 +26,20 @@ html, body {
   padding: 0;
 }
 
+// font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;
+.welcome {
+  font-family: 'Open Sans', sans-serif; 
+  float:center;
+  position:relative;
+  left:800px;
+  top:30px;
+}
+
+#spare_alert {
+  position:relative;
+  left:130px;
+  font-weight:bold;
+}
 
 .controls {
   margin-top: 10px;
