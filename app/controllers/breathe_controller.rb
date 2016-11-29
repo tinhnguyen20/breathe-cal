@@ -17,6 +17,7 @@ class BreatheController < ApplicationController
       @cities = []
       session[:cities] = []
     end
+    
     Time::DATE_FORMATS[:custom] = lambda { |time| time.strftime("%B #{time.day.ordinalize}, %Y") }
     @dt = (DateTime.now + Rational(-8,24)).to_formatted_s(:custom)
  end

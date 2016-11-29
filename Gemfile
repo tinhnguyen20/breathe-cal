@@ -26,7 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml'
 gem 'figaro'
 gem 'httparty'
-
+gem 'feedjira'
 
 
 gem 'geocoder'
@@ -63,7 +63,7 @@ group :test do
   gem 'database_cleaner' # required by Cucumber
   gem 'factory_girl_rails' # if using FactoryGirl
   gem 'metric_fu'        # collect code metrics
-  gem "codeclimate-test-reporter", "1.0.0.pre.rc2"
+  gem "codeclimate-test-reporter", require: nil
 
 end
 
