@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Client' do
+RSpec.describe Client, type: :model do
     
     describe 'when working with a valid client' do
         before :each do 

@@ -46,12 +46,23 @@ ActiveRecord::Schema.define(version: 20161117071607) do
   create_table "markers", force: :cascade do |t|
     t.string   "lng"
     t.string   "lat"
+    t.string   "title"
     t.boolean  "dog"
     t.boolean  "cat"
     t.boolean  "mold"
+    t.boolean  "bees"
+    t.boolean  "perfume"
+    t.boolean  "oak"
+    t.boolean  "dust"
+    t.boolean  "smoke"
+    t.boolean  "gluten"
+    t.boolean  "peanut"
+    t.integer  "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "markers", ["client_id"], name: "index_markers_on_client_id"
 
   create_table "users", force: :cascade do |t|
     t.float    "latitude"
