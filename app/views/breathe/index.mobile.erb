@@ -18,6 +18,9 @@
   <div class="col-md-8 col-ms-12" style="padding-left: 0; padding-right: 0; z-index: 10; max-height: 40% !important;" id="left-col">
     <input id="pac-input" class="controls" type="text" placeholder="Enter a location" style="width: 50%;">
     <div id="map" style="height: 100%; width: 100%;"></div>
+    <div id="marker-cta" class = "controls" >
+      <%= render 'marker_cta' %>
+    </div>
   </div>
   <div class="col-md-4 col-ms-12" style="padding-left: 0; padding-right: 0; overflow-y: auto; overflow-x: hidden; max-height: 50% !important;" id="right-col">
     <div class="datetime-box" style="padding: 16px; font-size: 14px; font-family: 'Open Sans', sans-serif; height: 52px;">Today is <%= @dt %></div>
