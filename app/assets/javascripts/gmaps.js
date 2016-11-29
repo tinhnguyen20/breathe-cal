@@ -49,7 +49,7 @@ function initAutocomplete() {
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
   
   var markerEnabler = document.getElementById('marker-cta');
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(markerEnabler);
+  map.controls[google.maps.ControlPosition.LEFT_TOP].push(markerEnabler);
 
 
   // Bias the SearchBox results towards current map's viewport.
@@ -145,6 +145,7 @@ function initAutocomplete() {
   // allow user to put down a marker
   $("#marker-cta").click(function(){
     loggedIn();
+    $("#marker-cta span").text("click map to place marker")
   })
 
 
@@ -160,6 +161,7 @@ function initAutocomplete() {
       canMark = false;
       map.setOptions({ draggableCursor :"auto"})
       $("#marker-cta").css("cursor", "pointer")
+      $("#marker-cta span").text("Click here to add an allergen")
     }
   })
   
@@ -168,14 +170,27 @@ function initAutocomplete() {
   function createContentString(data){
     var title = data.title;
     var attributes = ["cat", "bees", "perfume", "oak", "peanut", "gluten", "dog", "dust", "smoke", "mold"];
-    var contentString ="<div>";
-    contentString += "Allergens at " + title + "<br>";
-    for(var i=0; i<attributes.length; i++){
+    leftContentString = "";
+    rightContentString = "";
+    for(var i=0; i<attributes.length/2; i++){
       if (data[attributes[i]]){
-        contentString += attributes[i] + "<br>";  
+        leftContentString += attributes[i] + "<br>";  
       }
     }
-    contentString += "</div>"
+    for(var i=attributes.length/2; i<attributes.length; i++){
+      if (data[attributes[i]]){
+        rightContentString += attributes[i] + "<br>";  
+      }
+    }
+    var contentString ="<div id='wrap'>" + 
+                      "Allergens at " + title + "<br>" +
+                      "<div id='left_col'>" + 
+                      leftContentString + 
+                      "</div>" + 
+                      "<div id='right_col'>" + 
+                      rightContentString +
+                      "</div>" + 
+                      "</div>";
     var content = $(contentString);
     return content
   }
@@ -191,20 +206,26 @@ function initAutocomplete() {
     uncommittedMarker = marker;
     
     var contentString = $(
+      "<div id='wrap'>" + 
       "<form id='markerForm' action='markers' method='POST'>"+
-      "Title <br> <input type='text' name='title'> <br>" + 
+      "Title <input type='text' name='title'> <br>" + 
+      "<div id='left_col'>" + 
       "<input type = 'checkbox' name='cat' value='true'> Cats <br>"+
       "<input type = 'checkbox' name='bees' value='true'> Bees <br>"+
       "<input type = 'checkbox' name='perfume' value='true'> Perfume <br>"+
       "<input type = 'checkbox' name='oak' value='true'> Oak <br>"+
       "<input type = 'checkbox' name='peanut' value='true'> Peanut <br>"+
+      "</div>" +
+      "<div id='right_col'>" + 
       "<input type = 'checkbox' name='gluten' value='true'> Gluten <br>"+
       "<input type = 'checkbox' name='dog' value='true'> Dogs <br>"+
       "<input type = 'checkbox' name='dust' value='true'> Dust <br>"+
       "<input type = 'checkbox' name='smoke' value='true'> Smoke <br>"+
       "<input type = 'checkbox' name='mold' value='true'> Mold <br>"+
+      "</div>" +
       "<input type='submit' value='Submit'>"+
-      "</form>"
+      "</form>" +
+      "</div>"
     );
     
     var infowindow = new google.maps.InfoWindow();

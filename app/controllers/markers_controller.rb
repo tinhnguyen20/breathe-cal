@@ -16,11 +16,11 @@ class MarkersController < ApplicationController
     right = bound_params[:rightlong]
     markers = Marker.find_all_within_bounds(up,down,left,right)
     output = []
-    markers.each do |marker|
-      if marker.client_id == session[:client_id]
-        output << marker 
-      end
-    end
+    # markers.each do |marker|
+    #   if marker.client_id == session[:client_id]
+    #     output << marker 
+    #   end
+    # end
     render :json => output
   end
   
