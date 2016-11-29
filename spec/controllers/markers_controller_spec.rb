@@ -7,6 +7,7 @@ RSpec.describe MarkersController, type: :controller do
       it "creates a new marker" do
         
       end
+    end
   end
   
   describe "get #show" do
