@@ -17,15 +17,16 @@
 
 <div style="height: 100%;">
   <div class="col-md-8 col-ms-12" style="padding-left: 0; padding-right: 0; z-index: 10; height: 100%;" id="left-col">
-    <input id="pac-input" class="controls" type="text" placeholder="Enter a location to learn allergns">
+    <input id="pac-input" class="controls" type="text" placeholder="Enter a location to learn allergens">
     <div id="map" style="height: 100%; width: 100%;"></div>
+    <div id="marker-cta" class = "controls" >
+      <%= render 'marker_cta' %>
+    </div>
   </div>
   <div class="col-md-4 col-ms-12" style="padding-left: 0; padding-right: 0; max-width: 500px;" id="right-col">
     <div class="datetime-box" style="padding: 20px; font-size: 20px; font-family: 'Open Sans', sans-serif; height: 65px;">Today is <%= @dt %></div>
     
-    <div id="marker-cta" style = "height: 120px;">
-      <%= render 'marker_cta' %>
-    </div>
+
     
     <div id="fox-box" style="height: 120px;">
       <%= render 'fox_box' %>

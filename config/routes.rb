@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:create, :destroy]
   
+  get 'authcheck' => "sessions#checklogged"
 
 
   post '/markers' => 'markers#create'
