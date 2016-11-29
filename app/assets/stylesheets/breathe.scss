@@ -26,6 +26,20 @@ html, body {
   padding: 0;
 }
 
+// font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;
+.welcome {
+  font-family: 'Open Sans', sans-serif; 
+  float:center;
+  position:relative;
+  left:800px;
+  top:30px;
+}
+
+#spare_alert {
+  position:relative;
+  left:130px;
+  font-weight:bold;
+}
 
 .controls {
   margin-top: 10px;
@@ -47,7 +61,7 @@ html, body {
   float:left;
   overflow:hidden;
   position:relative;
-  top:-5px;
+  top:-10px;
   left:-10px;
 }
 
@@ -56,7 +70,7 @@ html, body {
   overflow:hidden;
   position:relative;
   left:-110px;
-  top:-5px;
+  top:-9px;
 
 }
 
@@ -64,7 +78,7 @@ html, body {
   float:right;
   overflow:hidden;
   position:relative;
-  top:-5px;
+  top:-9px;
 
 
 }
