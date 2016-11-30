@@ -1,6 +1,10 @@
 <div style="padding: 10px; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: #eee;">
-  <h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;"><%= @text %></h5>
+ <div id = "navigation_cities" > <h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;"> <%= link_to "Recent Searches", city_data_back_path, remote: true %> | <%=link_to "Favorite Cities", display_favorite_cities_path, remote: true %> </h5> </div>
+
 </div>
+
+
+  
 <div style="padding: 0 10px;"> 
   <% if !@cities.nil? and @cities.length > 0 %>
     <% @cities.each do |c| %>
