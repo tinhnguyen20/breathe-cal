@@ -124,14 +124,12 @@ class CitiesController < ApplicationController
 
     
     def create
-      if params[:city]
-        City.get_location_key(params[:city]["zip"],params[:city]["name"],params[:city]["state"],params[:city]["country"])
-        city = City.find_by(params[:location_info])
-      elsif params[:geo]
-        latlng = params[:geo]
-        loc_key = City.get_loc_key(latlng["lat"], latlng["lng"])
-        city = City.find_by(location_key: loc_key)
-      end
+      # if params[:city]
+      #   City.get_location_key(params[:city]["zip"],params[:city]["name"],params[:city]["state"],params[:city]["country"])
+      #   city = City.find_by(params[:location_info])
+      latlng = params[:geo]
+      loc_key = City.get_loc_key(latlng["lat"], latlng["lng"], params[:name])
+      city = City.find_by(location_key: loc_key)
       city.update_city_data
       respond_to do |format|
         format.html {redirect_to city_path id: city.id}

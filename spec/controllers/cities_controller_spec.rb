@@ -29,7 +29,7 @@ RSpec.describe CitiesController, type: :controller do
                 latlng = {"lng" => @city.lng, "lat" => @city.lat}
                 request.session[:cities] = [{"name" => "Berkeley"}]
                 controller.instance_variable_set(:@quality, 'something')
-                get :city_data, name: @city.name, geo: latlng,format: 'js'
+                get :city_data, name: @city.name, geo: latlng, format: 'js'
                 expect(response).to render_template('cities/city_data.js.erb')
             end
         end
@@ -105,6 +105,29 @@ RSpec.describe CitiesController, type: :controller do
             
             it 'no cities have been searched for yet' do
                 get :city_data_back, format: 'js'
+            end
+        end
+        
+        describe '#create' do
+            it 'when lat and long are passed and format is json' do
+                latlng = {"lng" => @city.lng, "lat" => @city.lat}
+                post :create, geo: latlng, name: @city.name, format: 'json'
+                expect(response).to be_success
+            end 
+            
+            it 'when lat and long are passed and format is html' do
+                latlng = {"lng" => @city.lng, "lat" => @city.lat}
+                post :create, geo: latlng, name: @city.name, format: 'html'
+                expect(response).to redirect_to(city_path(id: @city.id))
+            end
+        end
+        
+        describe '#show' do
+            it 'when the data is being passed properly' do
+                @city.daily_data= {"DailyForecasts" => [{"AirAndPollen" => 'fine'}, {"AirAndPollen" => 'fine'}, {"AirAndPollen" => 'fine'}, {"AirAndPollen" => 'fine'}, {"AirAndPollen" => 'fine'}]}
+                @city.save!
+                @city.update_attribute("daily_data", {"DailyForecasts" => [{"AirAndPollen" => 'fine'}, {"AirAndPollen" => 'fine'}, {"AirAndPollen" => 'fine'}, {"AirAndPollen" => 'fine'}, {"AirAndPollen" => 'fine'}]})
+                get :show, id: @city.id
             end
         end
         
