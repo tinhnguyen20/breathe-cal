@@ -1,4 +1,4 @@
-<div id = "alert"  
+<div id = "alert">
 <h5 style="padding-left: 125px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #575757;"> <%= flash[:notice] %> </h5>
 </div>
 <div id = "check" style="padding: 10px 15px;; border-bottom-style: solid; border-bottom-width: 0.5px; border-bottom-color: #eee;">
@@ -8,7 +8,6 @@
     <% else %> 
       <div id = "right"><h5 style="padding-left: 10px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 10px; color: #575757;"><%= link_to "add as a favorite city", favorite_city_path(:name => @data[0]), remote: true, :id => "include" %></h5></div>
     <% end %>
-</div>
 <div id="weather-box">
   <%= render 'breathe/weather_box'%>
 </div>
