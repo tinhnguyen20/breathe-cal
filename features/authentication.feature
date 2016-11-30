@@ -6,12 +6,12 @@ Feature: authentication
 @javascript
 Scenario: I should see a google plus sign-in icon on the landing page
   Given I am on the landing page
-  Then I should see an icon "google_plus"
+  Then I should see the text on the side "Sign in with Google+"
   
 @javascript
 Scenario: If I click on the google plus icon I should  
   Given I am on the landing page
-  When I press the icon "google_plus"
+  When I follow "Sign in with Google+"
   # Then I should be taken to the google authentication page
 
 @javascript
@@ -29,5 +29,5 @@ Scenario: As a logged in user I should be able to logout when I press the sign o
   When I follow "Sign Out"
   Then I should be on the landing page
   And I should not see "James Jones"
-  And I should see an icon "google_plus"
+  And I should see the text on the side "Sign in with Google+"
   
