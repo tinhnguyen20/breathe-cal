@@ -5,6 +5,8 @@ class MarkersController < ApplicationController
     if session[:client_id] != nil 
       marker = Marker.create!(marker_params.merge(:client_id => session[:client_id]))
       render :json => marker
+    else 
+      render :nothing => true
     end
     #i assume i get some JSON from the post 
   end
