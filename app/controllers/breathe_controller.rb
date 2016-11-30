@@ -28,6 +28,7 @@ class BreatheController < ApplicationController
     end
     @cities = @cities.reverse
     
+    @text = "Recent Searches"
     Time::DATE_FORMATS[:custom] = lambda { |time| time.strftime("%B #{time.day.ordinalize}, %Y") }
     @dt = (DateTime.now + Rational(-8,24)).to_formatted_s(:custom)
  end
