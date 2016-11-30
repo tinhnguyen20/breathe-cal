@@ -1,5 +1,7 @@
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_filter "/app/helpers/breathe_helper.rb"
+end
 
 # require './app/models/client'
 
