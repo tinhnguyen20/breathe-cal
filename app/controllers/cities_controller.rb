@@ -40,8 +40,12 @@ class CitiesController < ApplicationController
       city.update_city_data
       @data = [city.name, city.daily_data]
       unless a_in_b_as_c?(city.name, session[:cities], "name")
-        session[:cities] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
+        if (@quality.nil?)
+          @quality = city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"]
+        end
+        session[:cities] << { "name" => city.name, "quality" => @quality }
       end
+    
       respond_to do |format|
         format.js {
           render :template => "cities/city_data.js.erb"
@@ -86,9 +90,14 @@ class CitiesController < ApplicationController
       city = City.find_by(name: params[:name])
       if session[:client_id]
         client = Client.find_by(id: session[:client_id])
+        
+        if (@quality.nil?)
+          @quality = city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"]
+        end
+        
         if session[:favorites]
           unless a_in_b_as_c?(city.name, session[:favorites], "name")
-            session[:favorites] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
+            session[:favorites] << { "name" => city.name, "quality" => @quality }
             client.cities << city
             flash.now[:notice] = "Added " + params[:name] + " to Favorite Cities!"
           else
@@ -96,7 +105,7 @@ class CitiesController < ApplicationController
           end
         else
           session[:favorites] = []
-          session[:favorites] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
+          session[:favorites] << { "name" => city.name, "quality" => @quality }
           client.cities << city
           flash.now[:notice] = "Added " + params[:name] + " to your list of favorite cities!"
         end
