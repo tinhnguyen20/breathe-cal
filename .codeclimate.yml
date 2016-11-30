@@ -24,12 +24,7 @@ engines:
     enabled: true
 ratings:
   paths:
-  - app/controllers/**
-  - app/models/**
-  - app/helpers/application_helper.rb
-  - app/helpers/clients_helper.rb
-  - app/helpers/markers_helper.rb
-  - app/helpers/sessions_helper.rb
+  - app/**
   - Gemfile.lock
   - "**.erb"
   - "**.haml"
@@ -50,5 +45,4 @@ exclude_paths:
 - features/
 - script/
 - spec/
-- vendor/
-- app/helpers/breathe_helper.rb
+- vendor/gi
