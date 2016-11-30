@@ -6,14 +6,11 @@ class City < ActiveRecord::Base
     ["nvdxlfErdFcQssANvU52VQYNj9JauI4z", "IGE0pfTgoL1OGJKvEcnAbbqpmQGjvbpo", "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", "CdE0YANGAu4AsDAReO0e6CZ01RwfFe9a"][i]
   end
   def self.rescue_api(res, i, url, query, iMAX=3)
-    if i == iMAX or res["fault"].nil?
+    if i == iMAX or res.code == 200
       return res
-    end
-    if res["fault"] and res["fault"]["detail"] and res["fault"]["detail"]["errorcode"] == "policies.ratelimit.QuotaViolation"
+    else
       query[:apikey] = City.get_api_key(i + 1)
       return City.rescue_api(HTTParty.get(url, query: query), i + 1, url, query)
-    else
-      return res
     end
   end
   def update_city_data
