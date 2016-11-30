@@ -3,11 +3,7 @@ class City < ActiveRecord::Base
   serialize :daily_data, JSON
   
   def self.get_api_key(i)
-<<<<<<< HEAD
     ["nvdxlfErdFcQssANvU52VQYNj9JauI4z", "IGE0pfTgoL1OGJKvEcnAbbqpmQGjvbpo", "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", "CdE0YANGAu4AsDAReO0e6CZ01RwfFe9a"][i]
-=======
-    ["IGE0pfTgoL1OGJKvEcnAbbqpmQGjvbpo", "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", "CdE0YANGAu4AsDAReO0e6CZ01RwfFe9a"][i]
->>>>>>> 46ffabcc6ba4737a8d1a8c5488fd2d1e60f8685d
   end
   def self.rescue_api(res, i, url, query, iMAX=3)
     if i == iMAX or res["fault"].nil?
