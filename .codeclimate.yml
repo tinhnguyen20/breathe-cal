@@ -24,7 +24,9 @@ engines:
     enabled: true
 ratings:
   paths:
-  - app/**
+  - app/controllers/**
+  - app/models/**
+  - app/helpers/**
   - Gemfile.lock
   - "**.erb"
   - "**.haml"
