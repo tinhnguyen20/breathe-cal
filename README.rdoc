@@ -25,7 +25,7 @@ Intallation
  
  Because of some customizations that were made in the develpoment process, one first has to perform multiple steps in order to be able to run the included testing features
  
- Add the following gems:
+ Make sure the following gems are added to the Gemfile:
      gem 'cucumber-rails', :require => false
      gem 'database_cleaner'
      gem 'rspec-rails'
@@ -33,7 +33,7 @@ Intallation
      gem 'poltergeist'
      gem 'phantomjs', '1.9.8'
      gem 'selenium-webdriver'
-     
+     gem 'omniauth-google-oauth2'
      gem 'gmaps4rails'
      gem 'geocoder'
      
