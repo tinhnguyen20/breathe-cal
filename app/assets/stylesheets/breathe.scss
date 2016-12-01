@@ -80,7 +80,10 @@ html, body {
   position:relative;
   top:-9px;
 
+}
 
+#remove {
+  content: "add as a favorite city";
 }
 #pac-input {
   background-color: #fff;
@@ -121,6 +124,12 @@ html, body {
     left: 12px;
     width: 110px;
     top: 8px;
+}
+
+#navigation_cities {
+  position:relative;
+  left:120px;
+
 }
 .image_tag_mobile {
   position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;
