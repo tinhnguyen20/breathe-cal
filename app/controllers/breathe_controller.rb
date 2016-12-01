@@ -1,6 +1,15 @@
 require 'date'
 class BreatheController < ApplicationController
   def index
+      url = "http://www.baaqmd.gov/Feeds/AlertRSS.aspx"
+      feed = Feedjira::Feed.fetch_and_parse url
+      entry = feed.entries[0]
+      @welcome_message = feed.title 
+      @alert = entry.summary
+      
+    if @text.nil?
+      @text = "Recent Searches"
+    end
     # session.clear
     # @users = User.all
     # @hash = Gmaps4rails.build_markers(@users) do |user, marker|
@@ -17,7 +26,9 @@ class BreatheController < ApplicationController
       @cities = []
       session[:cities] = []
     end
+    @cities = @cities.reverse
     
+    @text = "Recent Searches"
     Time::DATE_FORMATS[:custom] = lambda { |time| time.strftime("%B #{time.day.ordinalize}, %Y") }
     @dt = (DateTime.now + Rational(-8,24)).to_formatted_s(:custom)
  end

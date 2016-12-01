@@ -87,6 +87,7 @@ var marker = new google.maps.Marker({
     map.fitBounds(bounds);
   });
 <% end %>
+
 var offset = '-' + parseInt($('#detail-box').parent().css('width')) + 'px'
 <% if mobile_device? %>
 $("#detail-box").html("<%= j render 'breathe/detail.mobile' %>");

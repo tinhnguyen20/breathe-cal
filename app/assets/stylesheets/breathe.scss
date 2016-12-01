@@ -26,6 +26,20 @@ html, body {
   padding: 0;
 }
 
+// font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;
+.welcome {
+  font-family: 'Open Sans', sans-serif; 
+  float:center;
+  position:relative;
+  left:800px;
+  top:30px;
+}
+
+#spare_alert {
+  position:relative;
+  left:130px;
+  font-weight:bold;
+}
 
 .controls {
   margin-top: 10px;
@@ -47,7 +61,7 @@ html, body {
   float:left;
   overflow:hidden;
   position:relative;
-  top:-5px;
+  top:-10px;
   left:-10px;
 }
 
@@ -56,7 +70,7 @@ html, body {
   overflow:hidden;
   position:relative;
   left:-110px;
-  top:-5px;
+  top:-9px;
 
 }
 
@@ -64,9 +78,12 @@ html, body {
   float:right;
   overflow:hidden;
   position:relative;
-  top:-5px;
+  top:-9px;
 
+}
 
+#remove {
+  content: "add as a favorite city";
 }
 #pac-input {
   background-color: #fff;
@@ -108,6 +125,12 @@ html, body {
     width: 110px;
     top: 8px;
 }
+
+#navigation_cities {
+  position:relative;
+  left:120px;
+
+}
 .image_tag_mobile {
   position: absolute; width: 15px; height: 15px; margin-left: 10px; margin-top: 1px;
 }
@@ -133,7 +156,7 @@ html, body {
 }
 
 #marker-cta {
-  background-color: #fff;
+  background-color: #5299a4;
   font-family: Roboto;
   font-size: 15px;
   font-weight: 500;
@@ -141,9 +164,21 @@ html, body {
   padding: 0 11px 0 13px;
   text-overflow: ellipsis;
   width: 240px;
-  color: black;
-}
+  color: white;
 
+}
+#marker-cta-mobile {
+  background-color: #5299a4;
+  font-family: Roboto;
+  font-size: 15px;
+  font-weight: 500;
+  margin-left: 12px;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 240px;
+  color: white;
+
+}
 #wrap {
   width:180px;
   margin:0 auto;
@@ -157,4 +192,37 @@ html, body {
 #right_col {
   float:right;
   width:90px;
+}
+.about-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 20px
+}
+.about-text {
+  font-weight: 400;
+  font-size: 14px;  
+}
+.about-image {
+  width: 100%;
+}
+.about-image-sm {
+  width: 70px;
+}
+.about-row {
+  margin-top: 10px;
+}
+.about-row-mobile {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #eee;
+}
+.about-image-sm-mobile {
+  width: 60px;
+  border-radius: 30px;
+  margin-bottom: 15px;
+}
+.center-col {
+  text-align: center;
 }
