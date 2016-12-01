@@ -76,7 +76,7 @@ class CitiesController < ApplicationController
       @text = "Favorite Cities"
       if session[:client_id]
         @cities = session[:favorites]
-      if !@cities.any? 
+      if @cities == nil
           @no_cities = "You currently have no favorite cities!"
         end
       else 
