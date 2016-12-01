@@ -37,8 +37,7 @@ Scenario: I should be able to see a list of my favorite cities
     Given I successfully authenticated with Google as "Anish Khazane"
     When I go to the landing page
     And my location is set to "Berkeley"
-    And I follow "add as a favorite city"
-    And I go to the landing page
+    And I follow "Back"
     And I follow "View Favorites"
     Then I should see "Berkeley"
  
