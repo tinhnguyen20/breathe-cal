@@ -57,9 +57,48 @@ function initAutocomplete() {
     searchBox.setBounds(map.getBounds());
   });
 
+  google.maps.event.addListener(map, 'dragend', function(){
+    deleteMarkers();
+    labelNum = 0;
+    var bounds = map.getBounds();
+    var NECorner = bounds.getNorthEast();
+    var SWCorner = bounds.getSouthWest();
+    $.ajax({
+      type: "GET",
+      contentType: "application/json; charset=utf-8",
+      url: "markers",
+      data: {bounds :{uplat:NECorner.lat(),downlat:SWCorner.lat(),rightlong:NECorner.lng(),leftlong:SWCorner.lng()}},
+      success: function(data){
+        for(var i=0;i<data.length; i++){
+          var id = data[i].id;
+          if (true){
+            var location = {};
+            location.lat = parseFloat(data[i].lat);
+            location.lng = parseFloat(data[i].lng);
+            labelNum += 1;
+            var marker = new google.maps.Marker({
+                  label: labelNum.toString(),
+                  position: location,
+                  map: map,
+                  draggable: false,
+                  });
+            var newContent = createContentString(data[i]);      
+            marker.info = new google.maps.InfoWindow();
+            marker.info.setContent(newContent[0]);
+            google.maps.event.addListener(marker, 'click', function(){
+              this.info.open(map, this);
+            });
+            markers.push(marker);
+          }
+        }
+      }
+    })
+    
+  })
+
+
 
   var markers = [];
-
 
   searchBox.addListener('places_changed', function() {
     var places = searchBox.getPlaces();
@@ -119,9 +158,6 @@ function initAutocomplete() {
   });
   
   var canMark = false;
-  var markerCount = 0;
-  
-  var uncommittedMarker;
   
   function loggedIn(){
       $.ajax({
@@ -131,22 +167,22 @@ function initAutocomplete() {
       data: {},
       success: function(data){
         if (data.authorized && recentMarker === null){
-          map.setOptions({ draggableCursor :"url(https://maps.google.com/mapfiles/ms/micons/red-dot.png), auto"})
-          $("#marker-cta").css("cursor", "url(https://maps.google.com/mapfiles/ms/micons/red-dot.png), auto")
+          map.setOptions({ draggableCursor :"url(https://maps.google.com/mapfiles/ms/micons/red-dot.png), auto"});
+          $("#marker-cta").css("cursor", "url(https://maps.google.com/mapfiles/ms/micons/red-dot.png), auto");
           canMark = true;  
         } else {
           canMark = false;
-          window.location.href = '/auth/google_oauth2'  
+          window.location.href = '/auth/google_oauth2';
         }
       }
-    })
+    });
   }
  
   // allow user to put down a marker
   $("#marker-cta").click(function(){
     loggedIn();
     $("#marker-cta span").text("Click map to place marker")
-  })
+  });
 
 
   google.maps.event.addListener(map, 'click', function(event) {
@@ -159,25 +195,25 @@ function initAutocomplete() {
       var latlng = point2LatLng(point, map);
       placeMarker(latlng);  
       canMark = false;
-      map.setOptions({ draggableCursor :"auto"})
-      $("#marker-cta").css("cursor", "pointer")
-      $("#marker-cta span").text("Click here to add an allergen")
+      map.setOptions({ draggableCursor :"auto"});
+      $("#marker-cta").css("cursor", "pointer");
+      $("#marker-cta span").text("Click here to add an allergen");
     }
-  })
+  });
   
   var recentMarker = null;
   
   function createContentString(data){
     var title = data.title;
     var attributes = ["cat", "bees", "perfume", "oak", "peanut", "gluten", "dog", "dust", "smoke", "mold"];
-    leftContentString = "";
-    rightContentString = "";
+    var leftContentString = "";
+    var rightContentString = "";
     for(var i=0; i<attributes.length/2; i++){
       if (data[attributes[i]]){
         leftContentString += attributes[i] + "<br>";  
       }
     }
-    for(var i=attributes.length/2; i<attributes.length; i++){
+    for(i=attributes.length/2; i<attributes.length; i++){
       if (data[attributes[i]]){
         rightContentString += attributes[i] + "<br>";  
       }
@@ -192,7 +228,7 @@ function initAutocomplete() {
                       "</div>" + 
                       "</div>";
     var content = $(contentString);
-    return content
+    return content;
   }
   
   function placeMarker(location) {
@@ -203,7 +239,6 @@ function initAutocomplete() {
       map: map,
       draggable: true,
     })
-    uncommittedMarker = marker;
     
     var contentString = $(
       "<div id='wrap'>" + 
@@ -238,7 +273,7 @@ function initAutocomplete() {
     
     recentMarker = marker;
     
-    google.maps.event.addListener(infowindow, 'closeclick', function(){
+    var listenerHandle = google.maps.event.addListener(infowindow, 'closeclick', function(){
       labelNum -=1;
       recentMarker.setMap(null);
       recentMarker = null;
@@ -275,6 +310,8 @@ function initAutocomplete() {
           recentMarker.infowindow.open(map,recentMarker);
           recentMarker.draggable = false;
           recentMarker = null;
+          google.maps.event.removeEventListener(listenerHandle);
+          markers.push(recentMarker);
         }
       })
       
@@ -283,43 +320,20 @@ function initAutocomplete() {
   }
   
   // maybe just send a list of attributes to tell javascript to use....? 
+  function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
   
-  $("#breathe").unbind('click').bind('click', function(){
-    labelNum = 0;
-    var bounds = map.getBounds();
-    var NECorner = bounds.getNorthEast();
-    var SWCorner = bounds.getSouthWest();
-    $.ajax({
-      type: "GET",
-      contentType: "application/json; charset=utf-8",
-      url: "markers",
-      data: {bounds :{uplat:NECorner.lat(),downlat:SWCorner.lat(),rightlong:NECorner.lng(),leftlong:SWCorner.lng()}},
-      success: function(data){
-        for(var i=0;i<data.length; i++){
-          var id = data[i].id;
-          if (fetchedMarkers[id] != true){
-            var location = {};
-            location.lat = parseFloat(data[i].lat);
-            location.lng = parseFloat(data[i].lng);
-            labelNum += 1;
-            var marker = new google.maps.Marker({
-                  label: labelNum.toString(),
-                  position: location,
-                  map: map,
-                  draggable: false,
-                  });
-            var newContent = createContentString(data[i]);      
-            marker.info = new google.maps.InfoWindow();
-            marker.info.setContent(newContent[0]);
-            google.maps.event.addListener(marker, 'click', function(){
-              this.info.open(map, this);
-            });  
-          }
-          
-        }
-      }
-    })
-  })
+  function clearMarkers() {
+    setMapOnAll(null);
+  }
+
+  function deleteMarkers() {
+    clearMarkers();
+    markers = [];
+  }
 }
 
 
