@@ -73,19 +73,24 @@ class CitiesController < ApplicationController
     end
     
     def display_favorite_cities
-      @cities = session[:favorites]
-      if !@cities.nil? 
-        @text = "Favorite Cities"
-      else
-        @text = "You currently have no favorite cities!"
+      @text = "Favorite Cities"
+      if session[:client_id]
+        @cities = session[:favorites]
+      if !@cities.any? 
+          @no_cities = "You currently have no favorite cities!"
+        end
+      else 
+        @cities = []
+        @no_cities = "Please login in order to favorite a city!"
       end
-       respond_to do |format|
+        respond_to do |format|
         format.js {
           render :template => "cities/city_data_back.js.erb"
         }
         end
-    end
-    
+      end
+
+
     def favorite_city
       city = City.find_by(name: params[:name])
       if session[:client_id]
@@ -103,12 +108,12 @@ class CitiesController < ApplicationController
                   client.cities.delete(city)
                 end
             end
-            flash.now[:notice] = "Removed " + params[:name] + " from your favorite cities"
+            flash.now[:notice] = "Removed " + params[:name] + " from your favorite cities!"
           else
             unless a_in_b_as_c?(city.name, session[:favorites], "name")
               session[:favorites] << { "name" => city.name, "quality" => @quality }
               client.cities << city
-              flash.now[:notice] = "Added " + params[:name] + " to Favorite Cities!"
+              flash.now[:notice] = "Added " + params[:name] + " to your favorite cities!"
             else
               flash.now[:notice] = params[:name] + " is already one of your favorite cities!"
             end
@@ -117,7 +122,7 @@ class CitiesController < ApplicationController
           session[:favorites] = []
           session[:favorites] << { "name" => city.name, "quality" => @quality }
           client.cities << city
-          flash.now[:notice] = "Added " + params[:name] + " to your list of favorite cities!"
+          flash.now[:notice] = "Added " + params[:name] + " to your favorite cities!"
         end
       else
         #need to figure out how to redirect to google oauth page
