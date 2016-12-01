@@ -40,8 +40,12 @@ class CitiesController < ApplicationController
       city.update_city_data
       @data = [city.name, city.daily_data]
       unless a_in_b_as_c?(city.name, session[:cities], "name")
-        session[:cities] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
+        if (@quality.nil?)
+          @quality = city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"]
+        end
+        session[:cities] << { "name" => city.name, "quality" => @quality }
       end
+    
       respond_to do |format|
         format.js {
           render :template => "cities/city_data.js.erb"
@@ -86,17 +90,32 @@ class CitiesController < ApplicationController
       city = City.find_by(name: params[:name])
       if session[:client_id]
         client = Client.find_by(id: session[:client_id])
+        if (@quality.nil?)
+          @quality = city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"]
+        end
+        
         if session[:favorites]
-          unless a_in_b_as_c?(city.name, session[:favorites], "name")
-            session[:favorites] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
-            client.cities << city
-            flash.now[:notice] = "Added " + params[:name] + " to Favorite Cities!"
+          remove = params[:remove]
+          if remove == "true"
+            session[:favorites].each do |favorite_city| 
+                if favorite_city['name'] == params[:name]
+                  session[:favorites].delete(favorite_city)
+                  client.cities.delete(city)
+                end
+            end
+            flash.now[:notice] = "Removed " + params[:name] + " from your favorite cities"
           else
-            flash.now[:notice] = params[:name] + " is already one of your favorite cities!"
+            unless a_in_b_as_c?(city.name, session[:favorites], "name")
+              session[:favorites] << { "name" => city.name, "quality" => @quality }
+              client.cities << city
+              flash.now[:notice] = "Added " + params[:name] + " to Favorite Cities!"
+            else
+              flash.now[:notice] = params[:name] + " is already one of your favorite cities!"
+            end
           end
         else
           session[:favorites] = []
-          session[:favorites] << { "name" => city.name, "quality" => city.daily_data["DailyForecasts"][0]["AirAndPollen"][0]["Category"] }
+          session[:favorites] << { "name" => city.name, "quality" => @quality }
           client.cities << city
           flash.now[:notice] = "Added " + params[:name] + " to your list of favorite cities!"
         end
@@ -114,17 +133,13 @@ class CitiesController < ApplicationController
       
 
     
-    
-    
     def create
-      if params[:city]
-        City.get_location_key(params[:city]["zip"],params[:city]["name"],params[:city]["state"],params[:city]["country"])
-        city = City.find_by(params[:location_info])
-      elsif params[:geo]
-        latlng = params[:geo]
-        loc_key = City.get_loc_key(latlng["lat"], latlng["lng"])
-        city = City.find_by(location_key: loc_key)
-      end
+      # if params[:city]
+      #   City.get_location_key(params[:city]["zip"],params[:city]["name"],params[:city]["state"],params[:city]["country"])
+      #   city = City.find_by(params[:location_info])
+      latlng = params[:geo]
+      loc_key = City.get_loc_key(latlng["lat"], latlng["lng"], params[:name])
+      city = City.find_by(location_key: loc_key)
       city.update_city_data
       respond_to do |format|
         format.html {redirect_to city_path id: city.id}
