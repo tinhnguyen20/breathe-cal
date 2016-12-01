@@ -51,9 +51,14 @@ Intallation
  
  Add the above to the test setup file.
  
+ Moreover, since our app integrate Google Map API, be sure to add your development website to Google Map API 
+
+https://console.developers.google.com/apis/credentials/oauthclient/140496364556-f0lvk46ni0jm0ke4k41nfnlp5mj7j8tl.apps.googleusercontent.com?project=breathe-149522&authuser=1
+
+ 
  After that all that is left to do is run the migration file by typing in rake db:migrate in the terminal line
  
  Now, in order to run any of the cucumber features we type cucumber features/*
 
-Please feel free to use a different markup language if you do not plan to run
+ Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
