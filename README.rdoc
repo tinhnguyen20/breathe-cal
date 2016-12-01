@@ -51,7 +51,7 @@ Intallation
  
  Add the above to the test setup file.
  
- Moreover, since our app integrate Google Map API, be sure to add your development website to Google Map API 
+Moreover, since our app integrate Google Map API, be sure to add your development website to Google Map API 
 
 https://console.developers.google.com/apis/credentials/oauthclient/140496364556-f0lvk46ni0jm0ke4k41nfnlp5mj7j8tl.apps.googleusercontent.com?project=breathe-149522&authuser=1
 
