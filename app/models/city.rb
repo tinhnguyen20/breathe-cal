@@ -1,5 +1,3 @@
-import config.js
-
 class City < ActiveRecord::Base
   belongs_to :client
   serialize :daily_data, JSON
