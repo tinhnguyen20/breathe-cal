@@ -1,4 +1,4 @@
-class MarkerController < ApplicationController::Base
+class MarkerController < ApplicationController
 
     def new
         
