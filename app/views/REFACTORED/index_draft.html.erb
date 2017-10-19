@@ -1,0 +1,401 @@
+<div style="height: 100%;">
+
+<div id="save_location"></div>
+
+
+<script>
+  function deleteMarker(id) {
+        $.ajax({
+            type: "DELETE",
+            contentType: "application/json; charset=utf-8",
+            url: "markers",
+            data: JSON.stringify({id: id}),
+            success: function() {
+              
+            }
+        });
+      }
+  
+      
+      function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        
+        if (tabName == 'Cities') {
+          <% fox_box = render 'breathe/fox_box.html' %>
+          $("#fox-box").html("<%= j fox_box %>");
+         // $('#current_city').html($('#cur-city-fox').html());
+        }
+        
+        else {
+  
+          if ($("#cheater-display").html() != "") {
+            $("#fox-box").html($("#cheater-display").html());
+          }
+          
+        }
+      
+    
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+    
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+    
+        // Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+        
+         if (tabName == 'Air') {
+          document.getElementById("clean-air-button").click();
+        } else {
+          document.getElementById("clean-air-off").click();
+        }
+        
+        
+      }
+  
+      
+      
+    
+    </script>
+  
+  
+  <!-- profile sign in and profile icon END -->
+    <div id = 'cheater-display' style= "display:none"></div>
+  
+    <div class="col-md-4 col-ms-12" style="padding-left: 0; padding-right: 0; max-width: 500px;" id="right-col">
+      <!--<div style="text-align: right; font-size: 15px; padding: 10px 15px; border-bottom-width: 1px; border-bottom-color: #eee; border-bottom-style: solid;">-->
+      <!--</div>-->
+  
+  
+      <div id="fox-box" style="height: 120px;">
+        <%= render 'fox_box' %>
+      </div>
+      <!--<div id="list-box" style="position: absolute; width: 100%;">-->
+      <!-- <%#= render 'list' %>  -->
+      <!--</div>-->
+      
+      <div id="detail-box" style="margin-left: 500px; background-color: white; position: absolute; width: 100%; overflow-x: hidden; overflow-y: scroll; z-index: 10;">
+    
+      </div>
+      <div id="detail-box-mask" style="margin-left: 500px; background-color: white; position: absolute; width: 100%; overflow-x: hidden; overflow-y: scroll; z-index: 10;">
+      </div>
+      
+  
+   
+      <div class="tab" >
+  
+        <button class="tablinks" onclick="openTab(event, 'Cities')"><%=  link_to "Home", display_favorite_cities_path, remote: true, style: 'text-decoration: none;' %></button>
+        <button id = 'allergen-display' class="tablinks" onclick="openTab(event, 'Allergens')">Allergens</button>
+        <button class="tablinks" onclick="openTab(event, 'Breathing')">Breathing Information</button>
+        <button class="tablinks" onclick="openTab(event, 'Air')">Air Quality</button>
+      </div>
+  
+        
+      <div id="Cities" class="tabcontent">
+        <script>
+          // simulating a search when clicked on a favorite city
+          var favClicked = document.getElementsByClassName("favCity");
+    
+          var seeCity = function(cityDiv) {
+            var searchText = cityDiv.innerHTML;
+            searchBar = document.getElementById('pac-input');
+            
+            // Need to get rid of any tags in order to search
+            // specially important when page is translated
+            searchText = String(searchText);
+            while (searchText.indexOf("<font>") !== -1) {
+              searchText = searchText.replace("<font>",'');
+            }
+            while (searchText.indexOf("</font>") !== -1) {
+              searchText = searchText.replace("</font>",'');
+            }
+            searchBar.value += searchText;
+            document.getElementById('search-button').click();
+            searchBar.value = "";
+           }
+        </script>
+        <div class="tab-header">
+          <div id="allergen-title">
+            Home
+          </div>
+          <div class = 'allergen-btn'>
+            <button id = 'marker-cta' class = 'sidebar-btn'>Add Allergen</button>
+          </div>
+        </div>
+      <hr>
+        
+        <h4>Current Location: </h4>
+     
+          <div id = 'current_city'>
+            <div style = 'margin-left: 10px'>
+              no current city found
+            </div>
+          </div>
+     
+        
+        
+      <hr>
+        <div id="favorite_cities"> 
+  
+          <h4>Favorites Locations: </h4>
+          <% if @fav_cities.nil? %>
+            <% @fav_cities = session[:favorites]; favs = [] %>
+          <% end %>
+          <% if !@fav_cities.nil? and @fav_cities.length > 0 %>
+            <% @fav_cities.each do |c| %>
+              <% favs.append(c['name']) %>
+              <div class="row" style="padding: 15px 10px;">
+                
+                <div class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px;">
+                  <%= link_to raw("<div class='favorite-star-checked'></div>"), favorite_city_path(:name => c["name"], :remove => true), remote: true, :id => "remove"%>
+                  <div class = "favCity" style="font-family: 'Open Sans'; font-weight: 600; font-size: 14px; " onclick="seeCity(this)">
+                    <%= c["name"]%>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div style="float: right; width: 16px; height: 16px; border-radius: 8px; background-color: #<%= get_quality_color(c["quality"]) %>; margin-top: 2px; "></div>
+                  <div style="float: right; margin-right: 5px; font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;"><%= c["quality"].split.first %></div>
+                </div>
+              </div>  
+              <% end %>
+            <% else %> 
+              <div class="row" style="padding: 15px 10px; ">
+                <div id="sidebar-favorite" class="col-lg-8" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898;">
+                </div>
+              <div id="sidebar-filter" class="col-lg-10" style="font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; color: #989898; display: none">
+              </div>
+            </div>
+          <% end %>
+        </div>
+</script>
+      
+------
+
+<div id="Allergens" class="tabcontent">
+      <div class="tab-header">
+        <div id="allergen-title">
+          Allergens
+        </div>
+        <div class = 'allergen-btn'>
+          <button id = 'marker-cta' class = 'sidebar-btn'>Add Allergen</button>
+        </div>
+      </div>
+     
+ 
+      <div id ='allergen-render'>
+        <div class="empty-tab">
+          Search a city to populate the allergens tab
+        </div>
+        
+      </div>
+    </div>
+    
+    <div id="Breathing" class="tabcontent">
+      <div class="tab-header">
+        <div id="allergen-title">
+          Breathing
+        </div>
+        <div class = 'allergen-btn'>
+          <button id = 'marker-cta' class = 'sidebar-btn'>Add Allergen</button>
+        </div>
+      </div>
+      <div id ='breathing-render'>
+        <div class="empty-tab">
+          Search a city to populate the breathing tab
+        </div>
+        
+      </div>
+    </div>
+    
+
+
+    <div id="Air" class="tabcontent" >
+      <div class="tab-header">
+        <div id="allergen-title">
+          UV & Air
+        </div>
+        <div class = 'allergen-btn'>
+          <button id = 'marker-cta' class = 'sidebar-btn'>Add Allergen</button>
+        </div>
+      </div>
+      <div id="uvindex">
+        
+      </div>
+      <div id ='breathing-render'>
+        <% begin; air_quality = @data[1]["DailyForecasts"][0]["AirAndPollen"][0]["Category"]; rescue Exception; air_quality = nil; end %>            
+        <div style="font-family: 'Open Sans', sans-serif; font-size: 20px">Air quality: <%= air_quality %></div>
+        
+    <center style="margin-top:20px; margin-bottom:15px;">
+   <div style="display:inline-block;width:50px;text-align:center;padding:3px;margin:3px;">
+      <div class="saqi item" style="text-shadow: 1px 1px 0 #000000;color:#ffffff;background-color:#009966;">50</div>
+   </div>
+   <div style="display:inline-block;width:50px;text-align:center;padding:3px;margin:3px;">
+      <div class="saqi item" style="text-shadow: 1px 1px 0 #ffffff;color:#000000;background-color:#ffde33;">100</div>
+   </div>
+   <div style="display:inline-block;width:50px;text-align:center;padding:3px;margin:3px;">
+      <div class="saqi item" style="text-shadow: 1px 1px 0 #ffffff;color:#000000;background-color:#ff9933;">150</div>
+   </div>
+   <div style="display:inline-block;width:50px;text-align:center;padding:3px;margin:3px;">
+      <div class="saqi item" style="text-shadow: 1px 1px 0 #000000;color:#ffffff;background-color:#cc0033;">200</div>
+   </div>
+   <div style="display:inline-block;width:50px;text-align:center;padding:3px;margin:3px;">
+      <div class="saqi item" style="text-shadow: 1px 1px 0 #000000;color:#ffffff;background-color:#660099;">300</div>
+   </div>
+   <div style="display:inline-block;width:50px;text-align:center;padding:3px;margin:3px;">
+      <div class="saqi item" style="text-shadow: 1px 1px 0 #000000;color:#ffffff;background-color:#7e0023;">500</div>
+   </div>
+</center>
+<p style="font-family: 'Open Sans', sans-serif; font-size: 15px;">  The numbers are the Air Quality Indexes, which is based on a scale from 0 (good) to 500 (bad).The colors correspond to the different health impact categories (good, moderate, unhealthy... hazardous) </p>
+     
+     <div id="legend-full-x" style="height:300px; overflow-y: scroll;">
+       
+   <table class="pure-table" width="360" align="center" style="margin-top:4px;font-family: 'Open Sans', sans-serif; font-size:12px;">
+      <thead>
+         <tr>
+            <td style="font-family: 'Open Sans', sans-serif; background-color:#B8C9FF;" align="center">AQI</td>
+            <td style="font-family: 'Open Sans', sans-serif; background-color:#B8C9FF;" align="center">Pollution</td>
+            <td style="font-family: 'Open Sans', sans-serif; background-color:#B8C9FF;" align="center">Health Implications</td>
+         </tr>
+      </thead>
+      <tbody>
+         <tr style="background-color:#009966; font-family: 'Open Sans', sans-serif;">
+            <td class="aqiwtxt" nowrap="true" style="margin-right:5px;">0 - 50</td>
+            <td class="aqiwtxt" style="text-align:center;">Good</td>
+            <td class="aqiwtxt">Air quality is considered satisfactory, and air pollution poses little or no risk</td>
+         </tr>
+         <tr style="background-color:#ffde33; font-family: 'Open Sans', sans-serif;" class="aqibtxt">
+            <td class="aqibtxt" nowrap="true">51 -100</td>
+            <td class="aqibtxt" style="text-align:center;">Moderate</td>
+            <td class="aqibtxt">Air quality is acceptable; however, for some pollutants there may be a moderate health concern for a very small number of people who are unusually sensitive to air pollution.</td>
+         </tr>
+         <tr style="background-color:#ff9933; font-family: 'Open Sans', sans-serif;">
+            <td class="aqibtxt" nowrap="true">101-150</td>
+            <td class="aqibtxt" style="text-align:center;">Unhealthy for Sensitive Groups</td>
+            <td class="aqibtxt">Members of sensitive groups may experience health effects. The general public is not likely to be affected.</td>
+         </tr>
+         <tr style="background-color:#cc0033; font-family: 'Open Sans', sans-serif;">
+            <td class="aqiwtxt" style="color: white;" nowrap="true">151-200</td>
+            <td class="aqiwtxt" style="color: white; text-align:center;">Unhealthy</td>
+            <td class="aqiwtxt" style="color: white;">Everyone may begin to experience health effects; members of sensitive groups may experience more serious health effects</td>
+         </tr>
+         <tr style="background-color:#660099; font-family: 'Open Sans', sans-serif;">
+            <td class="aqiwtxt" style="color: white;" nowrap="true">201-300</td>
+            <td class="aqiwtxt" style="color: white; text-align:center;">Very Unhealthy</td>
+            <td class="aqiwtxt" style="color: white;">Health warnings of emergency conditions. The entire population is more likely to be affected.</td>
+         </tr>
+         <tr style="background-color:#7e0023; font-family: 'Open Sans', sans-serif;">
+            <td class="aqiwtxt" style="color: white; padding-right:5px;" nowrap="true">300+</td>
+            <td class="aqiwtxt" style="color: white; padding-right:5px; text-align:center;">Hazardous</td>
+            <td class="aqiwtxt" style="color: white;">Health alert: everyone may experience more serious health effects</td>
+         </tr>
+      </tbody>
+   </table>
+</div>
+
+<style>
+.pure-table {
+    /* Remove spacing between table cells (from Normalize.css) */
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid #cbcbcb;
+}
+
+.pure-table caption {
+    color: #000;
+    font: italic 85%/1 arial, sans-serif;
+    padding: 1em 0;
+    text-align: center;
+}
+
+.pure-table td,
+.pure-table th {
+    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 0.5em 1em; /* cell padding */
+}
+
+/* Consider removing this next declaration block, as it causes problems when
+there's a rowspan on the first cell. Case added to the tests. issue#432 */
+.pure-table td:first-child,
+.pure-table th:first-child {
+    border-left-width: 0;
+}
+
+.pure-table thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+/*
+striping:
+   even - #fff (white)
+   odd  - #f2f2f2 (light gray)
+*/
+.pure-table td {
+    background-color: transparent;
+}
+.pure-table-odd td {
+    background-color: #f2f2f2;
+}
+
+
+
+
+
+
+</style>
+
+      </div>
+    </div>
+    
+    
+    <div id="logo-bottom" style="text-align: center; margin-left:165px; position: absolute; width: 50%; bottom: 10px; z-index: 5;">
+      <%= link_to(image_tag('bcal.jpg', :style => "width: 100px;"), "http://www.breathebayarea.org") %>
+      <div type="button" data-toggle="modal" data-target="#myModal">
+        <a>Learn more about this project</a>
+      </div>
+    </div>
+  </div>
+    
+
+  
+  <div class="col-md-8 col-ms-12" style="padding-left: 0; padding-right: 0; z-index: 10; height: 100%;" id="left-col">
+    <input id="pac-input" class="controls" type="text" placeholder="Search">
+    <button id="search-button" class="controls">🔍</button>
+    <button id="find-my-location"> <img id = "loc-img" height="30" width="30" src="https://cdn3.iconfinder.com/data/icons/glypho-travel/64/map-pin-marker-circle-512.png"> </button>
+    <button id="clean-air-button" class="controls"></button>
+    <button id='clean-air-off' class="controls"></button>  
+
+
+    <div id="map" style="height: 100%; width: 100%;"></div>
+  </div>
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-body" style="padding: 20px;">
+         <%= render 'about' %>
+       </div>
+     </div>
+   </div>
+ </div>
+ 
+
+  <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
+<!--<script src="//nmp.newsgator.com/NGBuzz/buzz.ashx?buzzId=146282&apiToken=C8A8F8F5025D418F8AACB0A7FB2A799A&trkP=6d55b36b-8f3d-4003-b27d-ab20d60a3e6f%2Ceb799aa0-ab4c-4906-9d8f-19aaa62a99eb&trkM=29FA7D07-CEE9-C94B-3CF2-BA83A24ABFAC" type="text/javascript"></script>-->
+</div>
