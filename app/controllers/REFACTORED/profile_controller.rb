@@ -1,4 +1,4 @@
-class ProfileController < ApplicationController::Base
+class ProfileController < ApplicationController
 
     def new
         
