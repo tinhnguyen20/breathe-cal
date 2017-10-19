@@ -25,6 +25,7 @@ class City < ActiveRecord::Base
       response = City.rescue_api(HTTParty.get(url, query: query), 0, url, query)
       self.update_attribute("daily_data" , response) 
     end
+    
     # daily  
     # daily_data is a hash with key: dailyForecasts value: array of 5 day forecast
     # we want to get "AirAndPollen" key 
