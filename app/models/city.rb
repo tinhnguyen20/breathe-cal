@@ -2,9 +2,12 @@ class City < ActiveRecord::Base
   belongs_to :client
   serialize :daily_data, JSON
   
+  #THESE ARE GETTING DELETED fa
   def self.get_api_key(i)
     ["nvdxlfErdFcQssANvU52VQYNj9JauI4z", "IGE0pfTgoL1OGJKvEcnAbbqpmQGjvbpo", "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", "CdE0YANGAu4AsDAReO0e6CZ01RwfFe9a"][i]
   end
+  
+  #THESE ARE GETTING DELETED fa
   def self.rescue_api(res, i, url, query, iMAX=3)
     if i == iMAX or res.code == 200
       return res
@@ -13,6 +16,7 @@ class City < ActiveRecord::Base
       return City.rescue_api(HTTParty.get(url, query: query), i + 1, url, query)
     end
   end
+  
   def update_city_data
     location_key = self.location_key
     if self.updated_at <= Date.today.to_time.beginning_of_day or !self.daily_data
