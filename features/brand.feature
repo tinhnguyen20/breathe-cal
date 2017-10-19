@@ -1,6 +1,6 @@
 Feature: Locations Details 
-       As an allergy sufferer, i want to notice the branding
-       for Breathe for California for the Bay Area 
+    So I can know the branding for the app,
+    I want to see the Breathe California Logo
       
 Background: 
 

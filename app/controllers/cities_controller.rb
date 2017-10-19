@@ -88,8 +88,7 @@ class CitiesController < ApplicationController
           render :template => "cities/city_data_back.js.erb"
         }
         end
-      end
-
+    end
 
     def favorite_city
       city = City.find_by(name: params[:name])
@@ -135,8 +134,7 @@ class CitiesController < ApplicationController
         }
         end
     end
-      
-
+    
     
     def create
       # if params[:city]
