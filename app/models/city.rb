@@ -27,7 +27,7 @@ class City < ActiveRecord::Base
       return city.location_key
     end
     url = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search"
-    query = {apikey: City.get_accuweather_key(0), q: "#{lat},#{lng}",language:"en-us" }
+    query = {apikey: City.get_accuweather_key(), q: "#{lat},#{lng}",language:"en-us" }
     response = City.get_resonse(HTTParty.get(url, query: query), 0, url, query)
     location_key = response["Key"]
     City.create(lat: "#{lat}", lng: "#{lng}", location_key: location_key, name: name)
