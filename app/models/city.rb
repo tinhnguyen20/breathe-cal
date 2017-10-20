@@ -11,8 +11,6 @@ class City < ActiveRecord::Base
     Rails.application.secrets.ACCUWEATHER_KEY
   end
   
-  def 
-  
   #THESE ARE GETTING DELETED fa
   def self.rescue_api(res, i, url, query, iMAX=3)
     if i == iMAX or res.code == 200
