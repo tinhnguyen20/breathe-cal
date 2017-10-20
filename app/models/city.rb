@@ -2,7 +2,6 @@ class City < ActiveRecord::Base
   belongs_to :client
   serialize :daily_data, JSON
   
-<<<<<<< HEAD
   def self.get_accuweather_key()
     Rails.application.secrets.ACCUWEATHER_KEY
   end
@@ -11,20 +10,6 @@ class City < ActiveRecord::Base
     return resp
   end
       
-=======
-  def self.get_api_key(i)
-    ["nvdxlfErdFcQssANvU52VQYNj9JauI4z", "IGE0pfTgoL1OGJKvEcnAbbqpmQGjvbpo", "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", "CdE0YANGAu4AsDAReO0e6CZ01RwfFe9a"][i]
-  end
-  
-  def self.rescue_api(res, i, url, query, iMAX=3)
-    if i == iMAX or res.code == 200
-      return res
-    else
-      query[:apikey] = City.get_api_key(i + 1)
-      return City.rescue_api(HTTParty.get(url, query: query), i + 1, url, query)
-    end
-  end
->>>>>>> fbd5f81cef9a58c9e8aa48ffeff2dce15be07e6f
   def update_city_data
     location_key = self.location_key
     if self.updated_at <= Date.today.to_time.beginning_of_day or !self.daily_data
