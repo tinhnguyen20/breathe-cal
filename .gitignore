@@ -8,7 +8,7 @@
 /.bundle
 
 #Ignore the secrets.yml file with the API keys
-secrets.yml
+config/secrets.yml
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
