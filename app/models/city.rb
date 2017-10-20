@@ -23,6 +23,7 @@ class City < ActiveRecord::Base
   
   def self.get_resonse(resp, url, query)
     return resp
+  end
       
       
   def update_city_data
