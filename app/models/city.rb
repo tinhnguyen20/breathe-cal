@@ -2,29 +2,13 @@ class City < ActiveRecord::Base
   belongs_to :client
   serialize :daily_data, JSON
   
-  #THESE ARE GETTING DELETED fa
-  def self.get_api_key(i)
-    ["nvdxlfErdFcQssANvU52VQYNj9JauI4z", "IGE0pfTgoL1OGJKvEcnAbbqpmQGjvbpo", "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", "CdE0YANGAu4AsDAReO0e6CZ01RwfFe9a"][i]
-  end
-  
   def self.get_accuweather_key()
     Rails.application.secrets.ACCUWEATHER_KEY
-  end
-  
-  #THESE ARE GETTING DELETED fa
-  def self.rescue_api(res, i, url, query, iMAX=3)
-    if i == iMAX or res.code == 200
-      return res
-    else
-      query[:apikey] = City.get_accuweather_key()
-      return City.rescue_api(HTTParty.get(url, query: query), i + 1, url, query)
-    end
   end
   
   def self.get_resonse(resp, url, query)
     return resp
   end
-      
       
   def update_city_data
     location_key = self.location_key
@@ -42,10 +26,6 @@ class City < ActiveRecord::Base
     # the first hash in AirAndPollen also has a type. 
   end
   
-  
-  #save by lat long? place id? something else?
-  
-  # probably need a better pattern for this anyway.. 
   def self.get_loc_key(lat,lng, name)
     city = City.find_by(lat: lat, lng: lng)
     if city
