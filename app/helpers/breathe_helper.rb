@@ -148,6 +148,9 @@ Think about replacing your grass lawn with low pollen ground cover - Irish Moss,
     return dict[name.downcase] || []
   end
   def get_pollen(data)
+    if data.nil?
+      return ['No pollon data']
+    end
     data[1]["DailyForecasts"][0]["AirAndPollen"]
   end
   def get_fox_image(data)
