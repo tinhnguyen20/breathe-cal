@@ -4,6 +4,7 @@ class City < ActiveRecord::Base
   
   def self.get_accuweather_key()
     ENV['WEATHER_KEY']
+  end
 
   #THIS IS OLD, SHOULD GET DELETED EVENTUALLY
   def self.get_api_key(i)
