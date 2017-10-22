@@ -11,7 +11,7 @@ Scenario: Once I sign in, I should be able to favorite cities
     When I go to the landing page
     And my location is set to "Berkeley"
     And I follow "add as a favorite city" 
-    Then I should see "Added Berkeley to your favorite cities!"
+    Then I should see "Added University of California, Berkeley to your favorite cities!"
     
 #sad path, not signed in
 @javascript 
@@ -27,9 +27,9 @@ Scenario: If a city is already favorited, I should be able to remove it from my 
     When I go to the landing page
     And my location is set to "Berkeley"
     And I follow "add as a favorite city" 
-    Then I should see "Added Berkeley to your favorite cities!"
+    Then I should see "Added University of California, Berkeley to your favorite cities!"
     And I follow "remove as a favorite city"
-    Then I should see "Removed Berkeley from your favorite cities!"
+    Then I should see "Removed University of California, Berkeley from your favorite cities!"
     
 #happy path, favorite cities list    
 @javascript 
@@ -39,6 +39,6 @@ Scenario: I should be able to see a list of my favorite cities
     And my location is set to "Berkeley"
     And I follow "Back"
     And I follow "View Favorites"
-    Then I should see "Berkeley"
+    Then I should see "University of California, Berkeley"
  
 
