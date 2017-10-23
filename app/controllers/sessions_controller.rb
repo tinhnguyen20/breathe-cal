@@ -29,6 +29,10 @@ class SessionsController < ApplicationController
     end      
     render :json => data
   end
+  
+  def show
+    @client = Client.find(session[:client_id])
+  end
     
     
 end

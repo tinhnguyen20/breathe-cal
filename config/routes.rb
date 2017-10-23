@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   
   resources :cities, :clients
   
+  get '/sessions/dashboard' => 'sessions#show', as: 'profile'
+  
   
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

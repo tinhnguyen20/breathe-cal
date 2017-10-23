@@ -1,15 +1,18 @@
 class City < ActiveRecord::Base
   belongs_to :client
   serialize :daily_data, JSON
-  
-
-  def self.get_accuweather_key()
-    ENV['ACCUWEATHER_KEY']
-  end
 
   def self.get_api_key(i)
     ["mV3yZJuM4wFsl3Ef4oRM5p0m9ed9y4Qc", "IGE0pfTgoL1OGJKvEcnAbbqpmQGjvbpo", "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", "CdE0YANGAu4AsDAReO0e6CZ01RwfFe9a"][i]
   end
+  def self.get_accuweather_key()
+    ENV['WEATHER_KEY']
+  end
+
+  #THIS IS OLD, SHOULD GET DELETED EVENTUALLY
+  # def self.get_api_key(i)
+  #   ["mV3yZJuM4wFsl3Ef4oRM5p0m9ed9y4Qc", "IGE0pfTgoL1OGJKvEcnAbbqpmQGjvbpo", "5NMWDxuXmQpNLf7AQ2gj0Y8uBkLXT8q3", "CdE0YANGAu4AsDAReO0e6CZ01RwfFe9a"][i]
+  # end
   
   def self.get_resonse(resp, url, query)
     return resp
@@ -32,9 +35,8 @@ class City < ActiveRecord::Base
     end
     url = "http://dataservice.accuweather.com/locations/v1/cities/geoposition/search"
     query = {apikey: City.get_accuweather_key(), q: "#{lat},#{lng}",language:"en-us" }
-    res = HTTParty.get(url, query: query)
-    #response = City.get_resonse(HTTParty.get(url, query: query), url, query)
-    location_key = res["Key"]
+    response = City.get_resonse(HTTParty.get(url, query: query), url, query)
+    location_key = response["Key"]
     City.create(lat: "#{lat}", lng: "#{lng}", location_key: location_key, name: name)
     return location_key
   end
